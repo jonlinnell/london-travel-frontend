@@ -6,7 +6,9 @@
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
     "axios": "^0.16.0",
-    "lodash": "*"
+    "lodash": "^4.17.4",
+    "bootstrap": "^4.0.0-alpha.6",
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
