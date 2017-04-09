@@ -12,7 +12,7 @@ class TubeStatus extends Component {
   };
   componentWillMount() {
     let component = this;
-    axios.get('https://api.tfl.gov.uk/line/mode/tube/status')
+    axios.get('https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail/status')
     .then( function(response) {
       component.setState({ 'tubedata' : response.data });
     })
@@ -25,7 +25,10 @@ class TubeStatus extends Component {
       <LineStatus line={line} />
     );
     return (
-      <div>{lines}</div>
+      <div className='card'>
+        <div className='card-header titleheader'><h4>Tube Status</h4></div>
+        <div>{lines}</div>
+      </div>
     );
   }
 }
