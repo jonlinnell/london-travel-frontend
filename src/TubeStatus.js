@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './TubeStatus.css';
 import axios from 'axios';
 import _ from 'lodash';
-//import LineStatusIcon from './LineStatusIcon';
 import LineStatus from './LineStatus';
 
 class TubeStatus extends Component {

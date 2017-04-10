@@ -9,8 +9,8 @@ class LineStatus extends Component {
       <LineStatusText status={status} />
     );
     return(
-      <div className='card' id={this.props.line.id}>
-        <div className='card-header'>
+      <div className='card border-0 m-0 rounded-0' id={this.props.line.id}>
+        <div className='card-header rounded-0'>
           {this.props.line.name}
           <LineStatusIcon line={this.props.line} />
           </div>
