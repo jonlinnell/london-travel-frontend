@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './TubeStatus.css';
 import axios from 'axios';
 import _ from 'lodash';
 import LineStatus from './LineStatus';

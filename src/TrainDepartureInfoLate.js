@@ -9,7 +9,7 @@ class TrainDepartureInfoLate extends Component {
           <h6 className="mb-1 text-danger">{this.props.departure.destination_name}</h6>
           <small className="text-danger">{this.props.departure.aimed_departure_time}</small>
         </div>
-        <small>This service is delayed and is expected to depart at <span className="text-warning">{this.props.departure.expected_departure_time}</span></small>
+        <small>This service is delayed and is expected to depart at <span className="text-danger">{this.props.departure.expected_departure_time}</span></small>
       </a>
     );
   }
