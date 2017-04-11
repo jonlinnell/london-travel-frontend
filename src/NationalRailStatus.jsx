@@ -40,10 +40,10 @@ class NationalRailStatus extends Component {
     );
 
     return (
-      <div className='card'>
-        <div className='card-header titleheader'><h5>National Rail Status</h5></div>
-        <div>{lines}</div>
-      </div>
+      <ul className='list-group'>
+        <li className='list-group-item'><h5 className="mb-0">National Rail Status</h5></li>
+        {lines}
+      </ul>
     );
   }
 }

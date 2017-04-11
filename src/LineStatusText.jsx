@@ -30,12 +30,10 @@ class LineStatusText extends Component {
       return null;
     } else {
       return(
-        <div className='card-block'>
-          <blockquote className='card-blockquote'>
+        <li className='list-group-item line-status'>
           <h6>{statuses[this.props.status.statusSeverity]}</h6>
           <p className="reason">{this.props.status.reason}</p>
-          </blockquote>
-        </div>
+        </li>
       );
     }
   }

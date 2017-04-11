@@ -1,5 +1,5 @@
-blockquote.card-blockquote {
-  font-size: 0.8em;
-  color: black;
-  padding-bottom: none;
+li.line-status {
+  color: #121212;
+  border: none !important;
+  border-radius: 0 !important;
 }

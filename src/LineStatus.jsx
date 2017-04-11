@@ -9,12 +9,12 @@ class LineStatus extends Component {
       <LineStatusText status={status} key={i} />
     );
     return(
-      <div className='card border-0 m-0 rounded-0' id={this.props.line.id}>
-        <div className='card-header rounded-0'>
-          {this.props.line.name}
-          <LineStatusIcon line={this.props.line} />
-          </div>
-          {statuses}
+      <div>
+        <li className='list-group-item line-info justify-content-between' id={this.props.line.id}>
+            {this.props.line.name}
+            <LineStatusIcon line={this.props.line} />
+        </li>
+        {statuses}
       </div>
     )
   }

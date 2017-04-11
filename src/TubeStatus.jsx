@@ -29,10 +29,10 @@ class TubeStatus extends Component {
       <LineStatus key={i} line={line} />
     );
     return (
-      <div className='card'>
-        <div className='card-header titleheader'><h5>Tube Status</h5></div>
-        <div>{lines}</div>
-      </div>
+      <ul className='list-group'>
+        <li className='list-group-item'><h5 className="mb-0">Tube Status</h5></li>
+        {lines}
+      </ul>
     );
   }
 }

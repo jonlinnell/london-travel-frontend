@@ -34,7 +34,7 @@ class NextBus extends Component {
       <div className="list-group">
         <a href="#" className="list-group-item list-group-item-action flex-column align-items-start">
           <div className="d-flex w-100 justify-content-between">
-            <h5 className="mb-1">388 Bus Route from HereEast</h5>
+            <h5 className="mb-0">388 Buses from HereEast</h5>
           </div>
         </a>
         {buses}

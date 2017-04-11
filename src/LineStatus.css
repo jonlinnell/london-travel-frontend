@@ -1,28 +1,30 @@
-div.card {
+li.line-info {
   color: white;
+  border: none !important;
+  border-radius: 0 !important;
 }
 
 div.titleheader {
   color: black;
 }
 
-div#bakerloo .card-header { background-color: rgb(178,99,0); }
-div#central .card-header { background-color: rgb(220,36,31); }
-div#circle .card-header { background-color: rgb(255,211,41); color: #113892; }
-div#district .card-header { background-color: rgb(0,125,50); }
-div#hammersmith-city .card-header { background-color: rgb(244,169,190); color: #113892; }
-div#jubilee .card-header { background-color: rgb(161,165,167); }
-div#metropolitan .card-header { background-color: rgb(155,0,88); }
-div#northern .card-header { background-color: rgb(0,0,0); }
-div#piccadilly .card-header { background-color: rgb(0,25,168); }
-div#victoria .card-header { background-color: rgb(0,152,216); }
-div#waterloo-city .card-header { background-color: rgb(147,206,186); color: #113892; }
-div#dlr .card-header { background-color: rgb(0,175,173) }
-div#london-overground .card-header { background-color: rgb(239,123,16) }
-div#tfl-rail .card-header { background-color: rgb(0,25,168) }
+li#bakerloo { background-color: rgb(178,99,0); }
+li#central { background-color: rgb(220,36,31); }
+li#circle { background-color: rgb(255,211,41); color: #113892; }
+li#district { background-color: rgb(0,125,50); }
+li#hammersmith-city { background-color: rgb(244,169,190); color: #113892; }
+li#jubilee { background-color: rgb(161,165,167); }
+li#metropolitan { background-color: rgb(155,0,88); }
+li#northern { background-color: rgb(0,0,0); }
+li#piccadilly { background-color: rgb(0,25,168); }
+li#victoria { background-color: rgb(0,152,216); }
+li#waterloo-city { background-color: rgb(147,206,186); color: #113892; }
+li#dlr { background-color: rgb(0,175,173) }
+li#london-overground { background-color: rgb(239,123,16) }
+li#tfl-rail { background-color: rgb(0,25,168) }
 
 /* NATIONAL RAIL */
-div#east-midlands-trains .card-header { 
+li#east-midlands-trains { 
   color: black;
   border: none;
   background: 
@@ -40,7 +42,7 @@ div#east-midlands-trains .card-header {
     );
 }
 
-div#thameslink .card-header { 
+li#thameslink { 
   color: white;
   border: none;
   background: 
@@ -58,7 +60,7 @@ div#thameslink .card-header {
     );
  }
 
-div#c2c .card-header { 
+li#c2c { 
   color: black;
   border: none;
   background: 
@@ -76,11 +78,11 @@ div#c2c .card-header {
     );
  }
 
- div#c2c .card-header i.linestatus {
+ li#c2c i.linestatus {
   color: #121212;
  }
 
-div#great-northern .card-header { 
+li#great-northern { 
   color: white;
   border: none;
   background: 
@@ -98,7 +100,7 @@ div#great-northern .card-header {
     );
  }
 
-div#south-west-trains .card-header { 
+li#south-west-trains { 
   color: white;
   border: none;
   background: 
@@ -111,11 +113,11 @@ div#south-west-trains .card-header {
     ),
     linear-gradient(
       to bottom,
-      #00a6e2,
-      #00a6e2
+      #fc0,
+      #fc0
     );
  }
- div#southeastern .card-header { 
+ li#southeastern { 
   color: white;
   border: none;
   background: 

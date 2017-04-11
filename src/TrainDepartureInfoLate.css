@@ -1,3 +1,5 @@
-.late-departure h5 {
-  color: red;
+p.late-text {
+	font-size: 0.8em;
+	margin: none;
+	padding: none;
 }
