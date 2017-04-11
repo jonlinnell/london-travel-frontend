@@ -33,7 +33,7 @@ class SFADepartures extends Component {
   render() {
     var departures = [];
     this.state.departureData.map(function(departure) {
-      if (departure.aimed_departure_time != departure.expected_departure_time) {
+      if (departure.aimed_departure_time !== departure.expected_departure_time) {
         departures.push(<TrainDepartureInfoLate departure={departure} />);
       } else {
         departures.push(<TrainDepartureInfo departure={departure} />);

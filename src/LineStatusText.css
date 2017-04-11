@@ -1,4 +1,5 @@
 blockquote.card-blockquote {
   font-size: 0.8em;
   color: black;
+  padding-bottom: none;
 }
