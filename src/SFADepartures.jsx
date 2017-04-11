@@ -1,5 +1,5 @@
+/* eslint-disable array-callback-return */
 import React, { Component } from 'react';
-//import './SFADepartures.css';
 import axios from 'axios';
 import _ from 'lodash';
 import config from './config';
@@ -32,11 +32,11 @@ class SFADepartures extends Component {
   };
   render() {
     var departures = [];
-    this.state.departureData.map(function(departure) {
+    this.state.departureData.map(function(departure, i) {
       if (departure.aimed_departure_time !== departure.expected_departure_time) {
-        departures.push(<TrainDepartureInfoLate departure={departure} />);
+        departures.push(<TrainDepartureInfoLate key={i} departure={departure} />);
       } else {
-        departures.push(<TrainDepartureInfo departure={departure} />);
+        departures.push(<TrainDepartureInfo key={i} departure={departure} />);
       }
     });
     return (

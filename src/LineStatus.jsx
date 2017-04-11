@@ -5,8 +5,8 @@ import "./LineStatus.css";
 
 class LineStatus extends Component {
   render() {
-    const statuses = this.props.line.lineStatuses.map((status) =>
-      <LineStatusText status={status} />
+    const statuses = this.props.line.lineStatuses.map((status, i) =>
+      <LineStatusText status={status} key={i} />
     );
     return(
       <div className='card border-0 m-0 rounded-0' id={this.props.line.id}>

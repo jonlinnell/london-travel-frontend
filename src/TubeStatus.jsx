@@ -25,8 +25,8 @@ class TubeStatus extends Component {
     });
   };
   render() {
-    const lines = this.state.tubeData.map((line) =>
-      <LineStatus line={line} />
+    const lines = this.state.tubeData.map((line, i) =>
+      <LineStatus key={i} line={line} />
     );
     return (
       <div className='card'>

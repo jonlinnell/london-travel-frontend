@@ -25,16 +25,27 @@ class NationalRailStatus extends Component {
     });
   };
   render() {
-    const lines = this.state.railData.map((line) =>
-      <LineStatus line={line} />
+
+    var relevantLines = _.filter(this.state.railData, function(line) {
+      return  line.id === 'c2c' ||
+              line.id === 'east-midlands-trains' ||
+              line.id === 'thameslink' ||
+              line.id === 'southeastern' ||
+              line.id === 'south-west-trains' ||
+              line.id === 'great-northern';
+    });
+
+    const lines = relevantLines.map((line, i) =>
+      <LineStatus key={i} line={line} />
     );
+
     return (
       <div className='card'>
-        <div className='card-header titleheader'><h5>Tube Status</h5></div>
+        <div className='card-header titleheader'><h5>National Rail Status</h5></div>
         <div>{lines}</div>
       </div>
     );
   }
 }
 
-export default NationalTubeStatus;
+export default NationalRailStatus;
