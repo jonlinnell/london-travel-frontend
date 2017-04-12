@@ -38,11 +38,9 @@ class NextBus extends Component {
           </div>
         </a>
         {buses}
-        <a href="#" className="list-group-item list-group-item-action flex-column align-items-start">
-          <div className="d-flex w-100 justify-content-between">
-            <small>Powered by TfL Open Data</small>
-          </div>
-        </a>
+        <li className='list-group-item acknowledgment'>
+          <small className='acknowledgment'>Powered by TfL Open Data</small>
+        </li>
       </div>
     );
   }

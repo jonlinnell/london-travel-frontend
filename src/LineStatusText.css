@@ -1,5 +1,8 @@
 li.line-status {
-  color: #121212;
   border: none !important;
   border-radius: 0 !important;
+}
+
+p.reason {
+  font-size: 0.9rem !important;
 }

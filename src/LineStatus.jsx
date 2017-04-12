@@ -6,7 +6,7 @@ import "./LineStatus.css";
 class LineStatus extends Component {
   render() {
     const statuses = this.props.line.lineStatuses.map((status, i) =>
-      <LineStatusText status={status} key={i} />
+      <LineStatusText status={status} key={i} mode={this.props.line.modeName} />
     );
     return(
       <div>
