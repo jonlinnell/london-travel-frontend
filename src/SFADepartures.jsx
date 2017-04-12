@@ -12,7 +12,7 @@ class SFADepartures extends Component {
     super(props);
     this.state = { 'departureData' : [] };
   };
-  componentWillMount() {
+  componentDidMount() {
     let component = this;
     axios.get('http://transportapi.com/v3/uk/train/station/SFA/live.json', {
       'params' : {
@@ -45,7 +45,7 @@ class SFADepartures extends Component {
           <div className="d-flex w-100 justify-content-between mb-0">
             <h5 className="mb-0">Stratford Intl. Departures</h5>
           </div>
-          <span class="text-muted">Trains terminating at London St. Pancras</span>
+          <span className="text-muted">Trains to London St. Pancras</span>
         </li>
         {departures}
       </ul>

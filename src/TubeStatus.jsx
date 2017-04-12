@@ -9,7 +9,7 @@ class TubeStatus extends Component {
     super(props);
     this.state = { 'tubeData' : [] };
   };
-  componentWillMount() {
+  componentDidMount() {
     let component = this;
     axios.get('https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail/status', {
       'params' : {
