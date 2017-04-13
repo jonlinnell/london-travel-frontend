@@ -1,6 +1,7 @@
 /* eslint-disable array-callback-return */
 import React, { Component } from 'react';
 import axios from 'axios';
+import Spinner from 'react-spinjs';
 import _ from 'lodash';
 import config from './config';
 import TrainDepartureInfo from './TrainDepartureInfo';
@@ -10,7 +11,10 @@ import './Departures.css';
 class SFADepartures extends Component {
   constructor(props) {
     super(props);
-    this.state = { 'departureData' : [] };
+    this.state = {
+      'departureData' : [],
+      'loading' : true
+    };
   };
   loadData() {
     let component = this;
@@ -24,7 +28,10 @@ class SFADepartures extends Component {
       }
     })
     .then( function(response) {
-      component.setState({ 'departureData' : response.data.departures.all });
+      component.setState({
+        'departureData' : response.data.departures.all,
+        'loading' : false
+      });
     })
     .catch( function(error) {
       console.log(error);
@@ -56,7 +63,7 @@ class SFADepartures extends Component {
           </div>
           <span className="text-muted">Trains calling at Loughborough</span>
         </li>
-        {departures}
+        {this.state.loading ? <li className="list-group-item flex-column py-5"><Spinner /></li> : departures}
       </ul>
     );
   }

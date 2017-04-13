@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import Spinner from 'react-spinjs';
 import LineStatus from './LineStatus';
 import config from './config';
 
 class NationalRailStatus extends Component {
   constructor(props) {
     super(props);
-    this.state = { 'railData' : [] };
+    this.state = {
+      'railData' : [],
+      'loading' : true
+    };
   };
   loadData() {
     let component = this;
@@ -18,7 +22,10 @@ class NationalRailStatus extends Component {
       }
     })
     .then( function(response) {
-      component.setState({ 'railData' : response.data });
+      component.setState({
+        'railData' : response.data,
+        'loading' : false
+      });
     })
     .catch( function(error) {
       console.log(error);
@@ -51,7 +58,7 @@ class NationalRailStatus extends Component {
     return (
       <ul className='list-group'>
         <li className='list-group-item'><h5 className="mb-0">National Rail Status</h5></li>
-        {lines}
+        {this.state.loading ? <li className="list-group-item flex-column py-5"><Spinner spinnerName='circle' /></li> : lines}
       </ul>
     );
   }

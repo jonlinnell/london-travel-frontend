@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import Spinner from 'react-spinner';
 import NextBusInfo from './NextBusInfo';
 import config from './config';
 
 class NextBus extends Component {
   constructor(props) {
     super(props);
-    this.state = { 'busData' : [] };
+    this.state = {
+      'busData' : [],
+      'loading' : true
+    };
   };
   loadData() {
     let component = this;
@@ -18,9 +22,11 @@ class NextBus extends Component {
       }
     })
     .then(function(response) {
-
       var formattedData = JSON.parse("[" + response.data.replace(/]/g, "],").replace(/\],$/, "]").toString() + "]");
-      component.setState({ 'busData' : formattedData });
+      component.setState({
+        'busData' : formattedData,
+        'loading' : false
+      });
     })
     .catch(function(error) {
       console.log(error);
@@ -46,7 +52,7 @@ class NextBus extends Component {
             <h5 className="mb-0">388 Buses from HereEast</h5>
           </div>
         </a>
-        {buses}
+        {this.state.loading ? <li className="list-group-item flex-column py-5"><Spinner /></li> : buses}
         <li className='list-group-item acknowledgment'>
           <small className='acknowledgment'>Powered by TfL Open Data</small>
         </li>
