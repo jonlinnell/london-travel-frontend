@@ -28,7 +28,7 @@ class NationalRailStatus extends Component {
     this.loadData();
     this.timer = setInterval(() => {
       this.loadData();
-    }, 60000);
+    }, 240000);
   };
   componentWillUnmount() {
     clearInterval(this.timer);
