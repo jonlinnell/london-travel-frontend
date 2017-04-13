@@ -9,7 +9,7 @@ class TubeStatus extends Component {
     super(props);
     this.state = { 'tubeData' : [] };
   };
-  componentDidMount() {
+  loadData() {
     let component = this;
     axios.get('https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail/status', {
       'params' : {
@@ -24,6 +24,15 @@ class TubeStatus extends Component {
       console.log(error);
     });
   };
+  componentDidMount() {
+    this.loadData();
+    this.timer = setInterval(() => {
+      this.loadData();
+    }, 120000);
+  };
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
   render() {
     const lines = this.state.tubeData.map((line, i) =>
       <LineStatus key={i} line={line} />

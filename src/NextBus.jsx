@@ -9,7 +9,7 @@ class NextBus extends Component {
     super(props);
     this.state = { 'busData' : [] };
   };
-  componentDidMount() {
+  loadData() {
     let component = this;
     axios.get('http://countdown.api.tfl.gov.uk/interfaces/ura/instant_V1', {
       'params' : {
@@ -26,6 +26,15 @@ class NextBus extends Component {
       console.log(error);
     });
   };
+  componentDidMount() {
+    this.loadData();
+    this.timer = setInterval(() => {
+      this.loadData();
+    }, 40000);
+  };
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
   render() {
     const buses = _.sortBy(this.state.busData, function(i) { return i[4]; }).map(function(bus, i) {
       return <NextBusInfo bus={bus} key={i} />

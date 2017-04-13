@@ -12,7 +12,7 @@ class SFADepartures extends Component {
     super(props);
     this.state = { 'departureData' : [] };
   };
-  componentDidMount() {
+  loadData() {
     let component = this;
     axios.get('http://transportapi.com/v3/uk/train/station/SFA/live.json', {
       'params' : {
@@ -29,6 +29,15 @@ class SFADepartures extends Component {
     .catch( function(error) {
       console.log(error);
     });
+  };
+  componentDidMount() {
+    this.loadData();
+    this.timer = setInterval(() => {
+      this.loadData();
+    }, 120000);
+  };
+  componentWillUnmount() {
+    clearInterval(this.timer);
   };
   render() {
     var departures = [];

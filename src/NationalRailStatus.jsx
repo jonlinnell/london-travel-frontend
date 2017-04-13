@@ -9,7 +9,7 @@ class NationalRailStatus extends Component {
     super(props);
     this.state = { 'railData' : [] };
   };
-  componentDidMount() {
+  loadData() {
     let component = this;
     axios.get('https://api.tfl.gov.uk/line/mode/national-rail/status', {
       'params' : {
@@ -23,6 +23,15 @@ class NationalRailStatus extends Component {
     .catch( function(error) {
       console.log(error);
     });
+  };
+  componentDidMount() {
+    this.loadData();
+    this.timer = setInterval(() => {
+      this.loadData();
+    }, 60000);
+  };
+  componentWillUnmount() {
+    clearInterval(this.timer);
   };
   render() {
 
