@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
-import Spinner from 'react-spinner';
+import Spinner from 'react-spinjs';
 import NextBusInfo from './NextBusInfo';
 import config from './config';
 
