@@ -1,6 +1,7 @@
 {
-  "name": "12scr-travel",
+  "name": "llinfo",
   "version": "0.1.0",
+  "description": "Dynamic content screens for LL",
   "private": true,
   "dependencies": {
     "react": "^15.5.3",
