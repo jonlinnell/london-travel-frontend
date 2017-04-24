@@ -1,8 +1,15 @@
 li.line-status {
   border: none !important;
   border-radius: 0 !important;
+  padding: 1em;
+  padding-bottom: 0;
 }
 
-p.reason {
-  font-size: 0.9rem !important;
+li.line-status p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+span.status-text {
 }

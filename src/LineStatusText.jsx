@@ -31,8 +31,9 @@ class LineStatusText extends Component {
     } else {
       return(
         <li className='list-group-item line-status'>
-          <p className='mb-0'>{statuses[this.props.status.statusSeverity]}</p>
-          {this.props.mode === 'national-rail' ? null : <p className="text-muted mb-0 reason">{this.props.status.reason}</p>}
+          <p className='status-text'>{statuses[this.props.status.statusSeverity]}
+          {this.props.mode === 'national-rail' ? null : <small className="ml-2 text-muted reason">{this.props.status.reason}</small>}
+          </p>
         </li>
       );
     }
