@@ -51,7 +51,7 @@ render(
     <div className="container-fluid">
       <div className="row">
         <div className="page-header">
-          <img src={require("../public/img/logo-white.png")} />
+          <img src={require("../public/img/logo.png")} alt="logo"/>
         </div>
       </div>
       <Route path="/travelsummary" component={TravelSummary}/>
