@@ -56,8 +56,8 @@ class NationalRailStatus extends Component {
     );
 
     return (
-      <ul className='list-group'>
-        <li className='list-group-item'><h5 className="mb-0">National Rail Status</h5></li>
+      <ul className='list-group paper'>
+        <li className='list-group-item section-header'><h5 className="mb-0 section-header-text">National Rail Status</h5></li>
         {this.state.loading ? <li className="list-group-item flex-column py-5"><Spinner spinnerName='circle' /></li> : lines}
       </ul>
     );

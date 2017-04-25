@@ -46,10 +46,10 @@ class NextBus extends Component {
       return <NextBusInfo bus={bus} key={i} />
     });
     return (
-      <div className="list-group">
-        <a href="#" className="list-group-item list-group-item-action flex-column align-items-start">
+      <div className="list-group paper">
+        <a href="#" className="list-group-item list-group-item-action flex-column align-items-start section-header">
           <div className="d-flex w-100 justify-content-between">
-            <h5 className="mb-0">388 Buses from HereEast</h5>
+            <h5 className="mb-0 section-header-text">388 Buses from HereEast</h5>
           </div>
         </a>
         {this.state.loading ? <li className="list-group-item flex-column py-5"><Spinner /></li> : buses}

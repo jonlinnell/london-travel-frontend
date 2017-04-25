@@ -45,12 +45,12 @@ class TubeStatus extends Component {
       <LineStatus key={i} line={line} />
     );
     return (
-      <div>
-        <ul className='list-group'>
-          <li className='list-group-item'><h5 className="mb-0">Tube Status</h5></li>
-          {this.state.loading ? <li className="list-group-item flex-column py-5"><Spinner spinnerName='circle' /></li> : lines}
-        </ul>
-      </div>
+      <ul className='list-group paper'>
+        <li className='list-group-item section-header'>
+          <h5 className="mb-0 section-header-text">Tube Status</h5>
+        </li>
+        {this.state.loading ? <li className="list-group-item flex-column py-5"><Spinner spinnerName='circle' /></li> : lines}
+      </ul>
     );
   }
 }

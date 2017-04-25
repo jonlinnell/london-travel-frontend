@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 // Import components
 import TubeStatus from './TubeStatus';
@@ -17,21 +17,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class TravelSummary extends Component {
   render() {
     return(
-      <div className="container-fluid">
-        <div className="row my-2">
-          <div className="col-lg-5">
-            <TubeStatus />
-          </div>
-          <div className="col-lg-4">
-            <SFADepartures />
-            <STPDepartures />
-          </div>
-          <div className="col-lg-3">
-            <NationalRailStatus />
-            <NextBus />
-          </div>
+      <div className="row my-2">
+        <div className="col-lg-5">
+          <TubeStatus />
         </div>
-    </div>
+        <div className="col-lg-4">
+          <SFADepartures />
+          <STPDepartures />
+        </div>
+        <div className="col-lg-3">
+          <NationalRailStatus />
+          <NextBus />
+        </div>
+      </div>
     );
   }
 }
@@ -50,10 +48,16 @@ class Events extends Component {
 
 render(
   <BrowserRouter>
-    <div>
+    <div className="container-fluid">
+      <div className="row">
+        <div className="page-header">
+          <img src={require("../public/img/logo-white.png")} />
+        </div>
+      </div>
       <Route path="/travelsummary" component={TravelSummary}/>
       <Route path="/travelinformation" component={TravelInformation}/>
       <Route path="/events" component={Events}/>
+      <Redirect from="/" to="travelsummary" />
     </div>
   </BrowserRouter>,
   document.getElementById('root')

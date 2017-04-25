@@ -56,10 +56,10 @@ class SFADepartures extends Component {
       }
     });
     return (
-      <ul className='list-group'>
-        <li className='list-group-item'>
+      <ul className='list-group paper'>
+        <li className='list-group-item section-header'>
           <div className="d-flex w-100 justify-content-between mb-0">
-            <h5 className="mb-0">London St. Pancras Departures</h5>
+            <h5 className="mb-0 section-header-text">London St. Pancras Departures</h5>
           </div>
           <span className="text-muted">Trains calling at Loughborough</span>
         </li>
