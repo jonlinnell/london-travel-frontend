@@ -61,7 +61,18 @@ ul {
 
 .page-header img {
   margin-bottom: -1rem; 
-  max-width: 100%;
+}
+
+@media screen and (min-width: 1024px){
+  .page-header img {
+    width: 12rem;
+  }
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+  .page-header img {
+    max-width: 100%;
+  }
 }
 
 .section-header {
