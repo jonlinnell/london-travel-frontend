@@ -9,8 +9,6 @@ import STPDepartures from './STPDepartures';
 import NationalRailStatus from './NationalRailStatus';
 import NextBus from './NextBus';
 
-import Footer from './Footer';
-
 // Import styles
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -51,6 +49,11 @@ class Events extends Component {
 render(
   <BrowserRouter>
     <div className="container-fluid">
+      <div className="row">
+        <div className="page-header">
+          <img src={require("../public/img/logo.png")} alt="logo"/>
+        </div>
+      </div>
       <Route path="/travelsummary" component={TravelSummary}/>
       <Route path="/travelinformation" component={TravelInformation}/>
       <Route path="/events" component={Events}/>
@@ -59,5 +62,3 @@ render(
   </BrowserRouter>,
   document.getElementById('root')
 );
-
-render(<Footer />, document.getElementById('footer'));
