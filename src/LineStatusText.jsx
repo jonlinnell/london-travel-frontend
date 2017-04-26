@@ -27,7 +27,15 @@ class LineStatusText extends Component {
       '20': "Service Closed"
     };
     if (this.props.status.statusSeverity === 10) {
-      return null;
+      if (this.props.extended === true) {
+        return (
+          <li className='list-group-item line-status'>
+            <p className='status-text'>{statuses[this.props.status.statusSeverity]}</p>
+          </li>
+        );
+      } else {
+        return null;
+      }
     } else {
       return(
         <li className='list-group-item line-status'>

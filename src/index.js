@@ -9,6 +9,8 @@ import STPDepartures from './STPDepartures';
 import NationalRailStatus from './NationalRailStatus';
 import NextBus from './NextBus';
 
+import ExtendedTubeStatus from './ExtendedTubeStatus';
+
 // Import styles
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -34,9 +36,13 @@ class TravelSummary extends Component {
   }
 }
 
-class TravelInformation extends Component {
+class ExtendedTravelInfo extends Component {
   render() {
-    return(<h4>Something</h4>)
+    return(
+      <div>
+        <ExtendedTubeStatus />
+      </div>
+    )
   }
 }
 
@@ -49,15 +55,10 @@ class Events extends Component {
 render(
   <BrowserRouter>
     <div className="container-fluid">
-      <div className="row">
-        <div className="page-header">
-          <img src={require("../public/img/logo.png")} alt="logo"/>
-        </div>
-      </div>
-      <Route path="/travelsummary" component={TravelSummary}/>
-      <Route path="/travelinformation" component={TravelInformation}/>
-      <Route path="/events" component={Events}/>
-      <Redirect from="/" to="travelsummary" />
+      <Route path="/travelsummary" component={TravelSummary} />
+      <Route path="/extendedtravelinfo" component={ExtendedTravelInfo} />
+      <Route path="/events" component={Events} />
+      
     </div>
   </BrowserRouter>,
   document.getElementById('root')
