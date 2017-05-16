@@ -9,52 +9,45 @@ class NationalRailStatus extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      'railData' : [],
-      'loading' : true
+      railData: [],
+      loading: true
     };
-  };
+  }
   loadData() {
-    let component = this;
+    let component = this; // eslint-disable-line prefer-const
     axios.get('https://api.tfl.gov.uk/line/mode/national-rail/status', {
-      'params' : {
-        'app_id' : config.tfl.app_id,
-        'app_key' : config.tfl.app_key
+      params: {
+        app_id: config.tfl.app_id,
+        app_key: config.tfl.app_key
       }
     })
-    .then( function(response) {
+    .then((response) => {
       component.setState({
-        'railData' : response.data,
-        'loading' : false
+        railData: response.data,
+        loading: false
       });
     })
-    .catch( function(error) {
-      console.log(error);
+    .catch((error) => {
+      console.log(error); // eslint-disable-line no-console
     });
-  };
+  }
   componentDidMount() {
     this.loadData();
     this.timer = setInterval(() => {
       this.loadData();
     }, 240000);
-  };
+  }
   componentWillUnmount() {
     clearInterval(this.timer);
-  };
-  render() {
-
-    var relevantLines = _.filter(this.state.railData, function(line) {
-      return  line.id === 'c2c' ||
-              line.id === 'east-midlands-trains' ||
-              line.id === 'thameslink' ||
-              line.id === 'southeastern' ||
-              line.id === 'south-west-trains' ||
-              line.id === 'great-northern';
+  }
+  render() { // eslint-disable-next-line arrow-body-style
+    const relevantLines = _.filter(this.state.railData, (line) => {
+      return (line.id === 'c2c' || line.id === 'east-midlands-trains' || line.id === 'thameslink' || line.id === 'southeastern' || line.id === 'south-west-trains' || line.id === 'great-northern');
     });
 
     const lines = relevantLines.map((line, i) =>
       <LineStatus key={i} line={line} />
     );
-
     return (
       <ul className='list-group paper'>
         <li className='list-group-item section-header'><h5 className="mb-0 section-header-text">National Rail Status</h5></li>
