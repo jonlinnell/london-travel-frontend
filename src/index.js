@@ -16,7 +16,7 @@ import './index.css';
 class TravelSummary extends Component {
   render() {
     return (
-      <div className='row my-2'>
+      <div className='row'>
         <div className='col-lg-5'>
           <TubeStatus />
         </div>
