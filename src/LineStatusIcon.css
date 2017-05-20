@@ -3,3 +3,18 @@
   color: white;
   margin: auto 0;
 }
+
+.circle,
+.hammersmith-city,
+.waterloo-city {
+  color: #113892;
+}
+
+.c2c,
+.east-midlands-trains,
+.southeastern,
+.south-west-trains,
+.thameslink,
+.great-northern {
+  color: #716E6A;
+}

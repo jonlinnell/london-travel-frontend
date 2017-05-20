@@ -10,6 +10,7 @@ import NationalRailStatus from './NationalRailStatus';
 import NextBus from './NextBus';
 
 import './index.css';
+import '../public/img/logo.png'; // disable-eslint-line no-unused-vars
 
 render(
   <div className='container-fluid'>

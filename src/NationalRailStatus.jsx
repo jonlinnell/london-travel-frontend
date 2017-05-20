@@ -2,8 +2,24 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import Spinner from 'react-spinjs';
-import LineStatus from './LineStatus';
+import NationalRailLineStatus from './NationalRailLineStatus';
 import config from './config';
+
+import c2c from '../public/img/logos/c2c.png';
+import eastmidlandstrains from '../public/img/logos/east-midlands-trains.png';
+import thameslink from '../public/img/logos/thameslink.png';
+import southeastern from '../public/img/logos/southeastern.png';
+import southwesttrains from '../public/img/logos/south-west-trains.png';
+import greatnorthern from '../public/img/logos/great-northern.png';
+
+const logos = {
+  c2c,
+  'east-midlands-trains': eastmidlandstrains,
+  thameslink,
+  southeastern,
+  'south-west-trains': southwesttrains,
+  'great-northern': greatnorthern
+};
 
 class NationalRailStatus extends Component {
   constructor(props) {
@@ -46,7 +62,7 @@ class NationalRailStatus extends Component {
     });
 
     const lines = relevantLines.map((line, i) =>
-      <LineStatus key={i} line={line} />
+      <NationalRailLineStatus key={i} line={line} logo={logos[line.id]} />
     );
     return (
       <ul className='list-group paper'>

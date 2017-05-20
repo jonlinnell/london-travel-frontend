@@ -2,3 +2,7 @@ p.subtitle {
 	margin: none !important;
 	padding: none !important;
 }
+
+.subheader {
+  font-size: 0.8rem;
+}

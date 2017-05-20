@@ -60,7 +60,7 @@ class SFADepartures extends Component {
           <div className='d-flex w-100 justify-content-between mb-0'>
             <h5 className='mb-0 section-header-text'>Stratford Intl. Departures</h5>
           </div>
-          <span className='text-muted'>Trains to London St. Pancras</span>
+          <span className='text-muted subheader'>Trains to London St. Pancras</span>
         </li>
         {this.state.loading ? <li className='list-group-item flex-column py-5'><Spinner /></li> : departures}
       </ul>

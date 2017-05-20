@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Dynamic content screens for LL",
   "private": true,
+  "homepage": "http://lboro.london/travel",
   "dependencies": {
     "axios": "^0.16.0",
     "bootstrap": "^4.0.0-alpha.6",
@@ -10,8 +11,6 @@
     "lodash": "^4.17.4",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
-    "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1",
     "react-spinjs": "^3.0.0"
   },
   "devDependencies": {
