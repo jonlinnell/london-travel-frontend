@@ -10,6 +10,7 @@ import NextBus from './NextBus';
 
 import Footer from './Footer';
 
+import '../public/favicon.ico';
 import './index.css';
 
 render(
