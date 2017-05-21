@@ -19,12 +19,13 @@ footer div.credit {
 footer img {
   max-height: 3rem;
   display: inline-block;
+  vertical-align: top;
 }
 
 @media only screen 
 and (max-device-width : 667px) {
   body {
-    padding-bottom: 8rem !important;
+    padding-bottom: 9rem !important;
   }
   footer {
     margin-top: 3rem;

@@ -11,7 +11,8 @@ class Footer extends Component {
       <footer>
         <a href="http://lborolondon.ac.uk"><img src={logo} alt="logo" /></a>
         <div className="credit">
-          <p className="credit text-muted">&copy; {new Date().getFullYear()} Loughborough University London</p>
+          <p className="credit text-muted">&copy; {new Date().getFullYear()} Jon Linnell</p>
+          <p className="credit text-muted">Loughborough University London</p>
           <p className="credit text-muted">Data provided by Transport for London, and Transport API.</p>
         </div>
       </footer>
