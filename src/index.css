@@ -42,17 +42,18 @@ li.acknowledgment {
   background-color: #efefef;
 }
 
-ul {
+ul.list-group {
+  padding-bottom: 2px;
   outline: none !important;
 }
 
 .paper {
   background: #fff;
-  border-radius: 2px;
+  border-radius: 3px;
   position: relative;
   margin: 0;
   margin-bottom: 2rem;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.10), 0 3px 3px rgba(0,0,0,0.19);
 }
 
 .section-header-text {
@@ -64,8 +65,4 @@ ul {
 
 .list-group-item {
   border: none !important;
-}
-
-.section-header {
- 
 }
