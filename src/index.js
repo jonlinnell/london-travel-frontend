@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 import React from 'react';
 import { render } from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,8 +8,9 @@ import STPDepartures from './STPDepartures';
 import NationalRailStatus from './NationalRailStatus';
 import NextBus from './NextBus';
 
+import Footer from './Footer';
+
 import './index.css';
-import '../public/img/logo.png';
 
 render(
   <div className='container-fluid'>
@@ -30,3 +30,5 @@ render(
   </div>,
   document.getElementById('root')
 );
+
+render(<Footer />, document.getElementById('footer'));
