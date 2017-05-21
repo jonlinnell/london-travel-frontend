@@ -24,8 +24,8 @@ render(
         <STPDepartures />
       </div>
       <div className='col-lg-3'>
-        <NationalRailStatus />
         <NextBus />
+        <NationalRailStatus />
       </div>
     </div>
   </div>,
