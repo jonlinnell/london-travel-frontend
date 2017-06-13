@@ -3,8 +3,7 @@ import { render } from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import TubeStatus from './TubeStatus';
-import SFADepartures from './SFADepartures';
-import STPDepartures from './STPDepartures';
+import Departures from './Departures';
 import NationalRailStatus from './NationalRailStatus';
 import NextBus from './NextBus';
 
@@ -20,8 +19,18 @@ render(
         <TubeStatus />
       </div>
       <div className='col-lg-4'>
-        <SFADepartures />
-        <STPDepartures />
+        <Departures
+          title='Stratford Intl. Departures'
+          subtitle='Trains to London St. Pancras'
+          station='SFA'
+          destination='STP'
+        />
+        <Departures
+          title='London St. Pancras Departures'
+          subtitle='Trains calling at Loughborough'
+          station='STP'
+          destination='LBO'
+        />
       </div>
       <div className='col-lg-3'>
         <NextBus />
