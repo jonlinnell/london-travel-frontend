@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import Darwin from 'national-rail-darwin';
 import Spinner from 'react-spinjs';
+import Paper from 'material-ui/Paper';
+import { List, ListItem } from 'material-ui/List';
 import config from './config';
 import TrainDepartureInfo from './TrainDepartureInfo';
 import TrainDepartureInfoLate from './TrainDepartureInfoLate';
@@ -53,15 +55,16 @@ class Departures extends Component {
       }
     });
     return (
-      <ul className='list-group paper'>
-        <li className='list-group-item section-header'>
-          <div className='d-flex w-100 justify-content-between mb-0'>
-            <h5 className='mb-0 section-header-text'>{this.state.title}</h5>
-          </div>
-          <span className='text-muted subheader'>{this.state.subtitle}</span>
-        </li>
+      <Paper className='hoc'>
+        <List style={{ padding: 0 }}>
+          <ListItem
+            primaryText={this.state.title}
+            secondaryText={this.state.subtitle}
+            disabled={true}
+          />
         {this.state.loading ? <li className='list-group-item flex-column py-5'><Spinner /></li> : departures}
-      </ul>
+        </List>
+      </Paper>
     );
   }
 }

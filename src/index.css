@@ -40,13 +40,8 @@ li.acknowledgment {
   background-color: #efefef;
 }
 
-.paper {
-  background: #fff;
-  border-radius: 3px;
-  position: relative;
-  margin: 0;
+.hoc {
   margin-bottom: 2rem;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.10), 0 3px 3px rgba(0,0,0,0.19);
 }
 
 .section-header-text {

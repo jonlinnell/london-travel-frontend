@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import Paper from 'material-ui/Paper';
+import { List, ListItem } from 'material-ui';
 import Spinner from 'react-spinjs';
 import NextBusInfo from './NextBusInfo';
 import config from './config';
@@ -46,17 +48,20 @@ class NextBus extends Component {
       <NextBusInfo bus={bus} key={i} />
     );
     return (
-      <div className='list-group paper'>
-        <a className='list-group-item list-group-item-action flex-column align-items-start section-header'>
-          <div className='d-flex w-100 justify-content-between'>
-            <h5 className='mb-0 section-header-text'>388 Buses from HereEast</h5>
-          </div>
-        </a>
-        {this.state.loading ? <li className='list-group-item flex-column py-5'><Spinner /></li> : buses}
-        <li className='list-group-item acknowledgment'>
-          <small className='acknowledgment'>Powered by TfL Open Data</small>
-        </li>
-      </div>
+      <Paper className='hoc'>
+        <List style={{ padding: 0 }}>
+          <ListItem
+            primaryText='388 Buses from HereEast'
+            disabled={true}
+          />
+          {this.state.loading ? <Spinner /> : buses}
+          <ListItem
+            style={{ backgroundColor: '#EEE' }}
+            primaryText='powered by TfL Open Data'
+            disabled={true}
+          />
+        </List>
+      </Paper>
     );
   }
 }

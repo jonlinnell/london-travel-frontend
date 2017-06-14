@@ -58,6 +58,7 @@ class LineStatus extends Component {
         primaryText={this.props.line.name}
         rightIcon={this.lineIcon()}
         initiallyOpen={false}
+        disabled={this.props.line.lineStatuses[0].statusSeverity === 10}
         autoGenerateNestedIndicator={true}
         primaryTogglesNestedList={true}
         nestedItems={this.props.line.lineStatuses[0].statusSeverity !== 10 ? statuses : undefined}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import Paper from 'material-ui/Paper';
+import { List, ListItem } from 'material-ui/List';
 import Spinner from 'react-spinjs';
 import NationalRailLineStatus from './NationalRailLineStatus';
 import config from './config';
@@ -65,13 +67,15 @@ class NationalRailStatus extends Component {
       <NationalRailLineStatus key={i} line={line} logo={logos[line.id]} />
     );
     return (
-      <ul className='list-group paper'>
-        <li className='list-group-item section-header'>
-          <h5 className="mb-0 section-header-text">National Rail Status</h5>
-          <span className='text-muted subheader'>Advisory only. See train operators' websites for more information.</span>
-        </li>
-        {this.state.loading ? <li className="list-group-item flex-column py-5"><Spinner spinnerName='circle' /></li> : lines}
-      </ul>
+      <Paper>
+        <List>
+          <ListItem
+            primaryText='National Rail Status'
+            secondaryText='Advisory only. See train operator websites for more information.'
+          />
+          {this.state.loading ? <Spinner spinnerName='circle' /> : lines}
+        </List>
+      </Paper>
     );
   }
 }

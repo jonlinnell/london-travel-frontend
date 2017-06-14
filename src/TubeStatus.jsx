@@ -46,7 +46,7 @@ class TubeStatus extends Component {
       <LineStatus key={i} line={line} />
     );
     return (
-      <Paper>
+      <Paper className='hoc'>
         <List style={{ padding: 0 }}>
           <ListItem
             primaryText='Tube Status'
