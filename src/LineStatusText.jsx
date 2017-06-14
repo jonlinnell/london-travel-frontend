@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './LineStatusText.css';
+import { ListItem } from 'material-ui/List';
+/* eslint-disable consistent-return */
 
 class LineStatusText extends Component {
   render() {
@@ -26,25 +27,13 @@ class LineStatusText extends Component {
       'Information',
       'Service Closed'
     ];
-    if (this.props.status.statusSeverity === 10) {
-      if (this.props.extended === true) {
-        return (
-          <li className='list-group-item line-status'>
-            <p className='status-text'>{statuses[this.props.status.statusSeverity]}</p>
-          </li>
-        );
-      } else {
-        return null;
-      }
-    } else {
-      return (
-        <li className='list-group-item line-status'>
-          <p className='status-text'>{statuses[this.props.status.statusSeverity]}
-          {this.props.mode === 'national-rail' ? null : <small className='ml-2 text-muted reason'>{this.props.status.reason}</small>}
-          </p>
-        </li>
-      );
-    }
+    return (
+      <ListItem
+        primaryText={statuses[this.props.status.statusSeverity]}
+        secondaryTextLines={2}
+        secondaryText={this.props.mode === 'national-rail' ? null : this.props.status.reason}
+      />
+    );
   }
 }
 

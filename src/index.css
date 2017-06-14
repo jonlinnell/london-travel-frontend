@@ -10,8 +10,6 @@ html {
   box-sizing: inherit;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:400');
-
 @font-face {
     font-family: 'DIN Round Web';
     src: url('../public/fonts/DINRoundWeb.eot');
@@ -40,11 +38,6 @@ small.acknowledgment {
 
 li.acknowledgment {
   background-color: #efefef;
-}
-
-ul.list-group {
-  padding-bottom: 2px;
-  outline: none !important;
 }
 
 .paper {

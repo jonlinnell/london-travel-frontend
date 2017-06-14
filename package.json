@@ -9,10 +9,13 @@
     "bootstrap": "^4.0.0-alpha.6",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
+    "material-ui": "^0.18.3",
     "national-rail-darwin": "^1.0.2",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
-    "react-spinjs": "^3.0.0"
+    "react-spinjs": "^3.0.0",
+    "react-tap-event-plugin": "^2.0.1",
+    "typeface-roboto": "^0.0.22"
   },
   "devDependencies": {
     "babel-loader": "^7.0.0",

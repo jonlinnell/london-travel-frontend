@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Spinner from 'react-spinjs';
+import { List, ListItem } from 'material-ui/List';
+import Paper from 'material-ui/Paper';
 import LineStatus from './LineStatus';
 import config from './config';
 
@@ -44,12 +46,14 @@ class TubeStatus extends Component {
       <LineStatus key={i} line={line} />
     );
     return (
-      <ul className='list-group paper'>
-        <li className='list-group-item section-header'>
-          <h5 className='mb-0 section-header-text'>Tube Status</h5>
-        </li>
-        {this.state.loading ? <li className='list-group-item flex-column py-5'><Spinner spinnerName='circle' /></li> : lines}
-      </ul>
+      <Paper>
+        <List style={{ padding: 0 }}>
+          <ListItem
+            primaryText='Tube Status'
+          />
+        {this.state.loading ? <Spinner spinnerName='circle' /> : lines}
+        </List>
+      </Paper>
     );
   }
 }
