@@ -19,8 +19,8 @@ const LinkStyle = {
   textAlign: 'center'
 };
 
-const BottomNavigationStyle = {
-  marginBottom: '2rem',
+const OriginSelectorStyle = {
+  marginBottom: '1rem',
   clear: 'both'
 };
 
@@ -90,7 +90,7 @@ export default class Homepage extends Component {
                     secondaryText='Which journey are you taking today?'
                   />
                   <BottomNavigation
-                    style={BottomNavigationStyle}
+                    style={OriginSelectorStyle}
                     selectedIndex={this.state.selectedIndex}
                   >
                     <BottomNavigationItem

@@ -6,6 +6,7 @@ import {
   Link,
   Redirect } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
 import IconHome from 'material-ui/svg-icons/action/home';
@@ -16,6 +17,12 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Homepage from './Homepage';
 
 injectTapEventPlugin();
+
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: '#b70062'
+  }
+});
 
 const LinkStyle = {
   textAlign: 'center'
@@ -52,7 +59,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <Router>
           <div>
             <Route path="/about" component={Test}/>

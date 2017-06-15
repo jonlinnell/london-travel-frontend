@@ -56,7 +56,7 @@ class Departures extends Component {
       }
     });
     return (
-      <Paper className='hoc'>
+      <Paper style={{ marginBottom: '1rem' }}>
         <List style={{ padding: 0 }}>
           <ListItem
             primaryText={this.state.title}
