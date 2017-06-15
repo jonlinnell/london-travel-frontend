@@ -36,6 +36,7 @@ class NationalRailLineStatus extends Component {
     return (
       <ListItem
         rightIcon={this.lineIcon()}
+        disabled={true}
       >
         <img className='nationalrailline' src={this.props.logo} alt={this.props.line.name} />
       </ListItem>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui/List';
-import Spinner from 'react-spinjs';
+import Spinner from './Spinner';
 import NationalRailLineStatus from './NationalRailLineStatus';
 import config from './config';
 
@@ -67,11 +67,13 @@ class NationalRailStatus extends Component {
       <NationalRailLineStatus key={i} line={line} logo={logos[line.id]} />
     );
     return (
-      <Paper>
-        <List>
+      <Paper className='hoc'>
+        <List style={{ padding: 0 }}>
           <ListItem
             primaryText='National Rail Status'
+            secondaryTextLines={2}
             secondaryText='Advisory only. See train operator websites for more information.'
+            disabled={true}
           />
           {this.state.loading ? <Spinner spinnerName='circle' /> : lines}
         </List>

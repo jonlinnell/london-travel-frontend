@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ListItem } from 'material-ui/List';
-/* eslint-disable consistent-return */
 
 class LineStatusText extends Component {
   render() {

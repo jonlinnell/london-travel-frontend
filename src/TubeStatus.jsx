@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Spinner from 'react-spinjs';
 import { List, ListItem } from 'material-ui/List';
 import Paper from 'material-ui/Paper';
 import LineStatus from './LineStatus';
 import config from './config';
+import Spinner from './Spinner';
 
-class TubeStatus extends Component {
+export default class TubeStatus extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,12 +50,12 @@ class TubeStatus extends Component {
         <List style={{ padding: 0 }}>
           <ListItem
             primaryText='Tube Status'
+            secondaryText='Tap a disrupted line for more info.'
+            disabled={true}
           />
-        {this.state.loading ? <Spinner spinnerName='circle' /> : lines}
+        {this.state.loading ? <Spinner /> : lines}
         </List>
       </Paper>
     );
   }
 }
-
-export default TubeStatus;

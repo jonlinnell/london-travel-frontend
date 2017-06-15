@@ -3,11 +3,11 @@ import axios from 'axios';
 import _ from 'lodash';
 import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui';
-import Spinner from 'react-spinjs';
+import Spinner from './Spinner';
 import NextBusInfo from './NextBusInfo';
 import config from './config';
 
-class NextBus extends Component {
+export default class NextBus extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,5 +65,3 @@ class NextBus extends Component {
     );
   }
 }
-
-export default NextBus;

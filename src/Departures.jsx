@@ -1,13 +1,14 @@
 /* eslint-disable array-callback-return */
 import React, { Component } from 'react';
 import Darwin from 'national-rail-darwin';
-import Spinner from 'react-spinjs';
 import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui/List';
-import config from './config';
+import Spinner from './Spinner';
 import TrainDepartureInfo from './TrainDepartureInfo';
 import TrainDepartureInfoLate from './TrainDepartureInfoLate';
 import './Departures.css';
+
+import config from './config';
 
 const rail = new Darwin(config.darwinApiKey);
 

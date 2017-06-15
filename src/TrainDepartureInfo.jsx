@@ -9,7 +9,7 @@ class TrainDepartureInfo extends Component {
         disabled={true}
       >
         <div className='d-flex w-100 justify-content-between'>
-          <h6 className='mb-1' style={{ fontWeight: 400 }}>{this.props.departure.destination.name}</h6>
+          <p className='mb-1' style={{ fontWeight: 400 }}>{this.props.departure.destination.name}</p>
           <small className='text-muted'>{this.props.departure.std}</small>
         </div>
       </ListItem>
