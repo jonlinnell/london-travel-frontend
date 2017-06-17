@@ -23,10 +23,9 @@ html {
 
 body {
   margin: 0;
-  padding: 1rem 0;
+  padding-top: 1rem;
   font-family: "Roboto", sans-serif !important;
-  background-color: #E5E4E4 !important;
-  padding-bottom: 5rem;
+  padding-bottom: 3.4rem;
   /*position: relative;
   padding-bottom: 5rem;
   min-height: 100%;*/
@@ -54,4 +53,48 @@ li.acknowledgment {
 
 .list-group-item {
   border: none !important;
+}
+
+.footer {
+    background-image: url('../public/img/footer-x-small.jpg');
+    background-color: #b70062;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    color: #fff;
+    padding-top: 30%;
+}
+@media (min-width: 400px) {
+    .footer {
+        padding-top: 26%;
+        padding-bottom: -62px;
+    }
+}
+@media (min-width: 600px) {
+    .footer {
+        background-image: url('../public/img/footer-small.jpg')
+    }
+}
+@media (min-width: 760px) {
+    .footer {
+        background-image: url('../public/img/footer-mid.jpg');
+        padding-top: 22%
+    }
+}
+@media (min-width: 960px) {
+    .footer {
+        background-image: url('../public/img/footer-large.jpg')
+    }
+}
+@media (min-width: 1200px) {
+    .footer {
+        background-image: url('../public/img/footer-full.jpg');
+        padding-bottom: 5%
+    }
+}
+@media (min-width: 1600px) {
+    .footer {
+        background-image: url('../public/img/footer-ultra-wide.jpg');
+        padding-bottom: 5%
+    }
 }
