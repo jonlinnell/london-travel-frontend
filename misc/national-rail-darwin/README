@@ -1,0 +1,6 @@
+Replace the corresponding files in node_modules/national-rail-darwin with these two.
+
+REASON
+======
+1. Darwin does not support CORS, making it useless for web apps. This mod runs the API requests through a CORS proxy.
+2. This wrapper for the Darwin API, although brilliant, uses template literals when string literals would (and do) work just fine. Webpack inexplicably chokes on template literals in this context, and this is the easiest botch/fix I could come up with.

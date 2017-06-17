@@ -10,11 +10,11 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
 import IconHome from 'material-ui/svg-icons/action/home';
-import IconStar from 'material-ui/svg-icons/action/stars';
 import IconInfo from 'material-ui/svg-icons/action/info';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Homepage from './Homepage';
+import About from './About';
 
 injectTapEventPlugin();
 
@@ -35,20 +35,6 @@ const BottomNavigationStyle = {
   zIndex: 1
 };
 
-class Test extends Component {
-  render() {
-    return (
-      <div className='container-fluid'>
-        <div className='row'>
-          <div className='col-lg-5'>
-            <Paper>test</Paper>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-
 export default class App extends Component {
   constructor() {
     super();
@@ -62,9 +48,9 @@ export default class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <Router>
           <div>
-            <Route path="/about" component={Test}/>
-            <Route exact path="/" component={Homepage}/>
-            <Redirect to="/" />
+            <Route path='/travel/about' component={About}/>
+            <Route exact path='/travel/' component={Homepage}/>
+            <Redirect to='/travel/' />
             <Paper zDepth={1}>
               <BottomNavigation
                 selectedIndex={this.state.selectedIndex}
@@ -75,23 +61,15 @@ export default class App extends Component {
                   icon={<IconHome />}
                   onTouchTap={() => this.select(0)}
                   style={LinkStyle}
-                  containerElement={<Link to="/" />}
-                />
-
-                <BottomNavigationItem
-                  label='Favourites'
-                  icon={<IconStar />}
-                  onTouchTap={() => this.select(1)}
-                  style={LinkStyle}
-                  containerElement={<Link to="/" />}
+                  containerElement={<Link to='/travel/' />}
                 />
 
                 <BottomNavigationItem
                   label='About'
                   icon={<IconInfo />}
-                  onTouchTap={() => this.select(2)}
+                  onTouchTap={() => this.select(1)}
                   style={LinkStyle}
-                  containerElement={<Link to="/about" />}
+                  containerElement={<Link to='/travel/about' />}
                 />
               </BottomNavigation>
             </Paper>

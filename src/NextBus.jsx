@@ -56,7 +56,7 @@ export default class NextBus extends Component {
           />
           {this.state.loading ? <Spinner /> : buses}
           <ListItem
-            style={{ backgroundColor: '#EEE' }}
+            style={{ backgroundColor: '#EEE', fontSize: '0.7rem' }}
             primaryText='powered by TfL Open Data'
             disabled={true}
           />

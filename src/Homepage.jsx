@@ -5,8 +5,8 @@ import {
   Route,
   Link,
   Redirect } from 'react-router-dom';
-import IconRight from 'material-ui/svg-icons/navigation/arrow-forward';
-import IconLeft from 'material-ui/svg-icons/navigation/arrow-back';
+import IconUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
+import IconDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import Paper from 'material-ui/Paper';
 import { ListItem } from 'material-ui/List';
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
@@ -88,6 +88,7 @@ export default class Homepage extends Component {
                   <ListItem
                     primaryText='Journey Selector'
                     secondaryText='Which journey are you taking today?'
+                    disabled={true}
                   />
                   <BottomNavigation
                     style={OriginSelectorStyle}
@@ -95,23 +96,23 @@ export default class Homepage extends Component {
                   >
                     <BottomNavigationItem
                       label='London to Lboro'
-                      icon={<IconRight />}
+                      icon={<IconUp />}
                       onTouchTap={() => this.selectOrigin(0)}
                       style={LinkStyle}
-                      containerElement={<Link to="/origin/london" />}
+                      containerElement={<Link to='/travel/origin/london' />}
                     />
                     <BottomNavigationItem
                       label='Lboro to London'
-                      icon={<IconLeft />}
+                      icon={<IconDown />}
                       onTouchTap={() => this.selectOrigin(1)}
                       style={LinkStyle}
-                      containerElement={<Link to="/origin/lboro" />}
+                      containerElement={<Link to='/travel/origin/lboro' />}
                     />
                   </BottomNavigation>
                 </Paper>
-                <Route path='/origin/lboro' component={OriginLboro} />
-                <Route path='/origin/london' component={OriginLondon} />
-                <Redirect to='/origin/london' />
+                <Route path='/travel/origin/lboro' component={OriginLboro} />
+                <Route path='/travel/origin/london' component={OriginLondon} />
+                <Redirect to='/travel/origin/london' />
               </div>
             </Router>
           </div>
