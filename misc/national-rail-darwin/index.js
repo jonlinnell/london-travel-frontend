@@ -4,7 +4,8 @@ var Bluebird = require('bluebird')
 var templates = require('./templates.js')
 var parser = require('./parsers.js')
 
-var baseUrl = 'http://217.182.252.207/lite.realtime.nationalrail.co.uk:443/OpenLDBWS/ldb9.asmx'
+const corsProxy = 'http://217.182.252.207:32612/';
+var baseUrl = corsProxy + 'lite.realtime.nationalrail.co.uk:443/OpenLDBWS/ldb9.asmx'
 
 var Darwin = function (apiKey, options) {
   this.key = apiKey || process.env.DARWIN_TOKEN
