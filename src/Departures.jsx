@@ -6,7 +6,6 @@ import { List, ListItem } from 'material-ui/List';
 import Spinner from './Spinner';
 import TrainDepartureInfo from './TrainDepartureInfo';
 import TrainDepartureInfoLate from './TrainDepartureInfoLate';
-import './Departures.css';
 
 import config from './config';
 

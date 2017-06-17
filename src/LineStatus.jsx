@@ -3,7 +3,6 @@ import { ListItem } from 'material-ui/List';
 import LineStatusText from './LineStatusText';
 import LineColours from './LineColours';
 import { lineIcon, lineTextColour } from './utils/lineTools';
-import './LineStatus.css';
 
 class LineStatus extends Component {
 

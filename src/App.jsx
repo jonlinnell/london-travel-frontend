@@ -38,7 +38,6 @@ export default class App extends Component {
             <Route exact path='/travel/' component={Homepage}/>
             <Redirect to='/travel/' />
             <ResponsiveNavigation parent={this} />
-            <div className='footer' />
           </div>
         </Router>
       </MuiThemeProvider>

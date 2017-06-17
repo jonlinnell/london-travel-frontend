@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ListItem } from 'material-ui/List';
-import './TrainDepartureInfoLate.css';
 
 class TrainDepartureInfoLate extends Component {
   render() {

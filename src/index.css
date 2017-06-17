@@ -25,31 +25,11 @@ body {
   margin: 0;
   padding-top: 1rem;
   font-family: "Roboto", sans-serif !important;
-  padding-bottom: 3.4rem;
-}
-
-small.acknowledgment {
-  font-size: 0.7rem;
-  color: #121212;
-}
-
-li.acknowledgment {
-  background-color: #efefef;
+  padding-bottom: 3rem;
 }
 
 .hoc {
   margin-bottom: 2rem;
-}
-
-.section-header-text {
-    font-family: "DIN Round Web", Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    margin: 0;
-    padding-top: 0.1rem;
-}
-
-.list-group-item {
-  border: none !important;
 }
 
 .footer {

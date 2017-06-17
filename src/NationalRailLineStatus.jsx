@@ -4,9 +4,6 @@ import IconDone from 'material-ui/svg-icons/action/done';
 import IconSchedule from 'material-ui/svg-icons/action/schedule';
 import IconCross from 'material-ui/svg-icons/content/clear';
 import IconAlert from 'material-ui/svg-icons/alert/error-outline';
-import './NationalRailLineStatus.css';
-
-/* ADD LINE STATUS ICON */
 
 class NationalRailLineStatus extends Component {
   lineIcon() {
@@ -38,7 +35,7 @@ class NationalRailLineStatus extends Component {
         rightIcon={this.lineIcon()}
         disabled={true}
       >
-        <img className='nationalrailline' src={this.props.logo} alt={this.props.line.name} />
+        <img className='nationalrailline' style={{ maxHeight: '1rem' }} src={this.props.logo} alt={this.props.line.name} />
       </ListItem>
     );
   }

@@ -78,7 +78,7 @@ export default class Homepage extends Component {
     return (
       <div className='container-fluid'>
         <div className='row'>
-          <div className='col-md-5 col-lg-3 offset-lg-1 col-xl-3  offset-xl-2'>
+          <div className='col-md-5 col-lg-3 offset-lg-1 col-xl-2  offset-xl-2'>
             <TubeStatus />
           </div>
           <div className='col-md-4 col-lg-4 col-xl-3'>
@@ -116,11 +116,15 @@ export default class Homepage extends Component {
               </div>
             </Router>
           </div>
-          <div className='col-md-3 col-lg-3 col-xl-2'>
-            <NextBus />
+          <div className='col-md-3 col-lg-3 col-xl-3'>
+            <NextBus
+              title='HereEast'
+              stopCode='91431,91432'
+            />
             <NationalRailStatus />
           </div>
         </div>
+        <div className='footer' />
       </div>
     );
   }

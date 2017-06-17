@@ -5,7 +5,6 @@ import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui';
 import Spinner from './Spinner';
 import NextBusInfo from './NextBusInfo';
-import config from './config';
 
 export default class NextBus extends Component {
   constructor(props) {
@@ -20,14 +19,13 @@ export default class NextBus extends Component {
     let component = this; // eslint-disable-line prefer-const
     axios.get('http://countdown.api.tfl.gov.uk/interfaces/ura/instant_V1', {
       params: {
-        StopCode1: config.busStopCode,
+        StopCode1: this.props.stopCode,
         ReturnList: 'EstimatedTime,LineID,DestinationName,StopPointName'
       }
     })
     .then((response) => {
-      const formattedData = JSON.parse(`[${response.data.replace(/]/g, '],').replace(/\],$/, ']').toString()}]`);
       component.setState({
-        busData: formattedData,
+        busData: JSON.parse(`[${response.data.replace(/]/g, '],').replace(/\],$/, ']').toString()}]`),
         loading: false
       });
     })
@@ -52,7 +50,8 @@ export default class NextBus extends Component {
       <Paper className='hoc'>
         <List style={{ padding: 0 }}>
           <ListItem
-            primaryText='388 Buses from HereEast'
+            primaryText={this.props.title}
+            secondaryText={this.props.subtitle || 'Next buses calling at this stop'}
             disabled={true}
           />
           {this.state.loading ? <Spinner error={this.state.error} /> : buses}
