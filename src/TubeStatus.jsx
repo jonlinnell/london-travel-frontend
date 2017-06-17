@@ -6,11 +6,14 @@ import LineStatus from './LineStatus';
 import config from './config';
 import Spinner from './Spinner';
 
+const errorText = 'Tube data not loading is very unusual, so this should be reported to Jon.';
+
 export default class TubeStatus extends Component {
   constructor(props) {
     super(props);
     this.state = {
       tubeData: [],
+      error: false,
       loading: true
     };
   }
@@ -28,8 +31,8 @@ export default class TubeStatus extends Component {
         loading: false
       });
     })
-    .catch((error) => {
-      console.log(error);
+    .catch(() => {
+      this.setState({ error: true });
     });
   }
   componentDidMount() {
@@ -53,7 +56,7 @@ export default class TubeStatus extends Component {
             secondaryText='Tap a disrupted line for more info.'
             disabled={true}
           />
-        {this.state.loading ? <Spinner /> : lines}
+        {this.state.loading ? <Spinner error={this.state.error} errorText={errorText} /> : lines}
         </List>
       </Paper>
     );

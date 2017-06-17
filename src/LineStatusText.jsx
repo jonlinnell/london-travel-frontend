@@ -28,11 +28,11 @@ class LineStatusText extends Component {
     ];
     return (
       <ListItem
-        primaryText={statuses[this.props.status.statusSeverity]}
-        secondaryTextLines={2}
-        secondaryText={this.props.mode === 'national-rail' ? null : this.props.status.reason}
         disabled={true}
-      />
+      >
+        <p>{statuses[this.props.status.statusSeverity]}</p>
+        <p className='text-muted'>{this.props.mode === 'national-rail' ? null : this.props.status.reason}</p>
+      </ListItem>
     );
   }
 }

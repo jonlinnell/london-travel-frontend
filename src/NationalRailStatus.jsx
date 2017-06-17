@@ -28,6 +28,7 @@ class NationalRailStatus extends Component {
     super(props);
     this.state = {
       railData: [],
+      error: false,
       loading: true
     };
   }
@@ -45,8 +46,8 @@ class NationalRailStatus extends Component {
         loading: false
       });
     })
-    .catch((error) => {
-      console.log(error); // eslint-disable-line no-console
+    .catch(() => {
+      this.setState({ error: true });
     });
   }
   componentDidMount() {
@@ -75,7 +76,7 @@ class NationalRailStatus extends Component {
             secondaryText='Advisory only. See train operator websites for more information.'
             disabled={true}
           />
-          {this.state.loading ? <Spinner spinnerName='circle' /> : lines}
+          {this.state.loading ? <Spinner error={this.state.error} /> : lines}
         </List>
       </Paper>
     );

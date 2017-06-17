@@ -9,7 +9,7 @@ var baseUrl = corsProxy + 'lite.realtime.nationalrail.co.uk:443/OpenLDBWS/ldb9.a
 
 var Darwin = function (apiKey, options) {
   this.key = apiKey || process.env.DARWIN_TOKEN
-  console.log('this.key = ' + this.key)
+  // console.log('this.key = ' + this.key)
 }
 
 Darwin.prototype.thenablePOST = function (xml) {

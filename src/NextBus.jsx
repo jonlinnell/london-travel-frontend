@@ -12,6 +12,7 @@ export default class NextBus extends Component {
     super(props);
     this.state = {
       busData: [],
+      error: false,
       loading: true
     };
   }
@@ -30,8 +31,8 @@ export default class NextBus extends Component {
         loading: false
       });
     })
-    .catch((error) => {
-      console.log(error);
+    .catch(() => {
+      this.setState({ error: true });
     });
   }
   componentDidMount() {
@@ -54,7 +55,7 @@ export default class NextBus extends Component {
             primaryText='388 Buses from HereEast'
             disabled={true}
           />
-          {this.state.loading ? <Spinner /> : buses}
+          {this.state.loading ? <Spinner error={this.state.error} /> : buses}
           <ListItem
             style={{ backgroundColor: '#EEE', fontSize: '0.7rem' }}
             primaryText='powered by TfL Open Data'

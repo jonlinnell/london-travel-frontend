@@ -17,6 +17,7 @@ class Departures extends Component {
     super(props);
     this.state = {
       departureData: [],
+      error: false,
       loading: true,
       title: this.props.title,
       subtitle: this.props.subtitle,
@@ -25,12 +26,15 @@ class Departures extends Component {
     };
   }
   loadData() {
+    this.setState({ loading: true });
     const component = this;
     rail.getDepartureBoard(this.state.station, {
       rows: 5,
       destination: this.state.destination
     }, (err, response) => {
-      if (err) { throw err; }
+      if (err) {
+        this.setState({ error: true });
+      }
       component.setState({
         departureData: response.trainServices,
         loading: false
@@ -63,7 +67,7 @@ class Departures extends Component {
             secondaryText={this.state.subtitle}
             disabled={true}
           />
-        {this.state.loading ? <li className='list-group-item flex-column py-5'><Spinner /></li> : departures}
+        {this.state.loading ? <Spinner error={this.state.error} /> : departures}
         </List>
       </Paper>
     );
