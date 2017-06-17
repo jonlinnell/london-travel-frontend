@@ -26,6 +26,7 @@ body {
   padding-top: 1rem;
   font-family: "Roboto", sans-serif !important;
   padding-bottom: 3rem;
+  min-height: 100%;
 }
 
 .hoc {

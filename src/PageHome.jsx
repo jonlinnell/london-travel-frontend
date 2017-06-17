@@ -124,7 +124,6 @@ export default class Homepage extends Component {
             <NationalRailStatus />
           </div>
         </div>
-        <div className='footer' />
       </div>
     );
   }

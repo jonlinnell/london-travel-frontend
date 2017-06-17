@@ -8,8 +8,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import ResponsiveNavigation from './ResponsiveNavigation';
-import Homepage from './Homepage';
-import About from './About';
+import PageHome from './PageHome';
+import PageNationalRail from './PageNationalRail';
+import PageAbout from './PageAbout';
 
 injectTapEventPlugin();
 
@@ -34,8 +35,9 @@ export default class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <Router>
           <div>
-            <Route path='/travel/about' component={About}/>
-            <Route exact path='/travel/' component={Homepage}/>
+            <Route exact path='/travel/' component={PageHome}/>
+            <Route path='/travel/nationalrail/' component={PageNationalRail}/>
+            <Route path='/travel/about/' component={PageAbout}/>
             <Redirect to='/travel/' />
             <ResponsiveNavigation parent={this} />
           </div>

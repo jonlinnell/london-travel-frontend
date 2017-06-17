@@ -5,7 +5,6 @@ import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui/List';
 import Spinner from './Spinner';
 import TrainDepartureInfo from './TrainDepartureInfo';
-import TrainDepartureInfoLate from './TrainDepartureInfoLate';
 
 import config from './config';
 
@@ -16,48 +15,63 @@ class Departures extends Component {
     super(props);
     this.state = {
       departureData: [],
+      departures: [],
       error: false,
       loading: true,
-      title: this.props.title,
-      subtitle: this.props.subtitle,
-      station: this.props.station,
-      destination: this.props.destination
+      title: props.title,
+      subtitle: props.subtitle,
+      station: props.station,
+      destination: props.destination
     };
   }
+
   loadData() {
+    const temp = [];
     this.setState({ loading: true });
-    const component = this;
+
     rail.getDepartureBoard(this.state.station, {
       rows: 5,
       destination: this.state.destination
     }, (err, response) => {
       if (err) {
         this.setState({ error: true });
+      } else {
+        response.trainServices.map((departure, i) => {
+          temp.push(<TrainDepartureInfo key={i} departure={departure} />);
+        });
+
+        this.setState({
+          loading: false,
+          departures: temp
+        });
       }
-      component.setState({
-        departureData: response.trainServices,
-        loading: false
-      });
     });
   }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      error: false,
+      title: nextProps.title,
+      subtitle: nextProps.subtitle,
+      station: nextProps.station,
+      destination: nextProps.destination
+    }, () => {
+      this.loadData();
+    });
+  }
+
   componentDidMount() {
     this.loadData();
     this.timer = setInterval(() => {
       this.loadData();
     }, 120000);
   }
+
   componentWillUnmount() {
     clearInterval(this.timer);
   }
+
   render() {
-    const departures = [];
-    this.state.departureData.map((departure, i) => {
-      if (departure.etd !== 'On time') {
-        departures.push(<TrainDepartureInfoLate key={i} departure={departure} />);
-      } else {
-        departures.push(<TrainDepartureInfo key={i} departure={departure} />);
-      }
-    });
     return (
       <Paper style={{ marginBottom: '1rem' }}>
         <List style={{ padding: 0 }}>
@@ -66,7 +80,7 @@ class Departures extends Component {
             secondaryText={this.state.subtitle}
             disabled={true}
           />
-        {this.state.loading ? <Spinner error={this.state.error} /> : departures}
+        {this.state.loading ? <Spinner error={this.state.error} /> : this.state.departures}
         </List>
       </Paper>
     );
