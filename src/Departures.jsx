@@ -21,7 +21,8 @@ class Departures extends Component {
       title: props.title,
       subtitle: props.subtitle,
       station: props.station,
-      destination: props.destination
+      destination: props.destination,
+      limit: props.limit || 5
     };
   }
 
@@ -30,7 +31,7 @@ class Departures extends Component {
     this.setState({ loading: true });
 
     rail.getDepartureBoard(this.state.station, {
-      rows: 5,
+      rows: this.state.limit,
       destination: this.state.destination
     }, (err, response) => {
       if (err) {
@@ -54,7 +55,8 @@ class Departures extends Component {
       title: nextProps.title,
       subtitle: nextProps.subtitle,
       station: nextProps.station,
-      destination: nextProps.destination
+      destination: nextProps.destination,
+      limit: nextProps.limit
     }, () => {
       this.loadData();
     });

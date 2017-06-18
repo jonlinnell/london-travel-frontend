@@ -51,7 +51,7 @@ export default class PageBus extends Component {
     return (
       <div className='container-fluid'>
         <div className='row'>
-          <div className='col-md-6 offset-md-3'>
+          <div className='col-lg-4 offset-lg-1 col-md-5'>
             <Card style={{ marginBottom: '2rem' }}>
               <CardHeader
                 title='Next buses'
@@ -61,7 +61,7 @@ export default class PageBus extends Component {
                 <SelectField
                   children={this.state.nearbyStops}
                   onChange={this.handleSelectStop}
-                  floatingLabelText='Nearby bus stops'
+                  floatingLabelText='Bus stops near campus'
                   fullWidth={true}
                 />
                 <TextField
@@ -72,6 +72,8 @@ export default class PageBus extends Component {
                 />
               </CardText>
             </Card>
+          </div>
+          <div className='col-md-7 col-lg-6'>
             { this.state.stopCode ? <NextBus stopCode={this.state.stopCode} /> : null }
           </div>
         </div>

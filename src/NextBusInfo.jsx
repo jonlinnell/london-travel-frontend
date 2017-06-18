@@ -15,7 +15,7 @@ export default class NextBusInfo extends Component {
               <p style={{ fontWeight: 600 }}>{this.props.bus[2]}&nbsp;</p>
               <p className="mb-1">{this.props.bus[3]}</p>
               <small className="ml-auto">
-                {Math.round(((Math.abs(new Date(this.props.bus[4] - Date.now())) % 86400000) % 3600000) / 60000)} mins
+                {Math.round(((Math.abs(new Date(this.props.bus[4] - Date.now())) % 86400000) % 3600000) / 60000)}&nbsp;mins
               </small>
             </div>
           </ListItem>

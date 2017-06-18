@@ -32,7 +32,7 @@ export default class Search extends Component {
     return (
       <div className='container-fluid'>
         <div className='row'>
-          <div className='col-md-6 offset-md-3'>
+          <div className='col-lg-4 offset-lg-1 col-md-5'>
             <Card className='hoc'>
               <CardHeader
                 title="National Rail Departures"
@@ -59,6 +59,8 @@ export default class Search extends Component {
                 />
               </CardText>
             </Card>
+          </div>
+          <div className='col-md-7 col-lg-6'>
             {this.state.departure ?
               <Departures
                 title={`${this.state.departure.name} Departures`}
@@ -67,6 +69,7 @@ export default class Search extends Component {
                   : 'All departures'}
                 station={this.state.departure.code}
                 destination={this.state.callingAt ? this.state.callingAt.code : null}
+                limit={10}
               /> : null
             }
           </div>
