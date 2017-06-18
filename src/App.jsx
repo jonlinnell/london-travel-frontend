@@ -11,6 +11,7 @@ import ResponsiveNavigation from './ResponsiveNavigation';
 import PageHome from './PageHome';
 import PageNationalRail from './PageNationalRail';
 import PageAbout from './PageAbout';
+import PageBus from './PageBus';
 
 injectTapEventPlugin();
 
@@ -37,6 +38,7 @@ export default class App extends Component {
           <div>
             <Route exact path='/travel/' component={PageHome}/>
             <Route path='/travel/nationalrail/' component={PageNationalRail}/>
+            <Route path='/travel/bus/' component={PageBus}/>
             <Route path='/travel/about/' component={PageAbout}/>
             <Redirect to='/travel/' />
             <ResponsiveNavigation parent={this} />

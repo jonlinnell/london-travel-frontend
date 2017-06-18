@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 
 import IconHome from 'material-ui/svg-icons/action/home';
 import IconInfo from 'material-ui/svg-icons/action/info';
-import IconTrain from 'material-ui/svg-icons/maps/directions-transit';
+import IconTrain from 'material-ui/svg-icons/maps/train';
+import IconBus from 'material-ui/svg-icons/maps/directions-bus';
 
 /** ************************** **/
 /* I extracted this component   */
@@ -43,7 +44,6 @@ export default class ResponsiveNavigation extends Component {
             icon={<IconHome />}
             onTouchTap={() => this.props.parent.select(0)}
             style={LinkStyle}
-            className='BottomNavigationItemAnimate  '
             containerElement={<Link to='/travel/' />}
           />
 
@@ -52,14 +52,21 @@ export default class ResponsiveNavigation extends Component {
             icon={<IconTrain />}
             onTouchTap={() => this.props.parent.select(1)}
             style={LinkStyle}
-            className='BottomNavigationItemAnimate  '
             containerElement={<Link to='/travel/nationalrail/' />}
+          />
+
+          <BottomNavigationItem
+            label='Buses'
+            icon={<IconBus />}
+            onTouchTap={() => this.props.parent.select(2)}
+            style={LinkStyle}
+            containerElement={<Link to='/travel/bus/' />}
           />
 
           <BottomNavigationItem
             label='About'
             icon={<IconInfo />}
-            onTouchTap={() => this.props.parent.select(2)}
+            onTouchTap={() => this.props.parent.select(3)}
             style={LinkStyle}
             containerElement={<Link to='/travel/about/' />}
           />

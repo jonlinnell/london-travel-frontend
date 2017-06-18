@@ -8,7 +8,7 @@ const containerStyles = {
   padding: '1rem'
 };
 
-const defaultErrorText = 'Either the data couldn\'t be loaded, or was never there to begin with.';
+const defaultErrorText = 'This usually means that there are no more departures that match this search. If you believe this is an error, please report it.';
 
 export default class Spinner extends Component {
   showErrorText() {
