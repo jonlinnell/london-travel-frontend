@@ -26,7 +26,10 @@ export default class PageBus extends Component {
   }
 
   handleSelectStop = (event, index, value) => {
-    this.setState({ TextFieldError: null, stopCode: value });
+    this.setState({
+      TextFieldError: null,
+      stopCode: value
+    });
   }
 
   handleCodeEntry = (event) => {
@@ -63,6 +66,7 @@ export default class PageBus extends Component {
                   onChange={this.handleSelectStop}
                   floatingLabelText='Bus stops near campus'
                   fullWidth={true}
+                  value={this.state.stopCode}
                 />
                 <TextField
                   floatingLabelText="Bus stop code"
