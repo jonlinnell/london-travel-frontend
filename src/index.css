@@ -1,14 +1,16 @@
 /* GLOBAL STYLES */
-html {
-  height: 100vh;
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
+/*
+// html {
+//   height: 100vh;
+//   box-sizing: border-box;
+// }
+// 
+// *,
+// *:before,
+// *:after {
+//   box-sizing: inherit;
+// }
+*/
 
 @font-face {
     font-family: 'DIN Round Web';

@@ -30,7 +30,7 @@ class Departures extends Component {
     const temp = [];
     this.setState({ loading: true });
 
-    rail.getDepartureBoard(this.state.station, {
+    rail.getDepartureBoardWithDetails(this.state.station, {
       rows: this.state.limit,
       destination: this.state.destination
     }, (err, response) => {
@@ -43,7 +43,8 @@ class Departures extends Component {
 
         this.setState({
           loading: false,
-          departures: temp
+          departures: temp,
+          raw: response
         });
       }
     });
