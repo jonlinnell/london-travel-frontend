@@ -3,16 +3,16 @@ import axios from 'axios';
 import _ from 'lodash';
 import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui/List';
-import Spinner from './Spinner';
-import NationalRailLineStatus from './NationalRailLineStatus';
-import config from './config';
+import Spinner from '../components/Spinner';
+import NationalRailLineStatus from '../components/NationalRailLineStatus';
+import api from '../utils/api';
 
-import c2c from '../public/img/logos/c2c.png';
-import eastmidlandstrains from '../public/img/logos/east-midlands-trains.png';
-import thameslink from '../public/img/logos/thameslink.png';
-import southeastern from '../public/img/logos/southeastern.png';
-import southwesttrains from '../public/img/logos/south-west-trains.png';
-import greatnorthern from '../public/img/logos/great-northern.png';
+import c2c from '../../public/img/logos/c2c.png';
+import eastmidlandstrains from '../../public/img/logos/east-midlands-trains.png';
+import thameslink from '../../public/img/logos/thameslink.png';
+import southeastern from '../../public/img/logos/southeastern.png';
+import southwesttrains from '../../public/img/logos/south-west-trains.png';
+import greatnorthern from '../../public/img/logos/great-northern.png';
 
 const logos = {
   c2c,
@@ -36,8 +36,8 @@ class NationalRailStatus extends Component {
     let component = this; // eslint-disable-line prefer-const
     axios.get('https://api.tfl.gov.uk/line/mode/national-rail/status', {
       params: {
-        app_id: config.tfl.app_id,
-        app_key: config.tfl.app_key
+        app_id: api.tfl.app_id,
+        app_key: api.tfl.app_key
       }
     })
     .then((response) => {

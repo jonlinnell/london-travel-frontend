@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import AutoComplete from 'material-ui/AutoComplete';
 
-import Departures from './Departures';
+import Departures from '../components/NationalRailDepartures';
 
-import stations from './NRStations';
+import stations from '../utils/NRStations';
 
 const stationsConfig = {
   text: 'name',

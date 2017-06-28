@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ListItem } from 'material-ui/List';
-import LineStatusText from './LineStatusText';
-import LineColours from './LineColours';
-import { lineIcon, lineTextColour } from './utils/lineTools';
+import LineStatusText from '../components/LineStatusText';
+import LineColours from '../utils/LineColours';
+import { lineIcon, lineTextColour } from '../utils/lineTools';
 
 class LineStatus extends Component {
 

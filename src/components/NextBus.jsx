@@ -3,8 +3,8 @@ import axios from 'axios';
 import _ from 'lodash';
 import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui';
-import Spinner from './Spinner';
-import NextBusInfo from './NextBusInfo';
+import Spinner from '../components/Spinner';
+import NextBusInfo from '../components/NextBusInfo';
 
 const errorText = 'Unable to load bus information. Did you enter the code correctly?';
 

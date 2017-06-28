@@ -7,11 +7,11 @@ import {
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import ResponsiveNavigation from './ResponsiveNavigation';
-import PageHome from './PageHome';
-import PageNationalRail from './PageNationalRail';
-import PageAbout from './PageAbout';
-import PageBus from './PageBus';
+import ResponsiveNavigation from '../components/ResponsiveNavigation';
+import PageHome from './Home';
+import PageNationalRail from './NationalRail';
+import PageAbout from './About';
+import PageBus from './Bus';
 
 injectTapEventPlugin();
 

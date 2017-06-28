@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardMedia, CardTitle, CardText } from 'material-ui/Card';
-import logo from '../public/img/logo.png';
-import bg from '../public/img/aboutbg.jpg';
+import logo from '../../public/img/logo.png';
+import bg from '../../public/img/aboutbg.jpg';
 
 const imgStyle = {
   width: '200px',

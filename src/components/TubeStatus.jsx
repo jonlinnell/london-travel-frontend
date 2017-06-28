@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { List, ListItem } from 'material-ui/List';
 import Paper from 'material-ui/Paper';
-import LineStatus from './LineStatus';
-import config from './config';
-import Spinner from './Spinner';
+import LineStatus from '../components/LineStatus';
+import Spinner from '../components/Spinner';
+import api from '../utils/api';
 
 const errorText = 'Tube data not loading is very unusual, so this should be reported to Jon.';
 
@@ -21,8 +21,8 @@ export default class TubeStatus extends Component {
     let component = this; // eslint-disable-line prefer-const
     axios.get('https://api.tfl.gov.uk/line/mode/tube,overground,dlr,tflrail/status', {
       params: {
-        app_id: config.tfl.app_id,
-        app_key: config.tfl.app_key
+        app_id: api.tfl.app_id,
+        app_key: api.tfl.app_key
       }
     })
     .then((response) => {

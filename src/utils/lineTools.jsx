@@ -3,7 +3,7 @@ import IconDone from 'material-ui/svg-icons/action/done';
 import IconSchedule from 'material-ui/svg-icons/action/schedule';
 import IconCross from 'material-ui/svg-icons/content/clear';
 import IconAlert from 'material-ui/svg-icons/alert/error-outline';
-import LineColours from '../LineColours';
+import LineColours from '../utils/LineColours';
 
 function lineTextColour(line) {
   return LineColours.text[line.id] || 'rgb(255,255,255)';

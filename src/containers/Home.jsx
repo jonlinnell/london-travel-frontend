@@ -10,10 +10,10 @@ import IconDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import Paper from 'material-ui/Paper';
 import { ListItem } from 'material-ui/List';
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
-import TubeStatus from './TubeStatus';
-import Departures from './Departures';
-import NationalRailStatus from './NationalRailStatus';
-import NextBus from './NextBus';
+import TubeStatus from '../components/TubeStatus';
+import Departures from '../components/NationalRailDepartures';
+import NationalRailStatus from '../components/NationalRailStatus';
+import NextBus from '../components/NextBus';
 
 const LinkStyle = {
   textAlign: 'center'

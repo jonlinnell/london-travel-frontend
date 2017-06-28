@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import Darwin from 'national-rail-darwin';
 import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui/List';
-import Spinner from './Spinner';
-import TrainDepartureInfo from './TrainDepartureInfo';
+import Spinner from '../components/Spinner';
+import TrainDepartureInfo from '../components/TrainDepartureInfo';
 
-import config from './config';
+import api from '../utils/api';
 
-const rail = new Darwin(config.darwinApiKey);
+const rail = new Darwin(api.darwinApiKey);
 
 class Departures extends Component {
   constructor(props) {
