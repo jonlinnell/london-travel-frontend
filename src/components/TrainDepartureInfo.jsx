@@ -15,6 +15,10 @@ const SubsequentCallingPointSTStyle = {
   marginLeft: '12px'
 };
 
+const lateTextStyle = {
+  fontSize: '0.8rem'
+};
+
 class SubsequentCallingPoint extends Component {
   render() {
     return (
@@ -48,6 +52,13 @@ export default class TrainDepartureInfo extends Component {
     this.setState({ departure: newProps.departure || this.props.departure });
   }
   render() {
+    let serviceText = null;
+    if (this.state.departure.etd === 'Cancelled') {
+      serviceText = <p className='mb-0 text-muted' style={lateTextStyle}>This service has been cancelled.</p>;
+    } else if (this.state.departure.etd !== 'On time') {
+      serviceText = <p className='mb-0 text-muted' style={lateTextStyle}>This service is delayed and is expected to depart at {this.state.departure.etd}</p>;
+    }
+
     return (
       <ListItem
         nestedItems={this.state.subsequentCallingPoints}
@@ -64,11 +75,7 @@ export default class TrainDepartureInfo extends Component {
           </p>
           <small className={'text-muted'}>{this.state.departure.std}</small>
         </div>
-        {this.state.departure.etd !== 'On time' ?
-          <p className='mb-0 text-muted late-text'>
-            This service is delayed and is expected to depart at {this.state.departure.etd}
-          </p>
-          : null }
+        {serviceText}
       </ListItem>
     );
   }
