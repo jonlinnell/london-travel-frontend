@@ -17,8 +17,7 @@ injectTapEventPlugin();
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: '#B70062',
-    canvasColor: '#fffcfd'
+    primary1Color: '#B70062'
   }
 });
 
@@ -34,13 +33,14 @@ export default class App extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <Router>
-          <div>
+        <Router className='sitesContainer'>
+          <div style={{ flex: 1 }}>
             <Route exact path='/travel/' component={PageHome}/>
             <Route path='/travel/nationalrail/' component={PageNationalRail}/>
             <Route path='/travel/bus/' component={PageBus}/>
             <Route path='/travel/about/' component={PageAbout}/>
             <Redirect to='/travel/' />
+            <footer />
             <ResponsiveNavigation parent={this} />
           </div>
         </Router>

@@ -18,7 +18,7 @@ class TrainDepartureInfoLate extends Component {
           <p className='mb-1 text-danger'>{this.state.departure.destination.name}</p>
           <small className='text-danger'>{this.state.departure.std}</small>
         </div>
-        <p className='mb-0 text-muted late-text'>This service is delayed and is expected to depart at {this.state.departure.etd}</p>
+        <p className='mb-0 text-muted late-text'>This service is delayed and is expected to depart at {this.state.departure.std}</p>
       </ListItem>
     );
   }
