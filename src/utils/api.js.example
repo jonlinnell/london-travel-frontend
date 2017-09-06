@@ -1,0 +1,7 @@
+module.exports = {
+  darwinApiKey: 'YOUR_DARWIN_API_KEY',
+  tfl: {
+    app_id: 'YOUR_TFL_APP_ID',
+    app_key: 'YOUR_TFL_APP_KEY'
+  }
+};
