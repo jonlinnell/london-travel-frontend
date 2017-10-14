@@ -31,14 +31,9 @@ body {
   min-height: 100%;
 }
 
-body#pageAbout {
-  background-color: #282828;
-}
-
 .hoc {
   margin-bottom: 2rem;
 }
-
 
 @media (min-width: 400px) {
 }
