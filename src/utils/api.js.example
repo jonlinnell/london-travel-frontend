@@ -3,5 +3,6 @@ module.exports = {
   tfl: {
     app_id: 'YOUR_TFL_APP_ID',
     app_key: 'YOUR_TFL_APP_KEY'
-  }
+  },
+  ga: 'YOUR_GA_ID_HERE'
 };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
 import AutoComplete from 'material-ui/AutoComplete';
-
+import ReactGA from 'react-ga';
 import Departures from '../components/NationalRailDepartures';
 
 import stations from '../utils/NRStations';
@@ -22,10 +22,26 @@ export default class Search extends Component {
 
   handleChangeDeparture = (station) => {
     this.setState({ departure: station });
+
+    if (station) {
+      ReactGA.event({
+        category: 'Rail',
+        action: 'Departures',
+        label: station.code
+      });
+    }
   }
 
   handleChangeCallingAt = (station) => {
     this.setState({ callingAt: station });
+
+    if (station) {
+      ReactGA.event({
+        category: 'Rail',
+        action: 'Departures with calling point',
+        label: `${this.state.departure.code} to ${station.code}`
+      });
+    }
   }
 
   render() {

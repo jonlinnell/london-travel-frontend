@@ -4,6 +4,8 @@ import SelectField from 'material-ui/SelectField';
 import TextField from 'material-ui/TextField';
 import MenuItem from 'material-ui/MenuItem';
 
+import ReactGA from 'react-ga';
+
 import NextBus from '../components/NextBus';
 
 export default class PageBus extends Component {
@@ -30,6 +32,14 @@ export default class PageBus extends Component {
       TextFieldError: null,
       stopCode: value
     });
+
+    if (value) {
+      ReactGA.event({
+        category: 'Bus',
+        action: 'Search by stop',
+        label: `${value}`
+      });
+    }
   }
 
   handleCodeEntry = (event) => {
@@ -45,6 +55,16 @@ export default class PageBus extends Component {
         stopCode,
         TextFieldError: null
       });
+
+      console.log(JSON.stringify(stopCode, null, 2));
+
+      if (stopCode) {
+        ReactGA.event({
+          category: 'Bus',
+          action: 'Search by code (unverified)',
+          label: stopCode
+        });
+      }
     } else {
       this.setState({ TextFieldError: 'Codes are five digits long, and contain only numbers.' });
     }
