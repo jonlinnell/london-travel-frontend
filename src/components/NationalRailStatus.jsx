@@ -7,12 +7,12 @@ import Spinner from '../components/Spinner';
 import NationalRailLineStatus from '../components/NationalRailLineStatus';
 import api from '../utils/api';
 
-import c2c from '../../public/img/logos/c2c.png';
-import eastmidlandstrains from '../../public/img/logos/east-midlands-trains.png';
-import thameslink from '../../public/img/logos/thameslink.png';
-import southeastern from '../../public/img/logos/southeastern.png';
-import southwesttrains from '../../public/img/logos/south-west-trains.png';
-import greatnorthern from '../../public/img/logos/great-northern.png';
+import c2c from '../img/logos/c2c.png';
+import eastmidlandstrains from '../img/logos/east-midlands-trains.png';
+import thameslink from '../img/logos/thameslink.png';
+import southeastern from '../img/logos/southeastern.png';
+import southwesttrains from '../img/logos/south-west-trains.png';
+import greatnorthern from '../img/logos/great-northern.png';
 
 const logos = {
   c2c,

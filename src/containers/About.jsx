@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../../public/img/logo.png';
-import footerWhite from '../../public/img/footer-large-white.png';
+import logo from '../img/logo.png';
+import footerWhite from '../img/footer-large-white.png';
 
 const imgStyle = {
   width: '14rem',
