@@ -17,7 +17,7 @@ import './img/footer-ultra-wide.jpg';
 
 import config from './utils/api';
 
-ReactGA.initialize(config.ga, {debug: true});
+ReactGA.initialize(config.ga);
 
 const history = createBrowserHistory();
 
