@@ -76,7 +76,7 @@ export default class Homepage extends Component {
 
   render() {
     return (
-      <div className='container-fluid'>
+      <div className='container-fluid bg'>
         <div className='row'>
           <div className='col-md-5 col-lg-3 offset-lg-1'>
             <TubeStatus />

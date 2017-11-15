@@ -46,7 +46,7 @@ export default class Search extends Component {
 
   render() {
     return (
-      <div className='container-fluid'>
+      <div className='container-fluid bg'>
         <div className='row'>
           <div className='col-lg-4 offset-lg-1 col-md-5'>
             <Card className='hoc'>
