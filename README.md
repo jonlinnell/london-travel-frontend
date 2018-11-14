@@ -1,3 +1,4 @@
 # london-travel
 ## Description
-A unified app for displaying travel information. Designed to LU London.
+A unified app for displaying travel information. Designed primarily for LU London.
+
