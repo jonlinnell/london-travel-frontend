@@ -1,0 +1,11 @@
+[Unit]
+Description=London-Travel Backend service
+After=network-online.target
+
+[Service]
+Restart=on-failure
+WorkingDirectory=/opt/london-travel
+ExecStart=/usr/bin/env node /opt/london-travel/server/index.js
+
+[Install]
+WantedBy=multi-user.target

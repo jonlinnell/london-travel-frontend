@@ -3,11 +3,8 @@
 # dependencies
 /node_modules
 
-# testing
-/coverage
-
 # production
-/build
+client/dist
 
 # misc
 .DS_Store
@@ -15,6 +12,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# API keys and config
-/src/utils/api.js
