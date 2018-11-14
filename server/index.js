@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -22,4 +24,4 @@ require('./routes')(app)
 
 if (USE_TEST_DATA) { console.log('Using test data. Unset USE_TEST_DATA to use live feeds.') }
 
-app.listen(port, () => console.log(`Listening on port ${port}`)) /* eslint-disable-line no-console */
+app.listen(port, () => console.log(`Listening on port ${port}`))

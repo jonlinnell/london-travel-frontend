@@ -13,10 +13,14 @@
     "national-rail-darwin": "^1.0.7"
   },
   "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
     "nodemon": "^1.18.6"
   },
   "scripts": {
     "server:startdev": "nodemon server/index.js",
-    "server:start": "/usr/bin/env node server/index.js"
+    "server:start": "/usr/bin/env node server/index.js",
+    "server:lint": "eslint -c server/.eslintrc server/"
   }
 }
