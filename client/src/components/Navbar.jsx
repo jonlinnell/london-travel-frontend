@@ -29,11 +29,6 @@ const StyledNavbar = styled.div`
   z-index: 1;
 `
 
-const StyledNavbarButton = styled.button`
-  background: none;
-  border: none;
-`
-
 class Navbar extends PureComponent {
   constructor(props) {
     super(props)

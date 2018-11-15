@@ -20,12 +20,12 @@ const LineContainer = styled.div`
 
 const LineName = styled.h4`
   margin: 0;
-  font-size: 24px;
+  font-size: 1rem;
 `
 
 const LineStatus = styled.p`
   margin: 0;
-  font-size: 16px;
+  font-size: 0.9rem;
   text-align: right;
   font-family: 'DIN Extlight';
 `

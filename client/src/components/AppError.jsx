@@ -11,7 +11,6 @@ const AppError = styled.div`
   height: ${({ fill }) => (fill ? '100%' : 'initial')};
 
   background-color: rgba(0, 0, 0, 0.1);;
-  padding: 24px;
 
   display: flex;
   flex-direction: column;
@@ -24,7 +23,7 @@ const AppError = styled.div`
 
 const ErrorTitle = styled.h4`
   font-family: 'DIN Light';
-  font-size: 24px;
+  font-size: 1.5rem;
   color: black;
 
   width: 80%;
