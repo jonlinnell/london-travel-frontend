@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Transition } from 'react-spring'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
@@ -11,6 +12,8 @@ const LineContainer = styled.div`
 
   font-family: "DIN Light";
 
+  z-index: ${({ zIndex }) => zIndex};
+
   background-color: ${({ id, theme }) => theme.lines[id].background};
   color: ${({ id, theme }) => theme.lines[id].text};
 `
@@ -20,7 +23,7 @@ const LineName = styled.h4`
   font-size: 1rem;
 `
 
-const LineStatus = styled.p`
+const LineStatusSummary = styled.p`
   margin: 0;
   font-size: 0.9rem;
   text-align: right;
@@ -58,7 +61,7 @@ class TubeLineInfo extends Component {
       <LineContainer id={id}>
         <Summary onClick={this.toggleShowExtendedLineStatus}>
           <LineName>{name}</LineName>
-          <LineStatus>
+          <LineStatusSummary>
             {
               lineStatuses[0].statusSeverityDescription === 'Good Service'
                 ? <FontAwesomeIcon icon={faCheck} />
@@ -68,13 +71,20 @@ class TubeLineInfo extends Component {
                   .map(i => i.replace(' ', '\xa0')) // Prevent status messages getting split over lines
                   .join(', ')
             }
-          </LineStatus>
+          </LineStatusSummary>
         </Summary>
-        {
-          showExtendedLineStatus
-            ? <TubeLineExtendedStatus lineStatuses={lineStatuses} toggleShowExtendedLineStatus={this.toggleShowExtendedLineStatus}/>
-            : null
-        }
+        <Transition
+          items={showExtendedLineStatus}
+          from={{ height: 0, opacity: 0 }}
+          enter={{ height: 'auto', opacity: 1 }}
+          leave={{ height: 0, opacity: 0 }}
+        >
+          {
+            show => (
+              show && (props => <div style={props}><TubeLineExtendedStatus lineStatuses={lineStatuses} /></div>)
+            )
+          }
+        </Transition>
       </LineContainer>
     )
   }

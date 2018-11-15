@@ -81,7 +81,7 @@ class TubeStatus extends PureComponent {
       <TubeStatusWrapper>
         <LineWrapper>
           {
-            data.map(line => <TubeLineInfo line={line} key={line.id} />)
+            data.map((line, i) => <TubeLineInfo line={line} key={line.id} zIndex={data.length - i} />)
           }
         </LineWrapper>
         <Attribution>

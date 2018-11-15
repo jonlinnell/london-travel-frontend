@@ -11,13 +11,14 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
+    "css-loader": "^1.0.1",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "national-rail-darwin": "^1.0.7",
-    "quick-hash": "^1.0.4",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-spring": "^6.1.8",
+    "style-loader": "^0.23.1",
     "styled-components": "^4.1.1"
   },
   "devDependencies": {

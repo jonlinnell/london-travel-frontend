@@ -31,8 +31,8 @@ const LineStatusDescription = styled.p`
 export default ({ lineStatuses, toggleShowExtendedLineStatus }) => (
   <LineStatusList onClick={toggleShowExtendedLineStatus}>
     {
-      lineStatuses.map(status => (
-        <li key={qh(status.reason)}>
+      lineStatuses.map((status, i) => (
+        <li key={i}>
           <LineStatusTitle>{ status.statusSeverityDescription }</LineStatusTitle>
           <LineStatusDescription>{ status.reason }</LineStatusDescription>
         </li>
