@@ -1,26 +1,33 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 import { Parallax, ParallaxLayer } from 'react-spring/dist/addons'
 
 import Navbar from '../components/Navbar'
 
+import Tube from './Tube'
+
 const ViewMainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  overflow: scroll;
 
   height: 100vh;
 `
 
 const StyledParallax = styled(Parallax)`
   position: static !important;
-
 `
 
-const TestPage = ({ offset, children }) => (
-  <ParallaxLayer offset={offset}>
-    { children }
-  </ParallaxLayer>
+const StyledParallaxLayer = styled(ParallaxLayer)`
+  height: 100vh;
+  overflow: scroll;
+`
+
+const Page = ({ Component, childProps, ...rest }) => (
+  <StyledParallaxLayer speed={3} {...rest}>
+    <Component {...childProps} />
+  </StyledParallaxLayer>
 )
 
 class ViewMain extends PureComponent {
@@ -45,13 +52,11 @@ class ViewMain extends PureComponent {
 
     return (
       <ViewMainContainer>
-        <StyledParallax ref={this.parallaxContainerRef} pages={4} horizontal scolling={false}>
-          <TestPage offset={0}>Test 1</TestPage>
-          <TestPage offset={1}>Test 2</TestPage>
-          <TestPage offset={2}>Test 3</TestPage>
-          <TestPage offset={3}>Test 4</TestPage>
+        <StyledParallax ref={this.parallaxContainerRef} pages={2} horizontal scrolling={false}>
+          <Page offset={0} Component={Tube} />
+
         </StyledParallax>
-        <Navbar setActivePageIndex={this.setActivePageIndex} activePageIndex={activePageIndex}/>
+        <Navbar setActivePageIndex={this.setActivePageIndex} activePageIndex={activePageIndex} />
       </ViewMainContainer>
     )
   }

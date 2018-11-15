@@ -1,5 +1,8 @@
 import React, { Fragment } from 'react'
 import { render } from 'react-dom'
+import { ThemeProvider } from 'styled-components'
+
+import theme from './styles/theme.json'
 
 import ViewMain from './views/Main'
 
@@ -10,7 +13,9 @@ const App = () => (
   <Fragment>
     <GlobalStyles />
     <Normalize />
-    <ViewMain />
+    <ThemeProvider theme={theme}>
+      <ViewMain />
+    </ThemeProvider>
   </Fragment>
 )
 
