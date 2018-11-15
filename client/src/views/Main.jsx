@@ -25,7 +25,7 @@ const StyledParallaxLayer = styled(ParallaxLayer)`
 `
 
 const Page = ({ Component, childProps, ...rest }) => (
-  <StyledParallaxLayer speed={3} {...rest}>
+  <StyledParallaxLayer speed={0} {...rest}>
     <Component {...childProps} />
   </StyledParallaxLayer>
 )
@@ -52,7 +52,7 @@ class ViewMain extends PureComponent {
 
     return (
       <ViewMainContainer>
-        <StyledParallax ref={this.parallaxContainerRef} pages={2} horizontal scrolling={false}>
+        <StyledParallax ref={this.parallaxContainerRef} pages={1} horizontal scrolling={false}>
           <Page offset={0} Component={Tube} />
 
         </StyledParallax>

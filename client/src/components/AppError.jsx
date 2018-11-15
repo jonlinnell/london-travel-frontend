@@ -1,34 +1,43 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+
 import { supportContact } from '../../config/config.json'
 
 const AppError = styled.div`
   width: ${({ fill }) => (fill ? '100%' : 'initial')};
   height: ${({ fill }) => (fill ? '100%' : 'initial')};
 
-  background-color: rgba(255, 255, 255, 0.1);;
+  background-color: rgba(0, 0, 0, 0.1);;
   padding: 24px;
-`
 
-const ErrorHeader = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: start;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  margin: ${({ contained }) => (contained ? '12px' : 'initial')};
+  border-radius: ${({ contained, theme: { radius } }) => (contained ? radius : 0)};
 `
 
 const ErrorTitle = styled.h4`
   font-family: 'DIN Light';
   font-size: 24px;
-  color: white;
-  margin-left: 12px;
+  color: black;
+
+  width: 80%;
+  text-align: center;
 `
 
 const ErrorMessage = styled.p`
   font-family: 'DIN Light';
   font-size: ${({ small }) => (small ? '12px' : '18px')};
-  color: white;
+  color: black;
+  text-align: center;
+
+  margin-top: 0;
 `
 
 const generateHumanReadableError = (error) => {
@@ -39,22 +48,31 @@ const generateHumanReadableError = (error) => {
   return ('That\'s about all we know.')
 }
 
-export default ({ error, callerDescription }) => (
-  <AppError>
-    <ErrorHeader>
-      <ErrorTitle>
-        There was a problem loading
-        { callerDescription }
-      </ErrorTitle>
-    </ErrorHeader>
+export default ({ error, description, ...rest }) => (
+  <AppError {...rest}>
+    <FontAwesomeIcon icon={faExclamationTriangle} size="4x" />
+    <ErrorTitle>
+      There was a problem
+      {
+        description
+          ? (` ${description}.`)
+          : '.'
+      }
+    </ErrorTitle>
     {
-      callerDescription
+      error
         ? <ErrorMessage>{ generateHumanReadableError(error) }</ErrorMessage>
         : null
     }
     {
       supportContact
-        ? <ErrorMessage small>Please report this to { supportContact }.</ErrorMessage>
+        ? (
+          <ErrorMessage small>
+            Please report this to&nbsp;
+            { supportContact }
+            &nbsp;.
+          </ErrorMessage>
+        )
         : null
     }
   </AppError>

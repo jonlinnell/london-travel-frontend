@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-// import IconTick from '../IconTick'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const LineContainer = styled.div`
   padding: 12px;
@@ -35,7 +36,7 @@ const TubeLineInfo = ({ line: { id, name, lineStatuses } }) => (
     <LineStatus>
       {
         lineStatuses[0].statusSeverityDescription === 'Good Service'
-          ? <pre>ok</pre>
+          ? <FontAwesomeIcon icon={faCheck} />
           : lineStatuses
             .map(status => status.statusSeverityDescription)
             .filter((v, i, a) => a.indexOf(v) === i) // Unique strings only
