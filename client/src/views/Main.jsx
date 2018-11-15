@@ -8,10 +8,13 @@ const ViewMainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  height: 100vh;
 `
 
 const StyledParallax = styled(Parallax)`
-  height: 70% !important;
+  position: static !important;
+
 `
 
 const TestPage = ({ offset, children }) => (

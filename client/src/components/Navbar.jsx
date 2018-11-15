@@ -1,10 +1,21 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
+const NavbarItemList = styled.ul`
+  list-style: none;
+`
+
+const NavbarItem = styled.li`
+  display: inline-block;
+`
+
 const StyledNavbar = styled.div`
-  position: relative;
-  top: 70%;
-  height: 128px;
+  width: 100%;
+`
+
+const StyledNavbarButton = styled.button`
+  background: none;
+  border: none;
 `
 
 class Navbar extends PureComponent {
@@ -21,24 +32,20 @@ class Navbar extends PureComponent {
 
     return (
       <StyledNavbar>
-        <ul>
-          <li>
+        <NavbarItemList>
+          <NavbarItem>
             <button type="button" onClick={() => setActivePageIndex(0)}>Page 1</button>
-          </li>
-          <li>
+          </NavbarItem>
+          <NavbarItem>
             <button type="button" onClick={() => setActivePageIndex(1)}>Page 2</button>
-          </li>
-          <li>
+          </NavbarItem>
+          <NavbarItem>
             <button type="button" onClick={() => setActivePageIndex(2)}>Page 3</button>
-          </li>
-          <li>
+          </NavbarItem>
+          <NavbarItem>
             <button type="button" onClick={() => setActivePageIndex(3)}>Page 4</button>
-          </li>
-        </ul>
-        <pre>
-          Current:
-          { this.state.activePageIndex }
-        </pre>
+          </NavbarItem>
+        </NavbarItemList>
       </StyledNavbar>
     )
   }
