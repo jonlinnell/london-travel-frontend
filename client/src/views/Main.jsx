@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 
 import Tube from './Tube'
+import Loading from '../components/Loading'
 
 const ViewMainContainer = styled.div`
   height: 100vh;
@@ -47,6 +48,7 @@ const ViewMain = () => (
       <PosedRouter>
         <Home path="/" />
         <Tube path="/tube" />
+        <Loading path="/nationalrail" />
       </PosedRouter>
     </ContentWrapper>
     <Navbar />
