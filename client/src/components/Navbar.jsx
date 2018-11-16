@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react'
-import { Link } from '@reach/router'
+import { Link, Location } from '@reach/router'
 import styled from 'styled-components'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome, faSubway } from '@fortawesome/free-solid-svg-icons'
 
 const NavbarItemList = styled.ul`
   list-style: none;
@@ -17,7 +20,7 @@ const NavbarItemList = styled.ul`
 
 const NavbarItem = styled.li`
   display: inline-block;
-  margin: 0;
+  margin: 0 12px;
 `
 
 const StyledNavbar = styled.div`
@@ -33,31 +36,27 @@ const StyledNavbar = styled.div`
   z-index: 1;
 `
 
-class Navbar extends PureComponent {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      activePageIndex: props.activePageIndex,
-    }
-  }
-
-  render() {
-    const { setActivePageIndex } = this.props
-
-    return (
-      <StyledNavbar>
-        <NavbarItemList>
-          <NavbarItem>
-            <Link to="/">Home</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link to="/tube">Tube</Link>
-          </NavbarItem>
-        </NavbarItemList>
-      </StyledNavbar>
-    )
-  }
-}
+const Navbar = () => (
+  <StyledNavbar>
+    <Location>
+      {
+        ({ location }) => (
+          <NavbarItemList location={location}>
+            <NavbarItem>
+              <Link to="/">
+                <FontAwesomeIcon icon={faHome} />
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link to="/tube">
+                <FontAwesomeIcon icon={faSubway} />
+              </Link>
+            </NavbarItem>
+          </NavbarItemList>
+        )
+      }
+    </Location>
+  </StyledNavbar>
+)
 
 export default Navbar
