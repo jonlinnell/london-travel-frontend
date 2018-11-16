@@ -1,9 +1,15 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { Link, Location } from '@reach/router'
 import styled from 'styled-components'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faSubway } from '@fortawesome/free-solid-svg-icons'
+import {
+  faHome,
+  faSubway,
+  faTrain,
+  faBus,
+  faInfo,
+} from '@fortawesome/free-solid-svg-icons'
 
 const NavbarItemList = styled.ul`
   list-style: none;
@@ -21,6 +27,8 @@ const NavbarItemList = styled.ul`
 const NavbarItem = styled.li`
   display: inline-block;
   margin: 0 12px;
+
+  content: "${({ to }) => to/* FOR TESTING ONLY */}";
 `
 
 const StyledNavbar = styled.div`
@@ -50,6 +58,21 @@ const Navbar = () => (
             <NavbarItem>
               <Link to="/tube">
                 <FontAwesomeIcon icon={faSubway} />
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link to="/nationalrail">
+                <FontAwesomeIcon icon={faTrain} />
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link to="/bus">
+                <FontAwesomeIcon icon={faBus} />
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link to="/about">
+                <FontAwesomeIcon icon={faInfo} />
               </Link>
             </NavbarItem>
           </NavbarItemList>
