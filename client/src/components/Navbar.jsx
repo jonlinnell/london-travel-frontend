@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { Link } from '@reach/router'
 import styled from 'styled-components'
 
 const NavbarItemList = styled.ul`
@@ -26,6 +27,9 @@ const StyledNavbar = styled.div`
 
   background-color: white;
 
+  position: fixed;
+  bottom: 0;
+
   z-index: 1;
 `
 
@@ -45,16 +49,10 @@ class Navbar extends PureComponent {
       <StyledNavbar>
         <NavbarItemList>
           <NavbarItem>
-            <button type="button" onClick={() => setActivePageIndex(0)}>Page 1</button>
+            <Link to="/">Home</Link>
           </NavbarItem>
           <NavbarItem>
-            <button type="button" onClick={() => setActivePageIndex(1)}>Page 2</button>
-          </NavbarItem>
-          <NavbarItem>
-            <button type="button" onClick={() => setActivePageIndex(2)}>Page 3</button>
-          </NavbarItem>
-          <NavbarItem>
-            <button type="button" onClick={() => setActivePageIndex(3)}>Page 4</button>
+            <Link to="/tube">Tube</Link>
           </NavbarItem>
         </NavbarItemList>
       </StyledNavbar>

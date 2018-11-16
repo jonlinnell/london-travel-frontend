@@ -18,6 +18,8 @@ const AppError = styled.div`
   justify-content: center;
 
   margin: ${({ contained }) => (contained ? '12px' : 'initial')};
+  padding: ${({ contained }) => (contained ? '12px' : 'initial')};
+  
   border-radius: ${({ contained, theme: { radius } }) => (contained ? radius : 0)};
 `
 

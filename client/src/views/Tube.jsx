@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+import posed from 'react-pose'
 
 import Attribution from '../components/Attribution'
 import TubeLineInfo from '../components/TubeLineInfo'
@@ -11,14 +12,16 @@ import { api } from '../../config/config.json'
 const INTERVAL = 5 // in minutes
 
 const TubeStatusWrapper = styled.div`
-  width: calc(100% - 24px);
   margin: 12px;
 `
 
-const LineWrapper = styled.div`
-  width: 100%;
+const LineWrapper = styled.ul`
+  padding: 0;
+  margin: 0;
+  
+  list-style: none;
 
-  & > div {
+  & > li {
     :first-child {
       border-top-left-radius: ${props => props.theme.radius};
       border-top-right-radius: ${props => props.theme.radius};
@@ -30,6 +33,11 @@ const LineWrapper = styled.div`
     }
   }
 `
+
+const PosedLineContainer = posed(LineWrapper)({
+  enter: { staggerChildren: 30 },
+  exit: { staggerChildren: 10, staggerDirection: -1 },
+})
 
 class TubeStatus extends PureComponent {
   intervalId = null
@@ -74,16 +82,16 @@ class TubeStatus extends PureComponent {
     } = this.state
 
     if (hasError) {
-      return <AppError error={error} callerDescription="the tube status" />
+      return <AppError error={error} callerDescription="the tube status" contained />
     }
 
     return (
       <TubeStatusWrapper>
-        <LineWrapper>
+        <PosedLineContainer>
           {
             data.map((line, i) => <TubeLineInfo line={line} key={line.id} zIndex={data.length - i} />)
           }
-        </LineWrapper>
+        </PosedLineContainer>
         <Attribution>
           Powered by TfL Open Data. Visit tfl.gov.uk for more information.
         </Attribution>

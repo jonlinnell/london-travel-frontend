@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Transition } from 'react-spring'
+import posed from 'react-pose'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 import TubeLineExtendedStatus from './TubeLineExtendedStatus'
 
-const LineContainer = styled.div`
+const LineContainer = styled.li`
   padding: 12px;
-
   font-family: "DIN Light";
 
   z-index: ${({ zIndex }) => zIndex};
@@ -38,6 +37,11 @@ const Summary = styled.div`
   align-items: center;
 `
 
+const PosedLineContainer = posed(LineContainer)({
+  enter: { y: 0, opacity: 1 },
+  exit: { y: -20, opacity: 0 },
+})
+
 class TubeLineInfo extends Component {
   constructor(props) {
     super(props)
@@ -58,7 +62,7 @@ class TubeLineInfo extends Component {
     const { line: { id, name, lineStatuses } } = this.props
 
     return (
-      <LineContainer id={id}>
+      <PosedLineContainer id={id}>
         <Summary onClick={this.toggleShowExtendedLineStatus}>
           <LineName>{name}</LineName>
           <LineStatusSummary>
@@ -73,19 +77,7 @@ class TubeLineInfo extends Component {
             }
           </LineStatusSummary>
         </Summary>
-        <Transition
-          items={showExtendedLineStatus}
-          from={{ height: 0, opacity: 0 }}
-          enter={{ height: 'auto', opacity: 1 }}
-          leave={{ height: 0, opacity: 0 }}
-        >
-          {
-            show => (
-              show && (props => <div style={props}><TubeLineExtendedStatus lineStatuses={lineStatuses} /></div>)
-            )
-          }
-        </Transition>
-      </LineContainer>
+      </PosedLineContainer>
     )
   }
 }

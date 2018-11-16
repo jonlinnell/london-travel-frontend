@@ -1,5 +1,4 @@
 import React from 'react'
-import qh from 'quick-hash'
 import styled from 'styled-components'
 
 const LineStatusList = styled.ul`

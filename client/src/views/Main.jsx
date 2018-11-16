@@ -1,65 +1,56 @@
 import React, { PureComponent } from 'react'
+import { Router, Location } from '@reach/router'
+import posed, { PoseGroup } from 'react-pose'
 import styled from 'styled-components'
-import { Parallax, ParallaxLayer } from 'react-spring/dist/addons'
 
 import Navbar from '../components/Navbar'
 
 import Tube from './Tube'
 
 const ViewMainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  overflow: scroll;
-
   height: 100vh;
 `
 
-const StyledParallax = styled(Parallax)`
-  position: static !important;
+const ContentWrapper = styled.div`
+  min-height: 100%;
+  margin-bottom: ${({ theme: { navbar: { height, units } } }) => `${height + 12}${units}`};
 `
 
-const StyledParallaxLayer = styled(ParallaxLayer)`
-  height: 100vh;
-  overflow: scroll;
-`
+const RouteContainer = posed.div({
+  enter: { opacity: 1, delay: 300, beforeChildren: 300 },
+  exit: { opacity: 0 },
+})
 
-const Page = ({ Component, childProps, ...rest }) => (
-  <StyledParallaxLayer speed={0} {...rest}>
-    <Component {...childProps} />
-  </StyledParallaxLayer>
+const Home = () => (
+  <div>
+    test
+  </div>
 )
 
-class ViewMain extends PureComponent {
-  constructor(props) {
-    super(props)
-
-    this.parallaxContainerRef = React.createRef()
-
-    this.state = {
-      activePageIndex: 0,
+const PosedRouter = ({ children }) => (
+  <Location>
+    {
+      ({ location }) => (
+        <PoseGroup>
+          <RouteContainer key={location.key}>
+            <Router location={location}>{ children }</Router>
+          </RouteContainer>
+        </PoseGroup>
+      )
     }
+  </Location>
+)
 
-    this.setActivePageIndex = this.setActivePageIndex.bind(this)
-  }
-
-  setActivePageIndex = page => this.setState({
-    activePageIndex: page,
-  }, () => this.parallaxContainerRef.current.scrollTo(page))
-
-  render() {
-    const { activePageIndex } = this.state
-
-    return (
-      <ViewMainContainer>
-        <StyledParallax ref={this.parallaxContainerRef} pages={1} horizontal scrolling={false}>
-          <Page offset={0} Component={Tube} />
-
-        </StyledParallax>
-        <Navbar setActivePageIndex={this.setActivePageIndex} activePageIndex={activePageIndex} />
-      </ViewMainContainer>
-    )
-  }
-}
+const ViewMain = () => (
+  <ViewMainContainer>
+    <ContentWrapper>
+      <PosedRouter>
+        <Home path="/" />
+        <Tube path="/tube" />
+      </PosedRouter>
+    </ContentWrapper>
+    <Navbar />
+  </ViewMainContainer>
+)
 
 export default ViewMain
