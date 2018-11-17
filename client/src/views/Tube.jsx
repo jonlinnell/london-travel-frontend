@@ -6,6 +6,7 @@ import posed from 'react-pose'
 import Attribution from '../components/Attribution'
 import TubeLineInfo from '../components/TubeLineInfo'
 import AppError from '../components/AppError'
+import Loading from '../components/Loading'
 
 import { api } from '../../config/config.json'
 
@@ -47,6 +48,7 @@ class TubeStatus extends PureComponent {
 
     this.state = {
       data: [],
+      loading: false,
       error: null,
       hasError: false,
     }
@@ -62,14 +64,17 @@ class TubeStatus extends PureComponent {
   }
 
   fetchData = () => {
+    this.setState({ loading: true })
     axios.get(`${api}/tube`)
       .then(response => this.setState({
         data: response.data,
+        loading: false,
         hasError: false,
         error: null,
       }))
       .catch(error => this.setState({
         hasError: true,
+        loading: false,
         error,
       }))
   }
@@ -77,24 +82,30 @@ class TubeStatus extends PureComponent {
   render() {
     const {
       data,
+      loading,
       hasError,
       error,
     } = this.state
 
-    if (hasError) {
-      return <AppError error={error} callerDescription="the tube status" contained />
-    }
-
     return (
       <TubeStatusWrapper>
-        <PosedLineContainer>
-          {
-            data.map((line, i) => <TubeLineInfo line={line} key={line.id} zIndex={data.length - i} />)
-          }
-        </PosedLineContainer>
-        <Attribution>
-          Powered by TfL Open Data. Visit tfl.gov.uk for more information.
-        </Attribution>
+        <Loading loading={loading && !hasError}>
+          <PosedLineContainer>
+            {
+              data.map(line => <TubeLineInfo line={line} key={line.id} />)
+            }
+          </PosedLineContainer>
+        </Loading>
+        {
+          !loading && !hasError && (
+            <Attribution>
+              Powered by TfL Open Data. Visit tfl.gov.uk for more information.
+            </Attribution>
+          )
+        }
+        {
+          hasError && <AppError error={error} callerDescription="the tube status" contained />
+        }
       </TubeStatusWrapper>
     )
   }

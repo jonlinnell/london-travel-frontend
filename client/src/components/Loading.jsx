@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import styled from 'styled-components'
+import posed, { PoseGroup } from 'react-pose'
 
-const LoadingContainer = styled.div`
+const SpinnerContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +43,7 @@ const LoadingContainer = styled.div`
   }
 `
 
-const Spinner = styled.div`
+const SpinnerRing = styled.div`
   margin: 0;
   padding: 0;
 
@@ -56,11 +57,47 @@ const Spinner = styled.div`
   animation: ${({ secondary }) => (secondary ? 'rotate' : 'rotate2')} 2s cubic-bezier(0.26, 1.36, 0.74, -0.29) infinite;
 `
 
-export default props => (
-  <LoadingContainer {...props}>
-    <Spinner size={200} />
-    <Spinner size={220} secondary />
-    <Spinner size={240} />
-    <Spinner size={260} secondary />
-  </LoadingContainer>
+const PosedContainer = posed.div({
+  enter: { opacity: 1 },
+  exit: { opacity: 0 },
+  before: { opacity: 0 },
+})
+
+const Spinner = () => (
+  <SpinnerContainer>
+    <SpinnerRing size={200} />
+    <SpinnerRing size={220} secondary />
+    <SpinnerRing size={240} />
+    <SpinnerRing size={260} secondary />
+  </SpinnerContainer>
 )
+
+class Loading extends PureComponent {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      showSpinners: false,
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ showSpinners: true }), 500)
+  }
+
+  render() {
+    const { showSpinners } = this.state
+    const { children, loading } = this.props
+
+    return (
+      <PoseGroup animateOnMount>
+        {
+          loading && <PosedContainer pose={showSpinners ? 'enter' : 'before'} key={1}><Spinner /></PosedContainer>
+        }
+        <PosedContainer key={2}>{ children }</PosedContainer>
+      </PoseGroup>
+    )
+  }
+}
+
+export default Loading

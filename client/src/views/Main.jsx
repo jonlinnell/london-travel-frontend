@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { Router, Location } from '@reach/router'
 import posed, { PoseGroup } from 'react-pose'
 import styled from 'styled-components'
