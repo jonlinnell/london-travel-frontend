@@ -61,7 +61,7 @@ const Navbar = () => (
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link to="/nationalrail">
+              <Link to="/rail">
                 <FontAwesomeIcon icon={faTrain} />
               </Link>
             </NavbarItem>

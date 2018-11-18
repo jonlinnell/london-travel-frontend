@@ -10,13 +10,13 @@ import GlobalStyles from './styles/GlobalStyles'
 import Normalize from './styles/Normalize'
 
 const App = () => (
-  <Fragment>
-    <GlobalStyles />
-    <Normalize />
-    <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme}>
+    <Fragment>
+      <GlobalStyles />
+      <Normalize />
       <ViewMain />
-    </ThemeProvider>
-  </Fragment>
+    </Fragment>
+  </ThemeProvider>
 )
 
 render(<App />, document.getElementById('root'))
