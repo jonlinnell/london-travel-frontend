@@ -43,7 +43,7 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: ${({ theme: { baseFontSize } }) => baseFontSize};
     
     font-family: 'DIN Light', 'Helvetica Neue', sans-serif;
   }

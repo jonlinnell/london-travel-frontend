@@ -7,7 +7,9 @@ import Navbar from '../components/Navbar'
 
 import Tube from './Tube'
 import Bus from './Bus'
-import Loading from '../components/Loading'
+import NationalRail from './NationalRail'
+
+import NationalRailProvider from '../context/NationalRailContext'
 
 const ViewMainContainer = styled.div`
   min-height: 100vh;
@@ -49,8 +51,8 @@ const ViewMain = () => (
     <PosedRouter>
       <Home path="/" />
       <Tube path="/tube" />
+      <NationalRail path="/rail" />
       <Bus path="/bus" />
-      <Loading path="/nationalrail" />
     </PosedRouter>
     <Navbar />
   </ViewMainContainer>
