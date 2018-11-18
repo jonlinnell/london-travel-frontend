@@ -60,7 +60,6 @@ const SpinnerRing = styled.div`
 const PosedContainer = posed.div({
   enter: { opacity: 1 },
   exit: { opacity: 0 },
-  before: { opacity: 0 },
 })
 
 const Spinner = () => (
@@ -82,7 +81,7 @@ class Loading extends PureComponent {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ showSpinners: true }), 500)
+    setTimeout(() => this.setState({ showSpinners: true }), 1000)
   }
 
   render() {
@@ -92,7 +91,7 @@ class Loading extends PureComponent {
     return (
       <PoseGroup animateOnMount>
         {
-          loading && <PosedContainer pose={showSpinners ? 'enter' : 'before'} key={1}><Spinner /></PosedContainer>
+          loading && showSpinners && <PosedContainer key={1}><Spinner /></PosedContainer>
         }
         <PosedContainer key={2}>{ children }</PosedContainer>
       </PoseGroup>
