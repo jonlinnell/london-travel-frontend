@@ -1,6 +1,7 @@
 const fetchTubeStatus = require('./lib/fetchTubeStatus')
 const getBusDepartures = require('./lib/getBusDepartures')
 const getRailDepartureBoard = require('./lib/getRailDepartureBoard')
+const searchStations = require('./lib/searchStations')
 
 const routes = (app) => {
   app.get('/tube', (req, res) => {
@@ -27,6 +28,11 @@ const routes = (app) => {
     getRailDepartureBoard(req.params)
       .then(data => res.json(data))
       .catch(error => res.status(500).send(error))
+  })
+
+  app.get('/searchStations/:string', (req, res) => {
+    searchStations(req.params.string)
+      .then(data => res.json(data))
   })
 }
 
