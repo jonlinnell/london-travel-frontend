@@ -6,27 +6,37 @@ const StyledForm = styled.div`
   padding: 12px;
   width: 100%;
 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
   position: fixed;
   z-index: 1;
   bottom: ${({ theme: { navbar: { height, units } } }) => `${height}${units}`};
 `
 
 const InputLabel = styled.label`
-  display: block;
   color: white;
+  font-size: 1rem;
+  line-height: 1.15rem;
 
-  margin-bottom: 12px;
+  white-space: nowrap;
+
+  margin-right: 12px;
 `
 
 const StopCodeInput = styled.input`
   background: transparent;
   outline: none;
-  width: 5rem;
-  padding-bottom: 6px;
+  padding-bottom: 3px;
+  margin-left: auto;
 
-  font-size: 1.2rem;
+  width: 15vw;
+
+  font-size: 1rem;
 
   border: none;
+  border-radius: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
   color: white;

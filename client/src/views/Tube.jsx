@@ -92,7 +92,7 @@ class TubeStatus extends PureComponent {
         <Loading loading={loading && !hasError}>
           <PosedLineContainer>
             {
-              data.map((line, id) => <TubeLineInfo zIndex={id} line={line} key={line.id} />)
+              data.map(line => <TubeLineInfo line={line} key={line.id} />)
             }
           </PosedLineContainer>
         </Loading>

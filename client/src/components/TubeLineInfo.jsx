@@ -9,8 +9,6 @@ const LineContainer = styled.li`
   padding: 12px;
   font-family: "DIN Light";
 
-  z-index: ${({ zIndex }) => zIndex};
-
   background-color: ${({ id, theme }) => theme.lines[id].background};
   color: ${({ id, theme }) => theme.lines[id].text};
 `

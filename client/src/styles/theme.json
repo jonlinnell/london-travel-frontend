@@ -3,7 +3,7 @@
   "boxPadding": "6px",
   "boxMargin": "24px",
   "navbar": {
-    "height": 64,
+    "height": 32,
     "units": "px"
   },
   "colours": {

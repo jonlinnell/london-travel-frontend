@@ -6,6 +6,8 @@ const BusInfo = styled.li`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+
+  padding: 12px 6px;
 `
 
 const BusDestination = styled.span`
@@ -14,7 +16,10 @@ const BusDestination = styled.span`
 
 const BusService = styled.span`
   font-size: 1.3rem;
-  margin-right: 6px;
+  width: 32px;
+  margin-right: 12px;
+
+  color: ${({ theme: { colours: { bus } } }) => bus};
 `
 
 const BusETA = styled.span`

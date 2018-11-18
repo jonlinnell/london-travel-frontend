@@ -44,7 +44,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 16px;
-
+    
     font-family: 'DIN Light', 'Helvetica Neue', sans-serif;
   }
 

@@ -13,8 +13,12 @@ import { api } from '../../config/config.json'
 
 const INTERVAL = 5 // in seconds
 
-const ViewBusWrapper = styled.div`
+const Title = styled.h2`
+  margin-top: 0;
+`
 
+const ViewBusWrapper = styled.div`
+  height: 100%;
 `
 
 const BusDeparturesWrapper = styled.div`
@@ -25,6 +29,10 @@ const BusContainer = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+
+  &>:nth-child(odd) {
+    background-color: rgba(253, 246, 225, 0.5);
+  }
 `
 
 const PosedBusContainer = posed(BusContainer)({
@@ -65,6 +73,8 @@ class ViewBus extends PureComponent {
       if (validateStopCode(stopCode)) {
         this.fetchData()
         this.intervalId = setInterval(() => this.fetchData(), INTERVAL * 1000)
+        
+        document.getElementById('bus-departures-wrapper').scrollIntoView()
       } else {
         this.setState({
           data: [],
@@ -109,9 +119,9 @@ class ViewBus extends PureComponent {
     // @TODO: Use PoseGroup for buses, once exit bug is fixed by maintainer
     return (
       <ViewBusWrapper>
-        <BusDeparturesWrapper>
-          <Loading loading={loading && !hasError}>
-            <p>{ stopName }</p>
+        <BusDeparturesWrapper id="bus-departures-wrapper">
+          <Loading loading={loading && !hasError && !data.length}>
+            <Title>{ stopName }</Title>
             <PosedBusContainer>
               {
                 data.map(bus => <BusInfo bus={bus} key={bus.journeyId} />)
