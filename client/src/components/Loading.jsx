@@ -81,7 +81,7 @@ class Loading extends PureComponent {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({ showSpinners: true }), 1000)
+    setTimeout(() => this.setState({ showSpinners: true }), 500)
   }
 
   render() {

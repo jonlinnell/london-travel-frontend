@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Navbar from '../components/Navbar'
 
 import Tube from './Tube'
+import Bus from './Bus'
 import Loading from '../components/Loading'
 
 const ViewMainContainer = styled.div`
@@ -48,6 +49,7 @@ const ViewMain = () => (
       <PosedRouter>
         <Home path="/" />
         <Tube path="/tube" />
+        <Bus path="/bus" />
         <Loading path="/nationalrail" />
       </PosedRouter>
     </ContentWrapper>
