@@ -7,21 +7,37 @@ const StyledForm = styled.div`
   width: 100%;
 
   position: fixed;
+  z-index: 1;
   bottom: ${({ theme: { navbar: { height, units } } }) => `${height}${units}`};
 `
 
+const InputLabel = styled.label`
+  display: block;
+  color: white;
+
+  margin-bottom: 12px;
+`
+
 const StopCodeInput = styled.input`
-  border: none;
   background: transparent;
   outline: none;
   width: 5rem;
   padding-bottom: 6px;
 
+  font-size: 1.2rem;
+
+  border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
   color: white;
 
   transition: .3s all ease-in-out;
+
+  &::-webkit-inner-spin-button, 
+  &::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
 
   &:focus {
     width: 100%;
@@ -66,7 +82,8 @@ class BusControlForm extends PureComponent {
   render() {
     return (
       <StyledForm>
-        <StopCodeInput type="number" name="stopCode" placeholder="5-digit stop code" onChange={this.handleChange} />
+        <InputLabel htmlFor="#stopCode">5-Digit Stop Code</InputLabel>
+        <StopCodeInput type="number" name="stopCode" id="stopCode" onChange={this.handleChange} />
       </StyledForm>
     )
   }
