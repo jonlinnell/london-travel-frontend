@@ -10,7 +10,7 @@ import Bus from './Bus'
 import Loading from '../components/Loading'
 
 const ViewMainContainer = styled.div`
-  height: 100vh;
+
 `
 
 const ContentWrapper = styled.div`
