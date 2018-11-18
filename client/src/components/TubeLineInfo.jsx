@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import posed from 'react-pose'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
-
-import TubeLineExtendedStatus from './TubeLineExtendedStatus'
 
 const LineContainer = styled.li`
   padding: 12px;
@@ -42,44 +40,23 @@ const PosedLineContainer = posed(LineContainer)({
   exit: { y: -20, opacity: 0 },
 })
 
-class TubeLineInfo extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      showExtendedLineStatus: false,
-    }
-
-    this.toggleShowExtendedLineStatus = this.toggleShowExtendedLineStatus.bind(this)
-  }
-
-  toggleShowExtendedLineStatus = () => this.setState(state => ({
-    showExtendedLineStatus: !state.showExtendedLineStatus,
-  }))
-
-  render() {
-    const { showExtendedLineStatus } = this.state
-    const { line: { id, name, lineStatuses } } = this.props
-
-    return (
-      <PosedLineContainer id={id}>
-        <Summary onClick={this.toggleShowExtendedLineStatus}>
-          <LineName>{name}</LineName>
-          <LineStatusSummary>
-            {
-              lineStatuses[0].statusSeverityDescription === 'Good Service'
-                ? <FontAwesomeIcon icon={faCheck} />
-                : lineStatuses
-                  .map(status => status.statusSeverityDescription)
-                  .filter((v, i, a) => a.indexOf(v) === i) // Unique strings only
-                  .map(i => i.replace(' ', '\xa0')) // Prevent status messages getting split over lines
-                  .join(', ')
-            }
-          </LineStatusSummary>
-        </Summary>
-      </PosedLineContainer>
-    )
-  }
-}
+const TubeLineInfo = ({ line: { id, name, lineStatuses } }) => (
+  <PosedLineContainer id={id}>
+    <Summary>
+      <LineName>{name}</LineName>
+      <LineStatusSummary>
+        {
+          lineStatuses[0].statusSeverityDescription === 'Good Service'
+            ? <FontAwesomeIcon icon={faCheck} />
+            : lineStatuses
+              .map(status => status.statusSeverityDescription)
+              .filter((v, i, a) => a.indexOf(v) === i) // Unique strings only
+              .map(i => i.replace(' ', '\xa0')) // Prevent status messages getting split over lines
+              .join(', ')
+        }
+      </LineStatusSummary>
+    </Summary>
+  </PosedLineContainer>
+)
 
 export default TubeLineInfo
