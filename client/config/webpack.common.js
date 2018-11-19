@@ -9,6 +9,7 @@ module.exports = {
   entry: resolve(__dirname, '../src/index.jsx'),
   output: {
     path: resolve(__dirname, '../dist'),
+    filename: '[hash].[name].js',
   },
   module: {
     rules: [
