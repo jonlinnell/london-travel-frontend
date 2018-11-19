@@ -168,17 +168,17 @@ class ViewBus extends PureComponent {
                   <PosedBusContainer>
                     { data.map(bus => <BusInfo bus={bus} key={bus.journeyId} />) }
                   </PosedBusContainer>
+                  {
+                    !hasError && stopCode && data && (
+                      <Attribution>
+                        Powered by TfL Open Data. Visit tfl.gov.uk for more information.
+                      </Attribution>
+                    )
+                  }
                 </BusDeparturesWrapper>
               )
           }
         </Loading>
-        {
-          !hasError && stopCode && data && (
-            <Attribution>
-              Powered by TfL Open Data. Visit tfl.gov.uk for more information.
-            </Attribution>
-          )
-        }
         {
           hasError && <AppError error={error} callerDescription="bus departure information" contained />
         }

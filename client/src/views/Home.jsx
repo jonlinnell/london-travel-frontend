@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import posed from 'react-pose'
 import { Link } from '@reach/router'
@@ -64,7 +64,6 @@ const Home = () => {
 
   return (
     <HomeWrapper>
-      { !getSavedCookieConsent() && <p>Not consented yet. By using this site, you consent.</p> }
       <Buttons initialPose="exit" pose="enter">
         <PosedButton backgroundImage={CampusPhoto}>
           <StyledExternalLink href="https://www.lborolondon.ac.uk/" target="_blank">
@@ -76,7 +75,18 @@ const Home = () => {
             />
           </StyledExternalLink>
         </PosedButton>
-        <VerticalSpacer size={24} />
+        {
+          !getSavedCookieConsent() && (
+            <Fragment>
+              <VerticalSpacer size={12} />
+              <PosedButton backgroundColour="mulberryLight">
+                <p>This app uses cookies (and other similar stuff) to work better for you.</p>
+                <p>By staying on this site, you agree to this.</p>
+              </PosedButton>
+            </Fragment>
+          )
+        }
+        <VerticalSpacer size={12} />
         <PosedButton backgroundColour="olympicGreen">
           <StyledLink to="/tube">
             <Header

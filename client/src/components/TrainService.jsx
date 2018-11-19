@@ -62,11 +62,7 @@ const renderServiceInfo = (etd) => {
     infoElement = <LateText>This service is delayed.</LateText>
   } else if (etd !== 'On time') {
     infoElement = (
-      <LateText>
-This service is delayed, and now expected to depart at
-        { etd }
-.
-      </LateText>
+      <LateText>This service is delayed, and now expected to depart at { etd }.</LateText>
     )
   }
 
