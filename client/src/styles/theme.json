@@ -10,6 +10,7 @@
   "colours": {
     "bus": "rgb(220, 36, 31)",
     "rail": "rgb(56, 76, 139)",
+    "overground": "rgb(239, 123, 16)",
     "africanViolet": "rgb(54, 17, 99)",
     "africanVioletLight": "rgb(111, 48, 146)",
     "mulberry": "rgb(183, 0, 98)",

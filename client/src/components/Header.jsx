@@ -11,7 +11,7 @@ const HeaderWrapper = styled.div`
   margin: ${({ topFill }) => (topFill ? '-12px' : 0)};
   margin-bottom: ${({ topFill }) => (topFill ? '12px' : 0)};
 
-  padding: ${({ topFill }) => (topFill ? '12px' : '6px')};
+  padding: ${({ topFill }) => (topFill ? '12px' : 0)};
 
   width: ${({ topFill }) => (topFill ? null : '100%')};
 `
@@ -44,6 +44,7 @@ const Title = styled.h2`
 
 const Subtitle = styled.p`
   margin: 0;
+  margin-top: 12px;
   color: rgb(255, 255, 255);
 `
 

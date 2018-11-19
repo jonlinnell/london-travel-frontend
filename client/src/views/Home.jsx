@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import posed from 'react-pose'
 import { Link } from '@reach/router'
 
-import { faBus } from '@fortawesome/free-solid-svg-icons'
+import { faBus, faLink } from '@fortawesome/free-solid-svg-icons'
 import Header from '../components/Header'
 import VerticalSpacer from '../components/VerticalSpacer'
 
@@ -11,6 +11,7 @@ import IconTfLRoundel from '../icons/TfLRoundel'
 import IconNationalRail from '../icons/NationalRail'
 
 import MainBG from '../images/mainBG.png'
+import CampusPhoto from '../images/campus.jpg'
 
 import { getSavedCookieConsent, saveCookieConsent } from '../lib/storage'
 
@@ -24,12 +25,10 @@ const HomeWrapper = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: white;
+`
 
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: left;
+const StyledExternalLink = styled.a`
+  text-decoration: none;
 `
 
 const HomeButton = styled.li`
@@ -37,7 +36,9 @@ const HomeButton = styled.li`
   margin-bottom: 12px;
   border-radius: 4px;
 
-  background-color: ${({ backgroundColour, theme: { colours } }) => colours[backgroundColour] || backgroundColour};
+  background: url(${({ backgroundImage }) => backgroundImage}) center no-repeat;
+  background-size: cover;
+  background-color: ${({ backgroundColour, theme: { colours } }) => colours[backgroundColour] || backgroundColour };
 `
 
 const StyledButtonList = styled.ul`
@@ -65,6 +66,17 @@ const Home = () => {
     <HomeWrapper>
       { !getSavedCookieConsent() && <p>Not consented yet. By using this site, you consent.</p> }
       <Buttons initialPose="exit" pose="enter">
+        <PosedButton backgroundImage={CampusPhoto}>
+          <StyledExternalLink href="https://www.lborolondon.ac.uk/" target="_blank">
+            <Header
+              title="Loughborough University London"
+              subtitle="Click here to visit our website."
+              icon={faLink}
+              useFA
+            />
+          </StyledExternalLink>
+        </PosedButton>
+        <VerticalSpacer size={24} />
         <PosedButton backgroundColour="olympicGreen">
           <StyledLink to="/tube">
             <Header
@@ -78,7 +90,7 @@ const Home = () => {
           <StyledLink to="/bus">
             <Header
               title="Live Bus Times"
-              subtitle="See live departures for any bus stop in London"
+              subtitle="See live departures for any bus stop in London."
               icon={faBus}
               useFA
             />
@@ -94,7 +106,7 @@ const Home = () => {
           </StyledLink>
         </PosedButton>
         <VerticalSpacer size={24} />
-        <PosedButton backgroundColour="petrolBlue">
+        <PosedButton backgroundColour="bus">
           <StyledLink to="/bus/91431,91432">
             <Header
               title="HereEast (388)"
@@ -102,7 +114,16 @@ const Home = () => {
             />
           </StyledLink>
         </PosedButton>
-        <PosedButton backgroundColour="petrolBlue">
+        <PosedButton backgroundColour="overground">
+          <StyledLink to="/rail/HKW">
+            <Header
+              title="Hackney Wick"
+              subtitle="Check the next London Overground trains."
+              icon={IconTfLRoundel}
+            />
+          </StyledLink>
+        </PosedButton>
+        <PosedButton backgroundColour="petrolBlueLight">
           <StyledLink to="/rail/SFA">
             <Header
               title="Stratford International"
