@@ -38,7 +38,7 @@ const HomeButton = styled.li`
 
   background: url(${({ backgroundImage }) => backgroundImage}) center no-repeat;
   background-size: cover;
-  background-color: ${({ backgroundColour, theme: { colours } }) => colours[backgroundColour] || backgroundColour };
+  background-color: ${({ backgroundColour, theme: { colours } }) => colours[backgroundColour] || backgroundColour};
 `
 
 const StyledButtonList = styled.ul`

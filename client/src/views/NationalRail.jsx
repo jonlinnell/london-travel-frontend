@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import posed, { PoseGroup } from 'react-pose'
+import posed from 'react-pose'
 import { get } from 'lodash'
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
