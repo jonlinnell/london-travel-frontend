@@ -24,18 +24,18 @@ const AppError = styled.div`
 `
 
 const ErrorTitle = styled.h4`
+  color: black;
   font-family: 'DIN Light';
   font-size: 1.5rem;
-  color: black;
+  text-align: center;
 
   width: 80%;
-  text-align: center;
 `
 
 const ErrorMessage = styled.p`
+  color: black;
   font-family: 'DIN Light';
   font-size: ${({ small }) => (small ? '12px' : '18px')};
-  color: black;
   text-align: center;
 
   margin-top: 0;

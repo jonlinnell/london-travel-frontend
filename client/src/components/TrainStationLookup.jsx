@@ -14,10 +14,13 @@ import { api } from '../../config/config.json'
 
 const Autocomplete = styled.div`
   position: absolute;
-  bottom: ${({ theme: { navbar: { height, units } } }) => `${height + 4 + ((absolutifyBaseFontSize() * 1.15))}${units}`};
-  right: 0;
+  bottom: 96px;
+  right: 12px;
+  /* bottom: ${({ theme: { navbar: { height, units } } }) => `${height + 92}${units}`}; */
+  
+  margin: 0;
 
-  z-index: 1;
+  z-index: 2;
 `
 
 const StationList = styled.ul`
@@ -74,7 +77,10 @@ class TrainStationLookup extends PureComponent {
     this.setState(prevState => ({ ...prevState, loading: true }))
 
     axios.get(`${api}/searchStations/${searchString}`)
-      .then(response => this.setState({ data: response.data }))
+      .then((response) => {
+        document.getElementById('autocomplete-stations').scrollIntoView()
+        this.setState({ data: response.data })
+      })
   }
 
   handleKeyPress = (e) => {
@@ -106,7 +112,7 @@ class TrainStationLookup extends PureComponent {
 
     return (
       <Fragment>
-        <Autocomplete>
+        <Autocomplete id="autocomplete-stations">
           <PosedStationList pose={searchString.length > 2 ? 'enter' : 'exit'}>
             <PoseGroup>
               {

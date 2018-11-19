@@ -22,28 +22,36 @@ const NavbarItemList = styled.ul`
   align-items: center;
 
   height: ${({ theme: { navbar: { height, units } } }) => `${height}${units}`};
-
-  & li a, & li a:visited {
-    color: ${({ theme: { colours } }) => colours.asphalt};
-  }
 `
 
 const NavbarItem = styled.li`
   display: inline-block;
   margin: 0 12px;
 
-  padding-top: ${({ theme: { navbar: { height, units } } }) => `${height / 4}${units}`};
+  padding-top: ${({ theme: { navbar: { height, units } } }) => `${height / 6}${units}`};
   padding-bottom: ${({ active }) => (active ? 0 : '6px')};
-
 
   text-align: center;
   height: 100%;
   width: 100%;
 
-  transition: border-width 0.3s ease-in-out;
+  & > a, & > a:visited {
+    transition: color 0.3s ease-in-out;
 
-  border-bottom: 3px solid ${({ theme: { colours } }) => colours.mulberry};
-  border-width: ${({ active }) => (active ? '100%' : 0)};
+    color: ${({ active, theme: { colours } }) => (active ? colours.mulberry : colours.asphalt)};
+  }
+
+  & > a:focus, & > a:active {
+    border: none;
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  & > a:active {
+    color: ${({ theme: { colours } }) => colours.mulberryLight};
+    background-color: transparent;
+  }
 `
 
 const StyledNavbar = styled.div`

@@ -4,7 +4,7 @@
   "boxMargin": "24px",
   "baseFontSize": "16px",
   "navbar": {
-    "height": 48,
+    "height": 32,
     "units": "px"
   },
   "colours": {

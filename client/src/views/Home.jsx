@@ -18,7 +18,6 @@ const HomeWrapper = styled.div`
   margin-top: 0;
 
   min-height: 100vh;
-  
 `
 
 const StyledLink = styled(Link)`
@@ -47,9 +46,9 @@ const StyledButtonList = styled.ul`
 
 const Buttons = posed(StyledButtonList)({
   enter: {
-    delayChildren: 500, staggerChildren: 100,
+    opacity: 1, delayChildren: 400, staggerChildren: 60,
   },
-  exit: { },
+  exit: { opacity: 0 },
 })
 
 const PosedButton = posed(HomeButton)({

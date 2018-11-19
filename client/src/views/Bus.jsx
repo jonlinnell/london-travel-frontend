@@ -5,17 +5,17 @@ import posed from 'react-pose'
 
 import { faBus } from '@fortawesome/free-solid-svg-icons'
 
-import Attribution from '../components/Attribution'
-import BusInfo from '../components/BusInfo'
-import BusControlForm from '../components/BusControlForm'
 import AppError from '../components/AppError'
-import Loading from '../components/Loading'
+import Attribution from '../components/Attribution'
+import BusControlForm from '../components/BusControlForm'
+import BusInfo from '../components/BusInfo'
 import Header from '../components/Header'
+import Loading from '../components/Loading'
 import Pristine from '../components/Pristine'
 
 import { api } from '../../config/config.json'
 
-const INTERVAL = 5 // in seconds
+const INTERVAL = 30 // in seconds
 
 const ViewBusWrapper = styled.div`
   height: 100%;
@@ -41,6 +41,7 @@ const PosedBusContainer = posed(BusContainer)({
   exit: { staggerChildren: 10, staggerDirection: -1 },
 })
 
+// Allow xxxxx and xxxxx,xxxxx, as both are accepted by the endpoint
 const validateStopCode = stopCode => stopCode && (stopCode.length === 5 || stopCode.match(/[0-9]{5},[0-9]{5}/))
 
 class ViewBus extends PureComponent {
@@ -51,12 +52,12 @@ class ViewBus extends PureComponent {
 
     this.state = {
       data: [],
-      stopCode: null,
-      stopName: null,
-      pristine: true,
-      loading: false,
       error: null,
       hasError: false,
+      loading: false,
+      pristine: true,
+      stopCode: null,
+      stopName: null,
     }
 
     this.setStopCode = this.setStopCode.bind(this)
@@ -74,8 +75,8 @@ class ViewBus extends PureComponent {
 
   setStopCode = (newStopCode) => {
     this.setState({
-      stopCode: newStopCode,
       pristine: false,
+      stopCode: newStopCode,
     }, () => {
       const { stopCode } = this.state
 
@@ -101,29 +102,29 @@ class ViewBus extends PureComponent {
     axios.get(`${api}/bus/${stopCode}`)
       .then(response => this.setState({
         data: response.data.buses,
-        stopName: response.data.stopName,
-        loading: false,
-        hasError: false,
         error: null,
+        hasError: false,
+        loading: false,
+        stopName: response.data.stopName,
       }))
       .catch(error => this.setState({
         data: [],
-        stopName: null,
+        error,
         hasError: true,
         loading: false,
-        error,
+        stopName: null,
       }))
   }
 
   render() {
     const {
       data,
-      stopName,
-      stopCode,
-      loading,
-      hasError,
-      pristine,
       error,
+      hasError,
+      loading,
+      pristine,
+      stopCode,
+      stopName,
     } = this.state
 
     // @TODO: Use PoseGroup for buses, once exit bug is fixed by maintainer

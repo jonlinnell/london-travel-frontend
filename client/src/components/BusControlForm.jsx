@@ -52,7 +52,7 @@ class BusControlForm extends PureComponent {
   render() {
     return (
       <StyledForm>
-        <Header title="Enter a stop..." icon={faSearch} useFA small />
+        <Header title="Enter a stop code" icon={faSearch} useFA small />
         <Row>
           <Input placeholder="5-digit stop code" type="number" name="stopCode" id="stopCode" onChange={this.handleChange} />
         </Row>

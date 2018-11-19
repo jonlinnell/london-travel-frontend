@@ -1,17 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Icon = ({ icon }) => icon()
 
 const HeaderWrapper = styled.div`
   background-color: ${({ backgroundColour, theme: { colours } }) => colours[backgroundColour] || backgroundColour};
+
   margin: ${({ topFill }) => (topFill ? '-12px' : 0)};
+  margin-bottom: ${({ topFill }) => (topFill ? '12px' : 0)};
+
   padding: ${({ topFill }) => (topFill ? '12px' : '6px')};
 
   width: ${({ topFill }) => (topFill ? null : '100%')};
-
-  margin-bottom: ${({ topFill }) => (topFill ? '12px' : 0)};
 `
 
 const HeaderTitleWrapper = styled.div`
@@ -27,7 +29,7 @@ const HeaderTitleWrapper = styled.div`
     margin-left: auto;
 
     color: rgb(255, 255, 255);
-    fill: rgb(255, 255, 255);
+    fill: none;
     stroke: rgb(255, 255, 255);
 
     flex-shrink: 0;
@@ -46,13 +48,13 @@ const Subtitle = styled.p`
 `
 
 export default ({
-  icon,
-  title,
-  subtitle,
-  useFA,
   backgroundColour,
-  topFill,
+  icon,
   small,
+  subtitle,
+  title,
+  topFill,
+  useFA,
 }) => {
   let iconElement
 
