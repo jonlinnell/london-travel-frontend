@@ -34,10 +34,6 @@ const TrainServices = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-
-  &>:nth-child(odd) {
-    background-color: rgba(233, 235, 242, 0.5);
-  }
 `
 
 const StyledControlForm = styled.div`
@@ -176,7 +172,7 @@ class ViewNationalRail extends PureComponent {
                   }
                   <PosedTrainServiceContainer>
                     {
-                      data.map(service => <TrainService key={service.rsid} {...service} />)
+                      data.map((service, i) => <TrainService key={service.rsid} secondary={i % 2} {...service} />)
                     }
                   </PosedTrainServiceContainer>
                   {
