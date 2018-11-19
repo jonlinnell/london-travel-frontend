@@ -4,53 +4,13 @@ import axios from 'axios'
 import posed, { PoseGroup } from 'react-pose'
 import { get } from 'lodash'
 
+import Row from './Row'
+import Input from './Input'
+
 import absolutifyBaseFontSize from '../lib/absolutifyBaseFontSize'
 import { lighten } from '../lib/colours'
 
 import { api } from '../../config/config.json'
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-`
-
-const InputLabel = styled.label`
-  color: white;
-  font-size: 1rem;
-  line-height: 1.15rem;
-
-  white-space: nowrap;
-
-  margin-right: 12px;
-`
-
-const StationInput = styled.input`
-  background: transparent;
-  outline: none;
-  padding-bottom: 3px;
-  margin-left: auto;
-
-  width: 100%;
-  min-width: 15vw;
-
-  font-size: 1rem;
-
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-
-  color: white;
-
-  transition: .3s all ease-in-out;
-
-  &:focus {
-    width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, 1);
-    transition: .3s all ease-in-out;
-  }
-`
 
 const Autocomplete = styled.div`
   position: absolute;
@@ -91,6 +51,8 @@ const PosedStation = posed(Station)({
 })
 
 class TrainStationLookup extends PureComponent {
+  timeoutId = null
+
   constructor(props) {
     super(props)
 
@@ -129,7 +91,8 @@ class TrainStationLookup extends PureComponent {
       const { onClear } = this.props
 
       if (searchString.length > 2) {
-        this.fetchData()
+        if (this.timeoutId) { clearTimeout(this.timeoutId) }
+        this.timeoutId = setTimeout(() => this.fetchData(), 500)
       } else if (!searchString) {
         this.setState({ data: [] })
         onClear()
@@ -166,9 +129,9 @@ class TrainStationLookup extends PureComponent {
           </PosedStationList>
         </Autocomplete>
         <Row>
-          <InputLabel>{ label }</InputLabel>
-          <StationInput
+          <Input
             type="text"
+            placeholder={label}
             value={searchString}
             onChange={this.handleChange}
             onKeyDown={this.handleKeyPress}
