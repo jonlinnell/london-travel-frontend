@@ -90,7 +90,7 @@ class TubeStatus extends PureComponent {
     return (
       <TubeStatusWrapper>
         <Loading loading={loading && !hasError}>
-          <PosedLineContainer>
+          <PosedLineContainer initialPose="exit" pose={loading ? 'exit' : 'enter'}>
             {
               data.map(line => <TubeLineInfo line={line} key={line.id} />)
             }
