@@ -40,8 +40,8 @@ const BusContainer = styled.ul`
 `
 
 const PosedBusContainer = posed(BusContainer)({
-  enter: { staggerChildren: 60 },
-  exit: { staggerChildren: 10, staggerDirection: -1 },
+  enter: { opacity: 1, delayChildren: 50, staggerChildren: 50 },
+  exit: { opacity: 0, staggerChildren: 10, staggerDirection: -1 },
 })
 
 // Allow xxxxx and xxxxx,xxxxx, as both are accepted by the endpoint
@@ -165,7 +165,7 @@ class ViewBus extends PureComponent {
                     topFill
                     useFA
                   />
-                  <PosedBusContainer>
+                  <PosedBusContainer initialPose="exit" pose={loading ? 'exit' : 'enter'}>
                     { data.map(bus => <BusInfo bus={bus} key={bus.journeyId} />) }
                   </PosedBusContainer>
                   {

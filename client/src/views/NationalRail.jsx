@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import posed from 'react-pose'
+import posed, { PoseGroup } from 'react-pose'
 import { get } from 'lodash'
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -52,8 +52,8 @@ const StyledControlForm = styled.div`
 `
 
 const PosedTrainServiceContainer = posed(TrainServices)({
-  enter: { staggerChildren: 300 },
-  exit: { staggerChildren: 10, staggerDirection: -1 },
+  enter: { opacity: 1, delayChildren: 50, staggerChildren: 50 },
+  exit: { opacity: 0, staggerChildren: 10, staggerDirection: -1 },
 })
 
 const validateStationCode = stationCode => stationCode && stationCode.match(/[A-Z]{3}/)
@@ -198,7 +198,7 @@ class ViewNationalRail extends PureComponent {
                       />
                     )
                   }
-                  <PosedTrainServiceContainer>
+                  <PosedTrainServiceContainer initialPose="exit" pose={loading ? 'exit' : 'enter'}>
                     {
                       data.map((service, i) => (
                         <TrainService

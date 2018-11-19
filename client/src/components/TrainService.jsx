@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import posed from 'react-pose'
 import { get } from 'lodash'
 
 const StyledTrainService = styled.li`
@@ -53,6 +54,11 @@ const Platform = styled.p`
   line-height: 1rem;
 `
 
+const PosedTrainService = posed(StyledTrainService)({
+  enter: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 10 },
+})
+
 const renderServiceInfo = (etd) => {
   let infoElement
 
@@ -75,7 +81,7 @@ const TrainService = ({
   destination,
   platform,
 }) => (
-  <StyledTrainService>
+  <PosedTrainService>
     <Row>
       <Time>{std}</Time>
       <Destination>{get(destination, 'name', null)}</Destination>
@@ -84,7 +90,7 @@ const TrainService = ({
       {renderServiceInfo(etd)}
       <Platform>{ platform }</Platform>
     </Row>
-  </StyledTrainService>
+  </PosedTrainService>
 )
 
 export default TrainService
