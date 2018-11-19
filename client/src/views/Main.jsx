@@ -9,8 +9,6 @@ import Tube from './Tube'
 import Bus from './Bus'
 import NationalRail from './NationalRail'
 
-import NationalRailProvider from '../context/NationalRailContext'
-
 const ViewMainContainer = styled.div`
   min-height: 100vh;
 `

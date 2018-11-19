@@ -1,4 +1,4 @@
-import React, { Fragment }  from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -13,7 +13,7 @@ const HeaderWrapper = styled.div`
   margin-bottom: 12px;
 
   & svg {
-    width: ${ ({ width }) => width || '32px' };
+    width: ${({ width }) => width || '32px'};
 
     margin-left: auto;
 
@@ -36,17 +36,22 @@ const Subtitle = styled.p`
   color: rgb(255, 255, 255);
 `
 
-export default ({ icon, title, subtitle, useFA }) => {
+export default ({
+  icon,
+  title,
+  subtitle,
+  useFA
+}) => {
   return (
     <div>
       <HeaderWrapper>
         <Title>{ title }</Title>
         {
           useFA
-          ? (
-            <FontAwesomeIcon icon={icon} />
-          )
-          : <Icon icon={icon} /> 
+            ? (
+              <FontAwesomeIcon icon={icon} />
+            )
+            : <Icon icon={icon} /> 
         }
       </HeaderWrapper>
       <Subtitle>{ subtitle }</Subtitle>
