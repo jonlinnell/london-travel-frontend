@@ -72,6 +72,8 @@ const Spinner = () => (
 )
 
 class Loading extends PureComponent {
+  timeoutId = null
+
   constructor(props) {
     super(props)
 
@@ -80,8 +82,16 @@ class Loading extends PureComponent {
     }
   }
 
-  componentDidMount() {
-    setTimeout(() => this.setState({ showSpinners: true }), 500)
+  componentDidUpdate(prevProps) {
+    const { loading } = this.props
+
+    if (prevProps.loading !== loading) {
+      this.timeoutId = setTimeout(() => this.setState({ showSpinners: true }), 500)
+    }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeoutId)
   }
 
   render() {
