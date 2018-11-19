@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import posed from 'react-pose'
 import { get } from 'lodash'
 
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-
 import Attribution from '../components/Attribution'
 import TrainService from '../components/TrainService'
 import TrainStationLookup from '../components/TrainStationLookup'
@@ -13,6 +11,7 @@ import AppError from '../components/AppError'
 import Loading from '../components/Loading'
 import Header from '../components/Header'
 
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import IconNationalRail from '../icons/NationalRail'
 
 import { api } from '../../config/config.json'
@@ -22,13 +21,6 @@ const INTERVAL = 1 // in minutes
 const ViewNationalRailWrapper = styled.div`
   height: 100%;
   margin-bottom: 20vh;
-`
-
-const DepartureBoardHeader = styled.div`
-  background-color: ${({ theme: { colours: { rail } } }) => rail};
-  margin: -12px;
-  margin-bottom: 12px;
-  padding: 12px;
 `
 
 const DepartureBoardWrapper = styled.div`
@@ -171,13 +163,13 @@ class ViewNationalRail extends PureComponent {
             {
               stationName
                 ? (
-                  <DepartureBoardHeader>
-                    <Header
-                      title={stationName}
-                      subtitle={`Next trains departing from this station${destinationName ? ` calling at ${destinationName}.` : '.'}`}
-                      icon={IconNationalRail}
-                    />
-                  </DepartureBoardHeader>
+                  <Header
+                    title={stationName}
+                    subtitle={`Next trains departing from this station${destinationName ? ` calling at ${destinationName}.` : '.'}`}
+                    icon={IconNationalRail}
+                    backgroundColour="rail"
+                    topFill
+                  />
                 )
                 : null
             }

@@ -3,6 +3,12 @@ import styled from 'styled-components'
 import posed, { PoseGroup } from 'react-pose'
 import { Link } from '@reach/router'
 
+import Header from '../components/Header'
+
+import IconTfLRoundel from '../icons/TfLRoundel'
+import IconNationalRail from '../icons/NationalRail'
+import { faBus } from '@fortawesome/free-solid-svg-icons'
+
 const HomeWrapper = styled.div`
   background-color: white;
   padding: 12px; 
@@ -24,26 +30,6 @@ const HomeButton = styled.li`
   border-radius: 4px;
 
   background-color: ${({ backgroundColour, theme: { colours } }) => colours[backgroundColour] || backgroundColour};
-`
-
-const TitlePair = styled.div`
-  
-`
-
-const Title = styled.h3`
-  font-size: 1.2rem;
-  margin-top: 0;
-  margin-bottom: 6px;
-`
-
-const Subtitle = styled.p`
-  font-size: 0.9rem;
-  margin-bottom: 0;
-`
-
-const ButtonIcon = styled.div`
-  margin-left: auto;
-  height: 100%;
 `
 
 const StyledButtonList = styled.ul`
@@ -68,35 +54,30 @@ const Home = () => (
     <Buttons initialPose="exit" pose="enter">
       <PosedButton backgroundColour="olympicGreen">
         <StyledLink to='/tube' >
-          <TitlePair>
-            <Title>Tube Status</Title>
-            <Subtitle>Touch here for service information.</Subtitle>
-          </TitlePair>
-          <ButtonIcon>
-            Something
-          </ButtonIcon>
+          <Header
+            title="Tube Status"
+            subtitle="Current status of the London Underground."
+            icon={IconTfLRoundel}
+          />
           </StyledLink>
         </PosedButton>
       <PosedButton backgroundColour="merciaRedLight">
         <StyledLink to='/bus'>
-          <TitlePair>
-            <Title>Buses</Title>
-            <Subtitle>See live departure information for London bus stops.</Subtitle>
-          </TitlePair>
-          <ButtonIcon>
-            Something
-          </ButtonIcon>
+          <Header
+            title="Live Bus Times"
+            subtitle="See live departures for any bus stop in London"
+            icon={faBus}
+            useFA
+          />
           </StyledLink>
         </PosedButton>
       <PosedButton backgroundColour="petrolBlue">
         <StyledLink to='/rail'>
-          <TitlePair>
-            <Title>Train Departures</Title>
-            <Subtitle>See all trains leaving a station in the next two hours.</Subtitle>
-          </TitlePair>
-          <ButtonIcon>
-            Something
-          </ButtonIcon>
+          <Header
+            title="Train Departure Boards"
+            subtitle="See all trains leaving a station in the next two hours."
+            icon={IconNationalRail}
+          />
         </StyledLink>
       </PosedButton>
     </Buttons>

@@ -8,6 +8,9 @@ import BusInfo from '../components/BusInfo'
 import BusControlForm from '../components/BusControlForm'
 import AppError from '../components/AppError'
 import Loading from '../components/Loading'
+import Header from '../components/Header'
+
+import { faBus } from '@fortawesome/free-solid-svg-icons'
 
 import { api } from '../../config/config.json'
 
@@ -121,7 +124,18 @@ class ViewBus extends PureComponent {
       <ViewBusWrapper>
         <BusDeparturesWrapper id="bus-departures-wrapper">
           <Loading loading={loading && !hasError && !data.length}>
-            <Title>{ stopName }</Title>
+            {
+              stopName && (
+                <Header
+                  title={stopName}
+                  subtitle="Next buses at this stop."
+                  icon={faBus}
+                  backgroundColour="bus"
+                  topFill
+                  useFA
+                />
+              )
+            }
             <PosedBusContainer>
               {
                 data.map(bus => <BusInfo bus={bus} key={bus.journeyId} />)

@@ -5,6 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Icon = ({ icon }) => icon()
 
 const HeaderWrapper = styled.div`
+  background-color: ${({ backgroundColour, theme: { colours } }) => colours[backgroundColour] || backgroundColour};
+  margin: ${({ topFill }) => topFill ? '-12px' : 0 };
+  padding: ${({ topFill }) => topFill ? '12px' : '6px' };
+
+  margin-bottom: 12px;
+`
+
+const HeaderTitleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -14,6 +22,7 @@ const HeaderWrapper = styled.div`
 
   & svg {
     width: ${({ width }) => width || '32px'};
+    font-size: ${({ width }) => width || '32px'};
 
     margin-left: auto;
 
@@ -40,21 +49,28 @@ export default ({
   icon,
   title,
   subtitle,
-  useFA
+  useFA,
+  backgroundColour,
+  topFill,
+  width
 }) => {
+  let iconElement
+
+  if (useFA && icon) {
+    iconElement = <FontAwesomeIcon icon={icon} />
+  } else if (icon) {
+    iconElement = <Icon icon={icon} />
+  } else {
+    iconElement = null
+  }
+
   return (
-    <div>
-      <HeaderWrapper>
+    <HeaderWrapper topFill={topFill} backgroundColour={backgroundColour}>
+      <HeaderTitleWrapper>
         <Title>{ title }</Title>
-        {
-          useFA
-            ? (
-              <FontAwesomeIcon icon={icon} />
-            )
-            : <Icon icon={icon} /> 
-        }
-      </HeaderWrapper>
+        { iconElement }
+      </HeaderTitleWrapper>
       <Subtitle>{ subtitle }</Subtitle>
-    </div>
+    </HeaderWrapper>
   )
 }
