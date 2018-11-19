@@ -7,7 +7,6 @@ import { get } from 'lodash'
 import Row from './Row'
 import Input from './Input'
 
-import absolutifyBaseFontSize from '../lib/absolutifyBaseFontSize'
 import { lighten } from '../lib/colours'
 
 import { api } from '../../config/config.json'
@@ -16,7 +15,6 @@ const Autocomplete = styled.div`
   position: absolute;
   bottom: 96px;
   right: 12px;
-  /* bottom: ${({ theme: { navbar: { height, units } } }) => `${height + 92}${units}`}; */
   
   margin: 0;
 

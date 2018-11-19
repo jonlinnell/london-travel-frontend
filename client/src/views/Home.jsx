@@ -12,6 +12,8 @@ import IconNationalRail from '../icons/NationalRail'
 
 import MainBG from '../images/mainBG.png'
 
+import { getSavedCookieConsent, saveCookieConsent } from '../lib/storage'
+
 const HomeWrapper = styled.div`
   background: url(${MainBG}) repeat;
   padding: 12px; 
@@ -56,57 +58,62 @@ const PosedButton = posed(HomeButton)({
   exit: { y: 50, opacity: 0 },
 })
 
-const Home = () => (
-  <HomeWrapper>
-    <Buttons initialPose="exit" pose="enter">
-      <PosedButton backgroundColour="olympicGreen">
-        <StyledLink to="/tube">
-          <Header
-            title="Tube Status"
-            subtitle="Current status of the London Underground."
-            icon={IconTfLRoundel}
-          />
-        </StyledLink>
-      </PosedButton>
-      <PosedButton backgroundColour="merciaRedLight">
-        <StyledLink to="/bus">
-          <Header
-            title="Live Bus Times"
-            subtitle="See live departures for any bus stop in London"
-            icon={faBus}
-            useFA
-          />
-        </StyledLink>
-      </PosedButton>
-      <PosedButton backgroundColour="petrolBlue">
-        <StyledLink to="/rail">
-          <Header
-            title="Train Departure Boards"
-            subtitle="See all trains leaving a station in the next two hours."
-            icon={IconNationalRail}
-          />
-        </StyledLink>
-      </PosedButton>
-      <VerticalSpacer size={24} />
-      <PosedButton backgroundColour="petrolBlue">
-        <StyledLink to="/bus/91431,91432">
-          <Header
-            title="HereEast (388)"
-            subtitle="London buses arriving soon outside campus."
-          />
-        </StyledLink>
-      </PosedButton>
-      <PosedButton backgroundColour="petrolBlue">
-        <StyledLink to="/rail/SFA">
-          <Header
-            title="Stratford International"
-            subtitle="Check the next Southeastern High Speed services."
-            icon={IconNationalRail}
-          />
-        </StyledLink>
-      </PosedButton>
-    </Buttons>
-  </HomeWrapper>
-)
+const Home = () => {
+  setTimeout(() => saveCookieConsent(), 3000)
+
+  return (
+    <HomeWrapper>
+      { !getSavedCookieConsent() && <p>Not consented yet. By using this site, you consent.</p> }
+      <Buttons initialPose="exit" pose="enter">
+        <PosedButton backgroundColour="olympicGreen">
+          <StyledLink to="/tube">
+            <Header
+              title="Tube Status"
+              subtitle="Current status of the London Underground."
+              icon={IconTfLRoundel}
+            />
+          </StyledLink>
+        </PosedButton>
+        <PosedButton backgroundColour="merciaRedLight">
+          <StyledLink to="/bus">
+            <Header
+              title="Live Bus Times"
+              subtitle="See live departures for any bus stop in London"
+              icon={faBus}
+              useFA
+            />
+          </StyledLink>
+        </PosedButton>
+        <PosedButton backgroundColour="petrolBlue">
+          <StyledLink to="/rail">
+            <Header
+              title="Train Departure Boards"
+              subtitle="See all trains leaving a station in the next two hours."
+              icon={IconNationalRail}
+            />
+          </StyledLink>
+        </PosedButton>
+        <VerticalSpacer size={24} />
+        <PosedButton backgroundColour="petrolBlue">
+          <StyledLink to="/bus/91431,91432">
+            <Header
+              title="HereEast (388)"
+              subtitle="London buses arriving soon outside campus."
+            />
+          </StyledLink>
+        </PosedButton>
+        <PosedButton backgroundColour="petrolBlue">
+          <StyledLink to="/rail/SFA">
+            <Header
+              title="Stratford International"
+              subtitle="Check the next Southeastern High Speed services."
+              icon={IconNationalRail}
+            />
+          </StyledLink>
+        </PosedButton>
+      </Buttons>
+    </HomeWrapper>
+  )
+}
 
 export default Home

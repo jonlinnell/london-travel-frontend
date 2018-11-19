@@ -5,10 +5,10 @@ import styled from 'styled-components'
 
 import Navbar from '../components/Navbar'
 
-import Home from './Home'
-import Tube from './Tube'
 import Bus from './Bus'
+import Home from './Home'
 import NationalRail from './NationalRail'
+import Tube from './Tube'
 
 const ViewMainContainer = styled.div`
   
@@ -31,7 +31,9 @@ const PosedRouter = ({ children }) => (
       ({ location }) => (
         <PoseGroup>
           <RouteContainer key={location.key}>
-            <Router location={location}>{ children }</Router>
+            <Router location={location}>
+              { children }
+            </Router>
           </RouteContainer>
         </PoseGroup>
       )

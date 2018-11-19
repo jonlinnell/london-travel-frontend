@@ -11,10 +11,13 @@ import Attribution from '../components/Attribution'
 import Header from '../components/Header'
 import Loading from '../components/Loading'
 import Pristine from '../components/Pristine'
+import RecentSearches from '../components/RecentSearches'
 import TrainService from '../components/TrainService'
 import TrainStationLookup from '../components/TrainStationLookup'
 
 import IconNationalRail from '../icons/NationalRail'
+
+import { addRailStation, getPreviousRailStations } from '../lib/storage'
 
 import { api } from '../../config/config.json'
 
@@ -138,7 +141,7 @@ class ViewNationalRail extends PureComponent {
           stationName: get(response.data.station, 'name', null),
         })
 
-        document.getElementById('train-services-wrapper').scrollIntoView()
+        addRailStation({ name: response.data.station.name, code: stationCode })
       })
       .catch(error => this.setState({
         data: [],
@@ -163,12 +166,25 @@ class ViewNationalRail extends PureComponent {
       stationName,
     } = this.state
 
+    const previousRailStations = getPreviousRailStations()
+
     return (
       <ViewNationalRailWrapper id="train-services-wrapper">
         <Loading loading={loading && !hasError && !data.length}>
           {
             pristine
-              ? <Pristine text="Enter a station name below to get started." />
+              ? (
+                <Pristine text="Enter a stop code below to get started">
+                  {
+                    previousRailStations && (
+                      <RecentSearches
+                        previousSearches={previousRailStations}
+                        onSelect={this.setStationCode}
+                      />
+                    )
+                  }
+                </Pristine>
+              )
               : (
                 <DepartureBoardWrapper>
                   {

@@ -9,7 +9,7 @@ const PristinePanel = styled.div`
   width: 100vw;
 
   padding: 0 48px;
-  padding-top: 15vh;
+  padding-top: 10vh;
 
   background-color: ${({ theme: { colours } }) => colours.fountainGrey};
   color: ${({ theme: { colours } }) => colours.asphalt};
@@ -27,7 +27,7 @@ const PristineText = styled.h3`
 `
 
 const PristineChildren = styled.div`
-  margin: 0 32px;
+  margin: 0 16px;
 `
 
 export default ({ children, text }) => (

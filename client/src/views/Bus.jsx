@@ -12,6 +12,9 @@ import BusInfo from '../components/BusInfo'
 import Header from '../components/Header'
 import Loading from '../components/Loading'
 import Pristine from '../components/Pristine'
+import RecentSearches from '../components/RecentSearches'
+
+import { addBusStop, getPreviousBusStops } from '../lib/storage'
 
 import { api } from '../../config/config.json'
 
@@ -90,6 +93,7 @@ class ViewBus extends PureComponent {
           data: [],
           stopName: null,
         })
+
         clearInterval(this.intervalId)
       }
     })
@@ -100,13 +104,17 @@ class ViewBus extends PureComponent {
 
     this.setState({ loading: true })
     axios.get(`${api}/bus/${stopCode}`)
-      .then(response => this.setState({
-        data: response.data.buses,
-        error: null,
-        hasError: false,
-        loading: false,
-        stopName: response.data.stopName,
-      }))
+      .then((response) => {
+        this.setState({
+          data: response.data.buses,
+          error: null,
+          hasError: false,
+          loading: false,
+          stopName: response.data.stopName,
+        })
+
+        addBusStop({ name: response.data.stopName, code: stopCode })
+      })
       .catch(error => this.setState({
         data: [],
         error,
@@ -127,15 +135,28 @@ class ViewBus extends PureComponent {
       stopName,
     } = this.state
 
+    const previousBusStops = getPreviousBusStops()
+
     // @TODO: Use PoseGroup for buses, once exit bug is fixed by maintainer
     return (
-      <ViewBusWrapper>
+      <ViewBusWrapper id="bus-departures-wrapper">
         <Loading loading={loading && !hasError && !data.length}>
           {
             pristine
-              ? <Pristine text="Enter a stop code below to get started" />
+              ? (
+                <Pristine text="Enter a stop code below to get started">
+                  {
+                    previousBusStops && (
+                      <RecentSearches
+                        previousSearches={previousBusStops}
+                        onSelect={this.setStopCode}
+                      />
+                    )
+                }
+                </Pristine>
+              )
               : stopName && (
-                <BusDeparturesWrapper id="bus-departures-wrapper">
+                <BusDeparturesWrapper>
                   <Header
                     title={stopName}
                     subtitle="Next buses at this stop."
