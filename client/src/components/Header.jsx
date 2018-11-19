@@ -9,6 +9,8 @@ const HeaderWrapper = styled.div`
   margin: ${({ topFill }) => topFill ? '-12px' : 0 };
   padding: ${({ topFill }) => topFill ? '12px' : '6px' };
 
+  width: ${({ topFill }) => topFill ? null : '100%' };
+
   margin-bottom: 12px;
 `
 
@@ -18,11 +20,9 @@ const HeaderTitleWrapper = styled.div`
   align-items: center;
   justify-items: content;
 
-  margin-bottom: 12px;
-
   & svg {
-    width: ${({ width }) => width || '32px'};
-    font-size: ${({ width }) => width || '32px'};
+    width: ${({ small }) => small ? '1rem' : '2rem'};
+    font-size: ${({ small }) => small ? '1rem' : '2rem'};
 
     margin-left: auto;
 
@@ -35,9 +35,11 @@ const HeaderTitleWrapper = styled.div`
 `
 
 const Title = styled.h2`
-  font-size: 1.2rem;
+  font-size: ${({ small }) => small ? '0.8rem' : '1.2rem'};
   color: white;
   margin: 0;
+
+  margin-bottom: ${({ small }) => small ? '6px' : '12px'};
 `
 
 const Subtitle = styled.p`
@@ -52,7 +54,8 @@ export default ({
   useFA,
   backgroundColour,
   topFill,
-  width
+  width,
+  small,
 }) => {
   let iconElement
 
@@ -66,7 +69,7 @@ export default ({
 
   return (
     <HeaderWrapper topFill={topFill} backgroundColour={backgroundColour}>
-      <HeaderTitleWrapper>
+      <HeaderTitleWrapper small={small}>
         <Title>{ title }</Title>
         { iconElement }
       </HeaderTitleWrapper>

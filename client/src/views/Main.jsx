@@ -11,11 +11,11 @@ import Bus from './Bus'
 import NationalRail from './NationalRail'
 
 const ViewMainContainer = styled.div`
-  min-height: 100vh;
+  
 `
 
 const ContentWrapper = styled.div`
-  min-height: 100vh;
+  height: 100%;
 
   margin-bottom: ${({ theme: { navbar: { height, units } } }) => `${height + 12}${units}`};
 `

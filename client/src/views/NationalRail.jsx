@@ -10,6 +10,7 @@ import TrainStationLookup from '../components/TrainStationLookup'
 import AppError from '../components/AppError'
 import Loading from '../components/Loading'
 import Header from '../components/Header'
+import Pristine from '../components/Pristine'
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import IconNationalRail from '../icons/NationalRail'
@@ -150,48 +151,50 @@ class ViewNationalRail extends PureComponent {
       pristine,
     } = this.state
 
-    // if (pristine) {
-    //   return (
-    //     <Pristine hint="Enter a station below to get started." />
-    //   )
-    // }
-
     return (
       <ViewNationalRailWrapper id="train-services-wrapper">
         <Loading loading={loading && !hasError && !data.length}>
-          <DepartureBoardWrapper>
-            {
-              stationName
-                ? (
-                  <Header
-                    title={stationName}
-                    subtitle={`Next trains departing from this station${destinationName ? ` calling at ${destinationName}.` : '.'}`}
-                    icon={IconNationalRail}
-                    backgroundColour="rail"
-                    topFill
-                  />
-                )
-                : null
-            }
-            <PosedTrainServiceContainer>
-              {
-                data.map(service => <TrainService key={service.rsid} {...service} />)
-              }
-            </PosedTrainServiceContainer>
-            {
-              !hasError && stationName && data && (
-                <Attribution>
-                  Powered by National Rail Enquiries.
-                </Attribution>
+          {
+            pristine
+              ? (
+                <Pristine text="Enter a station name below to get started.">yes</Pristine>
               )
-            }
-          </DepartureBoardWrapper>
+              : (
+                <DepartureBoardWrapper>
+                  {
+                    stationName
+                      ? (
+                        <Header
+                          title={stationName}
+                          subtitle={`Next trains departing from this station${destinationName ? ` calling at ${destinationName}.` : '.'}`}
+                          icon={IconNationalRail}
+                          backgroundColour="rail"
+                          topFill
+                        />
+                      )
+                      : null
+                  }
+                  <PosedTrainServiceContainer>
+                    {
+                      data.map(service => <TrainService key={service.rsid} {...service} />)
+                    }
+                  </PosedTrainServiceContainer>
+                  {
+                    !hasError && stationName && data && (
+                      <Attribution>
+                        Powered by National Rail Enquiries.
+                </Attribution>
+                    )
+                  }
+                </DepartureBoardWrapper>
+              )
+          }
         </Loading>
         {
           hasError && <AppError error={error} callerDescription="train departure board" contained />
         }
         <StyledControlForm>
-          <Header title="Enter a station..." icon={faSearch} useFA />
+          <Header title="Enter a station..." icon={faSearch} useFA small />
           <TrainStationLookup label="Station" id="stationCode" onSubmit={this.setStationCode} onClear={this.clearStationCode} />
           <TrainStationLookup label="Show trains calling at" id="destination" onSubmit={this.setDestinationCode} onClear={this.clearDestinationCode} disabled={!stationName} />
         </StyledControlForm>

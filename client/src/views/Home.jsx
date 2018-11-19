@@ -9,9 +9,13 @@ import IconTfLRoundel from '../icons/TfLRoundel'
 import IconNationalRail from '../icons/NationalRail'
 import { faBus } from '@fortawesome/free-solid-svg-icons'
 
+import MainBG from '../images/mainBG.png'
+
 const HomeWrapper = styled.div`
-  background-color: white;
+  background: url(${MainBG}) repeat;
   padding: 12px; 
+
+  min-height: calc(100vh - ${({ theme: { navbar: { height, units } } }) => `${height + 12}${units}`});
 `
 
 const StyledLink = styled(Link)`
