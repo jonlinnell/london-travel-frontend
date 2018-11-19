@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import Navbar from '../components/Navbar'
 
+import Home from './Home'
 import Tube from './Tube'
 import Bus from './Bus'
 import NationalRail from './NationalRail'
@@ -23,12 +24,6 @@ const RouteContainer = posed(ContentWrapper)({
   enter: { opacity: 1, delay: 300, beforeChildren: 300 },
   exit: { opacity: 0 },
 })
-
-const Home = () => (
-  <div>
-    test
-  </div>
-)
 
 const PosedRouter = ({ children }) => (
   <Location>
