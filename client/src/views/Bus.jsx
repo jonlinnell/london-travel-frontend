@@ -3,6 +3,8 @@ import axios from 'axios'
 import styled from 'styled-components'
 import posed from 'react-pose'
 
+import { faBus } from '@fortawesome/free-solid-svg-icons'
+
 import Attribution from '../components/Attribution'
 import BusInfo from '../components/BusInfo'
 import BusControlForm from '../components/BusControlForm'
@@ -10,18 +12,13 @@ import AppError from '../components/AppError'
 import Loading from '../components/Loading'
 import Header from '../components/Header'
 
-import { faBus } from '@fortawesome/free-solid-svg-icons'
-
 import { api } from '../../config/config.json'
 
 const INTERVAL = 5 // in seconds
 
-const Title = styled.h2`
-  margin-top: 0;
-`
-
 const ViewBusWrapper = styled.div`
   height: 100%;
+  margin-bottom: 15vh;
 `
 
 const BusDeparturesWrapper = styled.div`
@@ -39,11 +36,11 @@ const BusContainer = styled.ul`
 `
 
 const PosedBusContainer = posed(BusContainer)({
-  enter: { staggerChildren: 300 },
+  enter: { staggerChildren: 60 },
   exit: { staggerChildren: 10, staggerDirection: -1 },
 })
 
-const validateStopCode = stopCode => stopCode && stopCode.length === 5
+const validateStopCode = stopCode => stopCode && (stopCode.length === 5 || stopCode.match(/[0-9]{5},[0-9]{5}/))
 
 class ViewBus extends PureComponent {
   intervalId = null
@@ -63,13 +60,19 @@ class ViewBus extends PureComponent {
     this.setStopCode = this.setStopCode.bind(this)
   }
 
+  componentDidMount() {
+    const { initialCode } = this.props
+
+    this.setStopCode(initialCode)
+  }
+
   componentWillUnmount() {
     clearInterval(this.intervalId)
   }
 
-  setStopCode = (stopCode) => {
+  setStopCode = (newStopCode) => {
     this.setState({
-      stopCode,
+      stopCode: newStopCode,
     }, () => {
       const { stopCode } = this.state
 

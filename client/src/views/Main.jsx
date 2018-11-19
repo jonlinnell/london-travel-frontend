@@ -45,7 +45,9 @@ const ViewMain = () => (
       <Home path="/" />
       <Tube path="/tube" />
       <NationalRail path="/rail" />
-      <Bus path="/bus" />
+      <NationalRail path="/rail/:initialCode" />
+      <Bus path="/bus/" />
+      <Bus path="/bus/:initialCode" />
     </PosedRouter>
     <Navbar />
   </ViewMainContainer>

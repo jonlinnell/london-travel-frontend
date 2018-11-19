@@ -4,6 +4,7 @@ import posed, { PoseGroup } from 'react-pose'
 import { Link } from '@reach/router'
 
 import Header from '../components/Header'
+import VerticalSpacer from '../components/VerticalSpacer'
 
 import IconTfLRoundel from '../icons/TfLRoundel'
 import IconNationalRail from '../icons/NationalRail'
@@ -14,8 +15,10 @@ import MainBG from '../images/mainBG.png'
 const HomeWrapper = styled.div`
   background: url(${MainBG}) repeat;
   padding: 12px; 
+  margin-top: 0;
 
-  min-height: calc(100vh - ${({ theme: { navbar: { height, units } } }) => `${height + 12}${units}`});
+  min-height: 100vh;
+  
 `
 
 const StyledLink = styled(Link)`
@@ -39,18 +42,19 @@ const HomeButton = styled.li`
 const StyledButtonList = styled.ul`
   list-style: none;
   padding: 0;
+  margin: 0;
 `
 
 const Buttons = posed(StyledButtonList)({
   enter: {
-    staggerChildren: 100
+    delayChildren: 500, staggerChildren: 100
   },
   exit: { }
 })
 
 const PosedButton = posed(HomeButton)({
   enter: { y: 0, opacity: 1 },
-  exit: { y: 60, opacity: 0 }
+  exit: { y: 50, opacity: 0 }
 })
 
 const Home = () => (
@@ -63,8 +67,8 @@ const Home = () => (
             subtitle="Current status of the London Underground."
             icon={IconTfLRoundel}
           />
-          </StyledLink>
-        </PosedButton>
+        </StyledLink>
+      </PosedButton>
       <PosedButton backgroundColour="merciaRedLight">
         <StyledLink to='/bus'>
           <Header
@@ -76,10 +80,28 @@ const Home = () => (
           </StyledLink>
         </PosedButton>
       <PosedButton backgroundColour="petrolBlue">
-        <StyledLink to='/rail'>
+        <StyledLink to="/rail">
           <Header
             title="Train Departure Boards"
             subtitle="See all trains leaving a station in the next two hours."
+            icon={IconNationalRail}
+          />
+        </StyledLink>
+      </PosedButton>
+      <VerticalSpacer size={24} />
+      <PosedButton backgroundColour="petrolBlue">
+        <StyledLink to="/bus/91431,91432">
+          <Header
+            title="HereEast (388)"
+            subtitle="London buses arriving soon outside campus."
+          />
+        </StyledLink>
+      </PosedButton>
+      <PosedButton backgroundColour="petrolBlue">
+        <StyledLink to='/rail/SFA'>
+          <Header
+            title="Stratford International"
+            subtitle="Check the next Southeastern High Speed services."
             icon={IconNationalRail}
           />
         </StyledLink>

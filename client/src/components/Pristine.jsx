@@ -23,6 +23,7 @@ const PristinePanel = styled.div`
 
 const PristineText = styled.h3`
   font-size: 1.4rem;
+  font-weight: 300;
 `
 
 const PristineChildren = styled.div`

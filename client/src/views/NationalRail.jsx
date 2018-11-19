@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import posed from 'react-pose'
 import { get } from 'lodash'
 
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
 import Attribution from '../components/Attribution'
 import TrainService from '../components/TrainService'
 import TrainStationLookup from '../components/TrainStationLookup'
@@ -12,7 +14,6 @@ import Loading from '../components/Loading'
 import Header from '../components/Header'
 import Pristine from '../components/Pristine'
 
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import IconNationalRail from '../icons/NationalRail'
 
 import { api } from '../../config/config.json'
@@ -21,7 +22,7 @@ const INTERVAL = 1 // in minutes
 
 const ViewNationalRailWrapper = styled.div`
   height: 100%;
-  margin-bottom: 20vh;
+  margin-bottom: 15vh;
 `
 
 const DepartureBoardWrapper = styled.div`
@@ -42,7 +43,7 @@ const StyledControlForm = styled.div`
   width: 100%;
 
   position: fixed;
-  z-index: 2;
+  z-index: 1;
   bottom: ${({ theme: { navbar: { height, units } } }) => `${height}${units}`};
 `
 
@@ -50,6 +51,8 @@ const PosedTrainServiceContainer = posed(TrainServices)({
   enter: { staggerChildren: 300 },
   exit: { staggerChildren: 10, staggerDirection: -1 },
 })
+
+const validateStationCode = stationCode => stationCode && stationCode.match(/[A-Z]{3}/)
 
 class ViewNationalRail extends PureComponent {
   intervalId = null
@@ -75,17 +78,23 @@ class ViewNationalRail extends PureComponent {
     this.clearDestinationCode = this.clearDestinationCode.bind(this)
   }
 
+  componentDidMount() {
+    const { initialCode } = this.props
+
+    this.setStationCode(initialCode)
+  }
+
   componentWillUnmount() {
     clearInterval(this.intervalId)
   }
 
-  setStationCode = (code) => {
+  setStationCode = (newStationCode) => {
     this.setState({
-      stationCode: code,
+      stationCode: newStationCode,
     }, () => {
       const { stationCode } = this.state
 
-      if (stationCode) {
+      if (validateStationCode(stationCode)) {
         this.fetchData()
         this.intervalId = setInterval(() => this.fetchData(), INTERVAL * 60000)
       } else {
@@ -105,7 +114,8 @@ class ViewNationalRail extends PureComponent {
 
   clearStationCode = () => this.setState({ stationCode: null, stationName: null, data: [] })
 
-  clearDestinationCode = () => this.setState({ destinationCode: null, destinationName: null }, () => this.fetchData())
+  clearDestinationCode = () => this.setState({ destinationCode: null, destinationName: null },
+    () => this.fetchData())
 
   fetchData = () => {
     const { stationCode, destinationCode } = this.state
@@ -179,7 +189,7 @@ class ViewNationalRail extends PureComponent {
                     !hasError && stationName && data && (
                       <Attribution>
                         Powered by National Rail Enquiries.
-                </Attribution>
+                      </Attribution>
                     )
                   }
                 </DepartureBoardWrapper>

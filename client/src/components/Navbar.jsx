@@ -75,12 +75,12 @@ const Navbar = () => (
                 <FontAwesomeIcon icon={faSubway} />
               </Link>
             </NavbarItem>
-            <NavbarItem active={location.pathname === '/rail'}>
+            <NavbarItem active={location.pathname.match(/^\/rail/)}>
               <Link to="/rail">
                 <FontAwesomeIcon icon={faTrain} />
               </Link>
             </NavbarItem>
-            <NavbarItem active={location.pathname === '/bus'}>
+            <NavbarItem active={location.pathname.match(/^\/bus/)}>
               <Link to="/bus">
                 <FontAwesomeIcon icon={faBus} />
               </Link>

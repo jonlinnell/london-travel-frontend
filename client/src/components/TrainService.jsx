@@ -18,7 +18,7 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 12px;
+  padding: 6px;
 `
 
 const Destination = styled.p`
@@ -41,6 +41,8 @@ const LateText = styled.p`
   margin: 0;
 
   color: rgb(244, 113, 66);
+
+  margin-right: 12px;
 `
 
 const Platform = styled.p`

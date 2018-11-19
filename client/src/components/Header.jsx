@@ -6,12 +6,12 @@ const Icon = ({ icon }) => icon()
 
 const HeaderWrapper = styled.div`
   background-color: ${({ backgroundColour, theme: { colours } }) => colours[backgroundColour] || backgroundColour};
-  margin: ${({ topFill }) => topFill ? '-12px' : 0 };
-  padding: ${({ topFill }) => topFill ? '12px' : '6px' };
+  margin: ${({ topFill }) => (topFill ? '-12px' : 0)};
+  padding: ${({ topFill }) => (topFill ? '12px' : '6px')};
 
-  width: ${({ topFill }) => topFill ? null : '100%' };
+  width: ${({ topFill }) => (topFill ? null : '100%')};
 
-  margin-bottom: 12px;
+  margin-bottom: ${({ topFill }) => (topFill ? '12px' : 0)};
 `
 
 const HeaderTitleWrapper = styled.div`
@@ -21,8 +21,8 @@ const HeaderTitleWrapper = styled.div`
   justify-items: content;
 
   & svg {
-    width: ${({ small }) => small ? '1rem' : '2rem'};
-    font-size: ${({ small }) => small ? '1rem' : '2rem'};
+    width: ${({ small }) => (small ? '1rem' : '2rem')};
+    font-size: ${({ small }) => (small ? '1rem' : '2rem')};
 
     margin-left: auto;
 
@@ -35,11 +35,9 @@ const HeaderTitleWrapper = styled.div`
 `
 
 const Title = styled.h2`
-  font-size: ${({ small }) => small ? '0.8rem' : '1.2rem'};
+  font-size: ${({ small }) => (small ? '0.8rem' : '1.2rem')};
   color: white;
   margin: 0;
-
-  margin-bottom: ${({ small }) => small ? '6px' : '12px'};
 `
 
 const Subtitle = styled.p`

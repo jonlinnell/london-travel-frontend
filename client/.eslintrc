@@ -3,7 +3,7 @@
   "extends": "airbnb",
   "rules": {
     "react/jsx-filename-extension": 0,
-    "react/jsx-one-expression-per-line": [ 2, "never" ],
+    "react/jsx-one-expression-per-line": [ 2 ],
     "react/prop-types": "warn",
     "semi": [2, "never"],
     "comma-dangle": ["error", "always-multiline"]
