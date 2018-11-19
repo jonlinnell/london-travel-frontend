@@ -22,13 +22,28 @@ const NavbarItemList = styled.ul`
   align-items: center;
 
   height: ${({ theme: { navbar: { height, units } } }) => `${height}${units}`};
+
+  & li a, & li a:visited {
+    color: ${({ theme: { colours } }) => colours.asphalt};
+  }
 `
 
 const NavbarItem = styled.li`
   display: inline-block;
   margin: 0 12px;
 
-  content: "${({ to }) => to/* FOR TESTING ONLY */}";
+  padding-top: ${({ theme: { navbar: { height, units } } }) => `${height / 4}${units}`};
+  padding-bottom: ${({ active }) => active ? 0 : '6px'};
+
+
+  text-align: center;
+  height: 100%;
+  width: 100%;
+
+  transition: border-width 0.3s ease-in-out;
+
+  border-bottom: 3px solid ${({ theme: { colours } }) => colours.mulberry};
+  border-width: ${({ active }) => active ? '100%' : 0};
 `
 
 const StyledNavbar = styled.div`
@@ -50,27 +65,27 @@ const Navbar = () => (
       {
         ({ location }) => (
           <NavbarItemList location={location}>
-            <NavbarItem>
+            <NavbarItem active={location.pathname === '/'}>
               <Link to="/">
                 <FontAwesomeIcon icon={faHome} />
               </Link>
             </NavbarItem>
-            <NavbarItem>
+            <NavbarItem active={location.pathname === '/tube'}>
               <Link to="/tube">
                 <FontAwesomeIcon icon={faSubway} />
               </Link>
             </NavbarItem>
-            <NavbarItem>
+            <NavbarItem active={location.pathname === '/rail'}>
               <Link to="/rail">
                 <FontAwesomeIcon icon={faTrain} />
               </Link>
             </NavbarItem>
-            <NavbarItem>
+            <NavbarItem active={location.pathname === '/bus'}>
               <Link to="/bus">
                 <FontAwesomeIcon icon={faBus} />
               </Link>
             </NavbarItem>
-            <NavbarItem>
+            <NavbarItem active={location.pathname === '/about'}>
               <Link to="/about">
                 <FontAwesomeIcon icon={faInfo} />
               </Link>
