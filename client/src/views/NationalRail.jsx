@@ -81,7 +81,7 @@ class ViewNationalRail extends PureComponent {
   componentDidMount() {
     const { initialCode } = this.props
 
-    this.setStationCode(initialCode)
+    if (initialCode) { this.setStationCode(initialCode) }
   }
 
   componentWillUnmount() {
@@ -89,14 +89,17 @@ class ViewNationalRail extends PureComponent {
   }
 
   setStationCode = (newStationCode) => {
+    clearInterval(this.intervalId)
+
     this.setState({
       stationCode: newStationCode,
+      pristine: false,
     }, () => {
       const { stationCode } = this.state
 
       if (validateStationCode(stationCode)) {
         this.fetchData()
-        this.intervalId = setInterval(() => this.fetchData(), INTERVAL * 60000)
+        this.intervalId = setInterval(() => this.fetchData(), INTERVAL * 6000)
       } else {
         clearInterval(this.intervalId)
       }
@@ -104,11 +107,13 @@ class ViewNationalRail extends PureComponent {
   }
 
   setDestinationCode = (crs) => {
+    clearInterval(this.intervalId)
+
     this.setState({
       destinationCode: crs,
     }, () => {
       this.fetchData()
-      this.intervalId = setInterval(() => this.fetchData(), INTERVAL * 60000)
+      this.intervalId = setInterval(() => this.fetchData(), INTERVAL * 6000)
     })
   }
 
@@ -120,7 +125,7 @@ class ViewNationalRail extends PureComponent {
   fetchData = () => {
     const { stationCode, destinationCode } = this.state
 
-    this.setState({ loading: true, pristine: false })
+    this.setState({ loading: true })
     axios.get(`${api}/rail/${stationCode}${destinationCode ? `/${destinationCode}` : ''}`)
       .then((response) => {
         this.setState({
@@ -162,27 +167,29 @@ class ViewNationalRail extends PureComponent {
         <Loading loading={loading && !hasError && !data.length}>
           {
             pristine
-              ? (
-                <Pristine text="Enter a station name below to get started.">yes</Pristine>
-              )
+              ? <Pristine text="Enter a station name below to get started." />
               : (
                 <DepartureBoardWrapper>
                   {
-                    stationName
-                      ? (
-                        <Header
-                          title={stationName}
-                          subtitle={`Next trains departing from this station${destinationName ? ` calling at ${destinationName}.` : '.'}`}
-                          icon={IconNationalRail}
-                          backgroundColour="rail"
-                          topFill
-                        />
-                      )
-                      : null
+                    stationName && (
+                      <Header
+                        title={stationName}
+                        subtitle={`Next trains departing from this station${destinationName ? ` calling at ${destinationName}.` : '.'}`}
+                        icon={IconNationalRail}
+                        backgroundColour="rail"
+                        topFill
+                      />
+                    )
                   }
                   <PosedTrainServiceContainer>
                     {
-                      data.map((service, i) => <TrainService key={service.rsid} secondary={i % 2} {...service} />)
+                      data.map((service, i) => (
+                        <TrainService
+                          key={service.rsid}
+                          secondary={i % 2}
+                          {...service}
+                        />
+                      ))
                     }
                   </PosedTrainServiceContainer>
                   {

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import posed from 'react-pose'
@@ -11,6 +11,7 @@ import BusControlForm from '../components/BusControlForm'
 import AppError from '../components/AppError'
 import Loading from '../components/Loading'
 import Header from '../components/Header'
+import Pristine from '../components/Pristine'
 
 import { api } from '../../config/config.json'
 
@@ -52,6 +53,7 @@ class ViewBus extends PureComponent {
       data: [],
       stopCode: null,
       stopName: null,
+      pristine: true,
       loading: false,
       error: null,
       hasError: false,
@@ -63,7 +65,7 @@ class ViewBus extends PureComponent {
   componentDidMount() {
     const { initialCode } = this.props
 
-    this.setStopCode(initialCode)
+    if (initialCode) { this.setStopCode(initialCode) }
   }
 
   componentWillUnmount() {
@@ -73,6 +75,7 @@ class ViewBus extends PureComponent {
   setStopCode = (newStopCode) => {
     this.setState({
       stopCode: newStopCode,
+      pristine: false,
     }, () => {
       const { stopCode } = this.state
 
@@ -119,46 +122,45 @@ class ViewBus extends PureComponent {
       stopCode,
       loading,
       hasError,
+      pristine,
       error,
     } = this.state
 
     // @TODO: Use PoseGroup for buses, once exit bug is fixed by maintainer
     return (
       <ViewBusWrapper>
-        <BusDeparturesWrapper id="bus-departures-wrapper">
-          <Loading loading={loading && !hasError && !data.length}>
-            {
-              stopName && (
-                <Header
-                  title={stopName}
-                  subtitle="Next buses at this stop."
-                  icon={faBus}
-                  backgroundColour="bus"
-                  topFill
-                  useFA
-                />
+        <Loading loading={loading && !hasError && !data.length}>
+          {
+            pristine
+              ? <Pristine text="Enter a stop code below to get started" />
+              : stopName && (
+                <BusDeparturesWrapper id="bus-departures-wrapper">
+                  <Header
+                    title={stopName}
+                    subtitle="Next buses at this stop."
+                    icon={faBus}
+                    backgroundColour="bus"
+                    topFill
+                    useFA
+                  />
+                  <PosedBusContainer>
+                    { data.map(bus => <BusInfo bus={bus} key={bus.journeyId} />) }
+                  </PosedBusContainer>
+                </BusDeparturesWrapper>
               )
-            }
-            <PosedBusContainer>
-              {
-                data.map(bus => <BusInfo bus={bus} key={bus.journeyId} />)
-              }
-            </PosedBusContainer>
-          </Loading>
-          {
-            !hasError && stopCode && data && (
-              <Attribution>
-                Powered by TfL Open Data. Visit tfl.gov.uk for more information.
-              </Attribution>
-            )
           }
-          {
-            hasError && <AppError error={error} callerDescription="bus departure information" contained />
-          }
-        </BusDeparturesWrapper>
-        <BusControlForm
-          setStopCode={this.setStopCode}
-        />
+        </Loading>
+        {
+          !hasError && stopCode && data && (
+            <Attribution>
+              Powered by TfL Open Data. Visit tfl.gov.uk for more information.
+            </Attribution>
+          )
+        }
+        {
+          hasError && <AppError error={error} callerDescription="bus departure information" contained />
+        }
+        <BusControlForm setStopCode={this.setStopCode} />
       </ViewBusWrapper>
     )
   }
