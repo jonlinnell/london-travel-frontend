@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import posed from 'react-pose'
@@ -82,7 +82,7 @@ class ViewBus extends PureComponent {
       if (validateStopCode(stopCode)) {
         this.fetchData()
         this.intervalId = setInterval(() => this.fetchData(), INTERVAL * 1000)
-        
+
         document.getElementById('bus-departures-wrapper').scrollIntoView()
       } else {
         this.setState({

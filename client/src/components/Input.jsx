@@ -26,4 +26,4 @@ const Input = styled.input`
   }
 `
 
-export default (props) => <Input {...props} />
+export default props => <Input {...props} />

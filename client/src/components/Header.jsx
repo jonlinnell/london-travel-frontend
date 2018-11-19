@@ -52,7 +52,6 @@ export default ({
   useFA,
   backgroundColour,
   topFill,
-  width,
   small,
 }) => {
   let iconElement

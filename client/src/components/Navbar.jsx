@@ -33,7 +33,7 @@ const NavbarItem = styled.li`
   margin: 0 12px;
 
   padding-top: ${({ theme: { navbar: { height, units } } }) => `${height / 4}${units}`};
-  padding-bottom: ${({ active }) => active ? 0 : '6px'};
+  padding-bottom: ${({ active }) => (active ? 0 : '6px')};
 
 
   text-align: center;
@@ -43,7 +43,7 @@ const NavbarItem = styled.li`
   transition: border-width 0.3s ease-in-out;
 
   border-bottom: 3px solid ${({ theme: { colours } }) => colours.mulberry};
-  border-width: ${({ active }) => active ? '100%' : 0};
+  border-width: ${({ active }) => (active ? '100%' : 0)};
 `
 
 const StyledNavbar = styled.div`

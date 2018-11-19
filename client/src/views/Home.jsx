@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import posed, { PoseGroup } from 'react-pose'
+import posed from 'react-pose'
 import { Link } from '@reach/router'
 
+import { faBus } from '@fortawesome/free-solid-svg-icons'
 import Header from '../components/Header'
 import VerticalSpacer from '../components/VerticalSpacer'
 
 import IconTfLRoundel from '../icons/TfLRoundel'
 import IconNationalRail from '../icons/NationalRail'
-import { faBus } from '@fortawesome/free-solid-svg-icons'
 
 import MainBG from '../images/mainBG.png'
 
@@ -47,21 +47,21 @@ const StyledButtonList = styled.ul`
 
 const Buttons = posed(StyledButtonList)({
   enter: {
-    delayChildren: 500, staggerChildren: 100
+    delayChildren: 500, staggerChildren: 100,
   },
-  exit: { }
+  exit: { },
 })
 
 const PosedButton = posed(HomeButton)({
   enter: { y: 0, opacity: 1 },
-  exit: { y: 50, opacity: 0 }
+  exit: { y: 50, opacity: 0 },
 })
 
 const Home = () => (
   <HomeWrapper>
     <Buttons initialPose="exit" pose="enter">
       <PosedButton backgroundColour="olympicGreen">
-        <StyledLink to='/tube' >
+        <StyledLink to="/tube">
           <Header
             title="Tube Status"
             subtitle="Current status of the London Underground."
@@ -70,15 +70,15 @@ const Home = () => (
         </StyledLink>
       </PosedButton>
       <PosedButton backgroundColour="merciaRedLight">
-        <StyledLink to='/bus'>
+        <StyledLink to="/bus">
           <Header
             title="Live Bus Times"
             subtitle="See live departures for any bus stop in London"
             icon={faBus}
             useFA
           />
-          </StyledLink>
-        </PosedButton>
+        </StyledLink>
+      </PosedButton>
       <PosedButton backgroundColour="petrolBlue">
         <StyledLink to="/rail">
           <Header
@@ -98,7 +98,7 @@ const Home = () => (
         </StyledLink>
       </PosedButton>
       <PosedButton backgroundColour="petrolBlue">
-        <StyledLink to='/rail/SFA'>
+        <StyledLink to="/rail/SFA">
           <Header
             title="Stratford International"
             subtitle="Check the next Southeastern High Speed services."

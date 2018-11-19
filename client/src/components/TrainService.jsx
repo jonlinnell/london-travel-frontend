@@ -11,7 +11,7 @@ const StyledTrainService = styled.li`
     padding-top: 3px;
   }
 
-  background-color: ${({ secondary }) => secondary ? 'rgba(233, 235, 242, 0.5)' : 'transparent'};
+  background-color: ${({ secondary }) => (secondary ? 'rgba(233, 235, 242, 0.5)' : 'transparent')};
 `
 
 const Row = styled.div`
@@ -61,7 +61,13 @@ const renderServiceInfo = (etd) => {
   } else if (etd === 'Delayed') {
     infoElement = <LateText>This service is delayed.</LateText>
   } else if (etd !== 'On time') {
-    infoElement = <LateText>This service is delayed, and now expected to depart at { etd }.</LateText>
+    infoElement = (
+      <LateText>
+This service is delayed, and now expected to depart at
+        { etd }
+.
+      </LateText>
+    )
   }
 
   return infoElement

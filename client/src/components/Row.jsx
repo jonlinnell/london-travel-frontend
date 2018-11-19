@@ -10,6 +10,6 @@ const StyledRow = styled.div`
 
 export default ({ children }) => (
   <StyledRow>
-    { children }  
+    { children }
   </StyledRow>
 )
