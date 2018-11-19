@@ -15,7 +15,7 @@ const getRailDepartureBoard = ({ station, destination }) => new Promise((resolve
       trainServices: testData,
     })
   } else {
-    rail.getDepartureBoard(station, { destination }, (err, response) => {
+    rail.getDepartureBoardWithDetails(station, { destination }, (err, response) => {
       if (err) {
         reject(err)
       } else {
