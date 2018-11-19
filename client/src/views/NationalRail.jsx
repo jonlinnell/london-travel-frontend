@@ -115,6 +115,7 @@ class ViewNationalRail extends PureComponent {
   }
 
   clearStationCode = () => this.setState({ stationCode: null, stationName: null, data: [] })
+
   clearDestinationCode = () => this.setState({ destinationCode: null, destinationName: null }, () => this.fetchData())
 
   fetchData = () => {
