@@ -17,7 +17,7 @@ const ViewMainContainer = styled.div`
 const ContentWrapper = styled.div`
   height: 100%;
 
-  margin-bottom: ${({ theme: { navbar: { height, units } } }) => `${height + 12}${units}`};
+  margin-bottom: ${({ theme: { navbar: { height, units } } }) => `${height}${units}`};
 `
 
 const RouteContainer = posed(ContentWrapper)({
