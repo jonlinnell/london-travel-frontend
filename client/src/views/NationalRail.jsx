@@ -82,6 +82,8 @@ class ViewNationalRail extends PureComponent {
 
     this.setStationCode = this.setStationCode.bind(this)
     this.setDestinationCode = this.setDestinationCode.bind(this)
+    this.clearStationCode = this.clearStationCode.bind(this)
+    this.clearDestinationCode = this.clearDestinationCode.bind(this)
   }
 
   componentWillUnmount() {
@@ -93,8 +95,6 @@ class ViewNationalRail extends PureComponent {
       stationCode: code,
     }, () => {
       const { stationCode } = this.state
-
-      console.log(stationCode)
 
       if (stationCode) {
         this.fetchData()
@@ -114,12 +114,13 @@ class ViewNationalRail extends PureComponent {
     })
   }
 
-  clearDestination = () => this.setState({ destinationCode: null }, () => this.fetchData())
+  clearStationCode = () => this.setState({ stationCode: null, stationName: null, data: [] })
+  clearDestinationCode = () => this.setState({ destinationCode: null, destinationName: null }, () => this.fetchData())
 
   fetchData = () => {
     const { stationCode, destinationCode } = this.state
 
-    this.setState({ loading: true })
+    this.setState({ loading: true, pristine: false })
     axios.get(`${api}/rail/${stationCode}${destinationCode ? `/${destinationCode}` : ''}`)
       .then((response) => {
         this.setState({
@@ -198,8 +199,8 @@ class ViewNationalRail extends PureComponent {
         }
         <StyledControlForm>
           <Header title="Enter a station..." icon={faSearch} useFA />
-          <TrainStationLookup label="Station" id="stationCode" onSubmit={this.setStationCode} />
-          <TrainStationLookup label="Show trains calling at" id="destination" onSubmit={this.setDestinationCode} disabled={!stationName} onClear={this.clearDestination} />
+          <TrainStationLookup label="Station" id="stationCode" onSubmit={this.setStationCode} onClear={this.clearStationCode} />
+          <TrainStationLookup label="Show trains calling at" id="destination" onSubmit={this.setDestinationCode} onClear={this.clearDestinationCode} disabled={!stationName} />
         </StyledControlForm>
       </ViewNationalRailWrapper>
     )

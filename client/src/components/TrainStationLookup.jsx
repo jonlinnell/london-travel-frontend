@@ -93,7 +93,7 @@ class TrainStationLookup extends PureComponent {
       if (searchString.length > 2) {
         if (this.timeoutId) { clearTimeout(this.timeoutId) }
         this.timeoutId = setTimeout(() => this.fetchData(), 500)
-      } else if (!searchString) {
+      } else if (searchString === '') {
         this.setState({ data: [] })
         onClear()
       }
