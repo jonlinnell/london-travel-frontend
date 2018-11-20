@@ -3,14 +3,12 @@ import { Router, Location } from '@reach/router'
 import posed, { PoseGroup } from 'react-pose'
 import styled from 'styled-components'
 
-import AsyncLoader from '../components/AsyncLoader'
 import Navbar from '../components/Navbar'
 
 import Home from './Home'
-
-const Bus = () => <AsyncLoader load={import('./Bus')} />
-const NationalRail = () => <AsyncLoader load={import('./NationalRail')} />
-const Tube = () => <AsyncLoader load={import('./Tube')} />
+import Bus from './Bus'
+import NationalRail from './NationalRail'
+import Tube from './Tube'
 
 const ViewMainContainer = styled.div`
   

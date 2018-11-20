@@ -2,12 +2,14 @@ import React, { Fragment } from 'react'
 import { render } from 'react-dom'
 import { ThemeProvider } from 'styled-components'
 
-import theme from './styles/theme.json'
+import AsyncLoader from './components/AsyncLoader'
 
-import ViewMain from './views/Main'
+import theme from './styles/theme.json'
 
 import GlobalStyles from './styles/GlobalStyles'
 import Normalize from './styles/Normalize'
+
+const ViewMain = () => <AsyncLoader load={import('./views/Main')} />
 
 const App = () => (
   <ThemeProvider theme={theme}>
