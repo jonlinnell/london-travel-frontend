@@ -71,6 +71,11 @@ class TrainStationLookup extends PureComponent {
     this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
+  triggerFetch = () => {
+    if (this.timeoutId) { clearTimeout(this.timeoutId) }
+    this.timeoutId = setTimeout(() => this.fetchData(), 500)
+  }
+
   fetchData = () => {
     const { searchString } = this.state
 
@@ -87,7 +92,7 @@ class TrainStationLookup extends PureComponent {
     const { searchString } = this.state
 
     if ((e.keyCode === 8) && (searchString.length > 2)) {
-      this.fetchData()
+      this.triggerFetch()
     }
   }
 
@@ -97,8 +102,7 @@ class TrainStationLookup extends PureComponent {
       const { onClear } = this.props
 
       if (searchString.length > 2) {
-        if (this.timeoutId) { clearTimeout(this.timeoutId) }
-        this.timeoutId = setTimeout(() => this.fetchData(), 500)
+        this.triggerFetch()
       } else if (!searchString) {
         this.setState({ data: [] })
         onClear()

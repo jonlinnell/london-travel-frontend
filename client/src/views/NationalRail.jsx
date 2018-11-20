@@ -179,7 +179,7 @@ class ViewNationalRail extends PureComponent {
           {
             pristine
               ? (
-                <Pristine text="Enter a stop code below to get started">
+                <Pristine text="Lookup a train station below to get started">
                   {
                     previousRailStations && (
                       <RecentSearches
