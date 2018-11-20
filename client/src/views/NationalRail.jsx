@@ -23,6 +23,8 @@ import { api } from '../../config/config.json'
 
 const INTERVAL = 1 // in minutes
 
+const contentContainerId = 'train-services-wrapper'
+
 const ViewNationalRailWrapper = styled.div`
   height: 100%;
   margin-bottom: 15vh;
@@ -85,6 +87,8 @@ class ViewNationalRail extends PureComponent {
   componentDidMount() {
     const { initialCode } = this.props
 
+    document.getElementById(contentContainerId).scrollIntoView()
+
     if (initialCode) { this.setStationCode(initialCode) }
   }
 
@@ -142,6 +146,7 @@ class ViewNationalRail extends PureComponent {
         })
 
         addRailStation({ name: response.data.station.name, code: stationCode })
+        document.getElementById(contentContainerId).scrollIntoView()
       })
       .catch(error => this.setState({
         data: [],
@@ -169,7 +174,7 @@ class ViewNationalRail extends PureComponent {
     const previousRailStations = getPreviousRailStations()
 
     return (
-      <ViewNationalRailWrapper id="train-services-wrapper">
+      <ViewNationalRailWrapper id={contentContainerId}>
         <Loading loading={loading && !hasError && !data.length}>
           {
             pristine

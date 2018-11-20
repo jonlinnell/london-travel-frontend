@@ -19,6 +19,7 @@ import { addBusStop, getPreviousBusStops } from '../lib/storage'
 import { api } from '../../config/config.json'
 
 const INTERVAL = 30 // in seconds
+const contentContainerId = 'bus-departures-wrapper'
 
 const ViewBusWrapper = styled.div`
   height: 100%;
@@ -69,6 +70,8 @@ class ViewBus extends PureComponent {
   componentDidMount() {
     const { initialCode } = this.props
 
+    document.getElementById(contentContainerId).scrollIntoView()
+
     if (initialCode) { this.setStopCode(initialCode) }
   }
 
@@ -87,7 +90,7 @@ class ViewBus extends PureComponent {
         this.fetchData()
         this.intervalId = setInterval(() => this.fetchData(), INTERVAL * 1000)
 
-        document.getElementById('bus-departures-wrapper').scrollIntoView()
+        document.getElementById(contentContainerId).scrollIntoView()
       } else {
         this.setState({
           data: [],
@@ -139,7 +142,7 @@ class ViewBus extends PureComponent {
 
     // @TODO: Use PoseGroup for buses, once exit bug is fixed by maintainer
     return (
-      <ViewBusWrapper id="bus-departures-wrapper">
+      <ViewBusWrapper id={contentContainerId}>
         <Loading loading={loading && !hasError && !data.length}>
           {
             pristine

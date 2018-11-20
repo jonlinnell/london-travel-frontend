@@ -11,6 +11,8 @@ import { lighten } from '../lib/colours'
 
 import { api } from '../../config/config.json'
 
+const autocompleteId = 'autocomplete-stations'
+
 const Autocomplete = styled.div`
   position: absolute;
   bottom: 96px;
@@ -76,7 +78,7 @@ class TrainStationLookup extends PureComponent {
 
     axios.get(`${api}/searchStations/${searchString}`)
       .then((response) => {
-        document.getElementById('autocomplete-stations').scrollIntoView()
+        document.getElementById(autocompleteId).scrollIntoView()
         this.setState({ data: response.data })
       })
   }
@@ -110,7 +112,7 @@ class TrainStationLookup extends PureComponent {
 
     return (
       <Fragment>
-        <Autocomplete id="autocomplete-stations">
+        <Autocomplete id={autocompleteId}>
           <PosedStationList pose={searchString.length > 2 ? 'enter' : 'exit'}>
             <PoseGroup>
               {
