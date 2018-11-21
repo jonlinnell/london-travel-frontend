@@ -53,7 +53,7 @@ const StyledButtonList = styled.ul`
 
 const Buttons = posed(StyledButtonList)({
   enter: {
-    opacity: 1, delayChildren: 400, staggerChildren: 60,
+    opacity: 1, staggerChildren: 60,
   },
   exit: { opacity: 0 },
 })

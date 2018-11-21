@@ -21,7 +21,7 @@ const ContentWrapper = styled.div`
 `
 
 const RouteContainer = posed(ContentWrapper)({
-  enter: { opacity: 1, delay: 100, beforeChildren: 100 },
+  enter: { opacity: 1, beforeChildren: true },
   exit: { opacity: 0 },
 })
 

@@ -36,7 +36,7 @@ const LineWrapper = styled.ul`
 `
 
 const PosedLineContainer = posed(LineWrapper)({
-  enter: { delayChildren: 300, staggerChildren: 30 },
+  enter: { beforeChildren: true, delayChildren: 250, staggerChildren: 30 },
   exit: { staggerChildren: 10, staggerDirection: -1 },
 })
 
