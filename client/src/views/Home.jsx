@@ -36,6 +36,10 @@ const HomeButton = styled.li`
   margin-bottom: 12px;
   border-radius: 4px;
 
+  -webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.3);
+  box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.3);
+
   background: url(${({ backgroundImage }) => backgroundImage}) center no-repeat;
   background-size: cover;
   background-color: ${({ backgroundColour, theme: { colours } }) => colours[backgroundColour] || backgroundColour};
