@@ -6,6 +6,10 @@
 # production
 client/dist
 
+# Logs
+logs
+server/logs
+
 # misc
 .DS_Store
 .env
