@@ -43,7 +43,7 @@ const TrainServices = styled.ul`
 `
 
 const StyledControlForm = styled.div`
-  background-color: ${({ theme: { colours: { rail } } }) => rail};
+  background-color: ${({ theme }) => theme.colours.rail.colour};
 
   padding: 12px;
   width: 100%;

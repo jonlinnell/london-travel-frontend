@@ -42,13 +42,25 @@ const HomeButton = styled.li`
 
   background: url(${({ backgroundImage }) => backgroundImage}) center no-repeat;
   background-size: cover;
-  background-color: ${({ backgroundColour, theme: { colours } }) => colours[backgroundColour] || backgroundColour};
+  background-color: ${({ backgroundColour, theme: { colours } }) => (colours[backgroundColour] ? colours[backgroundColour].colour : backgroundColour)};
+  color: ${({ backgroundColour, theme: { colours } }) => (colours[backgroundColour] ? colours.text[colours[backgroundColour].text] : 'rgb(0, 0, 0)')};
 `
 
 const StyledButtonList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+`
+
+const ParagraphContainer = styled.div`
+  & > p {
+    margin: 0;
+    margin-bottom: 12px;
+  }
+
+  & > p:last-of-type {
+    margin-bottom: 0;
+  }
 `
 
 const Buttons = posed(StyledButtonList)({
@@ -83,9 +95,11 @@ const Home = () => {
           !getSavedCookieConsent() && (
             <Fragment>
               <VerticalSpacer size={12} />
-              <PosedButton backgroundColour="mulberryLight">
-                <p>This app uses cookies (and other similar stuff) to work better for you.</p>
-                <p>By staying on this site, you agree to this.</p>
+              <PosedButton backgroundColour="pebble">
+                <ParagraphContainer>
+                  <p>This app uses cookies (and other similar stuff) to work better for you.</p>
+                  <p>By staying on this site, you agree to this.</p>
+                </ParagraphContainer>
               </PosedButton>
             </Fragment>
           )
@@ -142,6 +156,15 @@ const Home = () => {
             <Header
               title="Stratford International"
               subtitle="Check the next Southeastern High Speed services."
+              icon={IconNationalRail}
+            />
+          </StyledLink>
+        </PosedButton>
+        <PosedButton backgroundColour="petrolBlue">
+          <StyledLink to="/rail/SRA">
+            <Header
+              title="Stratford"
+              subtitle="Trains from Stratford regional station, including London Overground and Greater Anglia services."
               icon={IconNationalRail}
             />
           </StyledLink>

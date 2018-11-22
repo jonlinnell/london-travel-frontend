@@ -8,35 +8,123 @@
     "units": "px"
   },
   "colours": {
-    "bus": "rgb(220, 36, 31)",
-    "rail": "rgb(56, 76, 139)",
-    "overground": "rgb(239, 123, 16)",
-    "africanViolet": "rgb(54, 17, 99)",
-    "africanVioletLight": "rgb(111, 48, 146)",
-    "mulberry": "rgb(183, 0, 98)",
-    "mulberryLight": "rgb(237, 36, 130)",
-    "golden": "rgb(231, 126, 29)",
-    "goldenLight": "rgb(251, 170, 27)",
-    "bronze": "rgb(242, 106, 56)",
-    "bronzeDark": "rgb(152, 51, 29)",
-    "petrolBlue": "rgb(0, 94, 130)",
-    "petrolBlueLight": "rgb(0, 155, 201)",
-    "merciaRed": "rgb(167, 5, 49)",
-    "merciaRedLight": "rgb(238, 47, 79)",
-    "peacock": "rgb(0, 170, 173)",
-    "peacockLight": "rgb(84, 198, 213)",
-    "neptune": "rgb(0, 97, 103)",
-    "neptuneLight": "rgb(120, 178, 187)",
-    "olympicGreen": "rgb(0, 170, 135)",
-    "olympicGreenDark": "rgb(0, 110, 85)",
-    "cedar": "rgb(177, 190, 45)",
-    "cedarLight": "rgb(225, 202, 0)",
-    "asphalt": "rgb(82, 94, 102)",
-    "silver": "rgb(140, 140, 141)",
-    "fountainGrey": "rgb(203, 206, 206)",
-    "pebble": "rgb(113, 95, 84)",
-    "doveGrey": "rgb(168, 155, 145)",
-    "pearlWhite": "rgb(210, 201, 193)"
+    "bus": {
+      "colour": "rgb(220, 36, 31)"
+    },
+    "rail": {
+      "colour": "rgb(56, 76, 139)"
+    },
+    "overground": {
+      "colour": "rgb(239, 123, 16)"
+    },
+    "text": {
+      "light": "white",
+      "dark": "rgb(29, 25, 22)"
+    },
+    "africanViolet": {
+      "colour": "rgb(54, 17, 99)",
+      "text": "light"
+    },
+    "africanVioletLight": {
+      "colour": "rgb(111, 48, 146)",
+      "text": "light"
+    },
+    "mulberry": {
+      "colour": "rgb(183, 0, 98)",
+      "text": "light"
+    },
+    "mulberryLight": {
+      "colour": "rgb(237, 36, 130)",
+      "text": "light"
+    },
+    "golden": {
+      "colour": "rgb(231, 126, 29)",
+      "text": "light"
+    },
+    "goldenLight": {
+      "colour": "rgb(251, 170, 27)",
+      "text": "dark"
+    },
+    "bronze": {
+      "colour": "rgb(242, 106, 56)",
+      "text": "light"
+    },
+    "bronzeDark": {
+      "colour": "rgb(152, 51, 29)",
+      "text": "light"
+    },
+    "petrolBlue": {
+      "colour": "rgb(0, 94, 130)",
+      "text": "light"
+    },
+    "petrolBlueLight": {
+      "colour": "rgb(0, 155, 201)",
+      "text": "dark"
+    },
+    "merciaRed": {
+      "colour": "rgb(167, 5, 49)",
+      "text": "light"
+    },
+    "merciaRedLight": {
+      "colour": "rgb(238, 47, 79)",
+      "text": "light"
+    },
+    "peacock": {
+      "colour": "rgb(0, 170, 173)",
+      "text": "dark"
+    },
+    "peacockLight": {
+      "colour": "rgb(84, 198, 213)",
+      "text": "light"
+    },
+    "neptune": {
+      "colour": "rgb(0, 97, 103)",
+      "text": "light"
+    },
+    "neptuneLight": {
+      "colour": "rgb(120, 178, 187)",
+      "text": "light"
+    },
+    "olympicGreen": {
+      "colour": "rgb(0, 170, 135)",
+      "text": "light"
+    },
+    "olympicGreenDark": {
+      "colour": "rgb(0, 110, 85)",
+      "text": "light"
+    },
+    "cedar": {
+      "colour": "rgb(177, 190, 45)",
+      "text": "light"
+    },
+    "cedarLight": {
+      "colour": "rgb(225, 202, 0)",
+      "text": "dark"
+    },
+    "asphalt": {
+      "colour": "rgb(82, 94, 102)",
+      "text": "light"
+    },
+    "silver": {
+      "colour": "rgb(140, 140, 141)",
+      "text": "light"
+    },
+    "fountainGrey": {
+      "colour": "rgb(203, 206, 206)",
+      "text": "dark"
+    },
+    "pebble": {
+      "colour": "rgb(113, 95, 84)",
+      "text": "light"
+    },
+    "doveGrey": {
+      "colour": "rgb(168, 155, 145)",
+      "text": "light"
+    },
+    "pearlWhite": {
+      "colour": "rgb(210, 201, 193)",
+      "text": "dark"
+    }
   },
   "lines": {
     "bakerloo": {

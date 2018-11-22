@@ -7,7 +7,7 @@ import Row from './Row'
 import Input from './Input'
 
 const StyledForm = styled.div`
-  background-color: ${({ theme: { colours: { bus } } }) => bus};
+  background-color: ${({ theme }) => theme.colours.bus.colour};
   padding: 12px;
   width: 100%;
 

@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Icon = ({ icon }) => icon()
 
 const HeaderWrapper = styled.div`
-  background-color: ${({ backgroundColour, theme: { colours } }) => colours[backgroundColour] || backgroundColour};
+  background-color: ${({ backgroundColour, theme: { colours } }) => (colours[backgroundColour] ? colours[backgroundColour].colour : backgroundColour)};
+  color: ${({ backgroundColour, theme: { colours } }) => (colours[backgroundColour] ? colours.text[colours[backgroundColour].text] : 'rgb(0, 0, 0)')};
 
   margin: ${({ topFill }) => (topFill ? '-12px' : 0)};
   margin-bottom: ${({ topFill }) => (topFill ? '12px' : 0)};

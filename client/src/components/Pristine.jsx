@@ -11,8 +11,8 @@ const PristinePanel = styled.div`
   padding: 0 48px;
   padding-top: 10vh;
 
-  background-color: ${({ theme: { colours } }) => colours.fountainGrey};
-  color: ${({ theme: { colours } }) => colours.asphalt};
+  background-color: ${({ theme: { colours } }) => colours.fountainGrey.colour};
+  color: ${({ theme: { colours } }) => colours.asphalt.colour};
 
   text-align: center;
 
