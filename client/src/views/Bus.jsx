@@ -64,9 +64,9 @@ const parseError = (error) => {
 
       if (response) { return response }
     }
-  } else {
-    return error
   }
+  
+  return error
 }
 
 class ViewBus extends PureComponent {
