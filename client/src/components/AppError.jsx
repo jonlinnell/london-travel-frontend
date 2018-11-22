@@ -18,7 +18,7 @@ const AppError = styled.div`
   justify-content: center;
 
   margin: ${({ contained }) => (contained ? '12px' : 'initial')};
-  padding: ${({ contained }) => (contained ? '12px' : 'initial')};
+  padding: ${({ contained }) => (contained ? '32px 12px' : 'initial')};
   
   border-radius: ${({ contained, theme: { radius } }) => (contained ? radius : 0)};
 `
@@ -42,6 +42,10 @@ const ErrorMessage = styled.p`
 `
 
 const generateHumanReadableError = (error) => {
+  if (error.errorString) {
+    return error.errorString
+  }
+
   if (!error.status) {
     return ('It\'s not possible to connect to the server at the moment.')
   }

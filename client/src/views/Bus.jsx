@@ -48,6 +48,27 @@ const PosedBusContainer = posed(BusContainer)({
 // Allow xxxxx and xxxxx,xxxxx, as both are accepted by the endpoint
 const validateStopCode = stopCode => stopCode && (stopCode.length === 5 || stopCode.match(/[0-9]{5},[0-9]{5}/))
 
+const parseError = (error) => {
+  if (error.response) {
+    const { data, status } = error.response
+    let response
+
+    if (status === 500) {
+      if (data.match(/416/)) {
+        response = ({ errorString: 'This bus stop code doesn\'t seem to exist.' })
+      } else if (data.match(/response\.data\.replace is not a function/)) {
+        response = ({ errorString: 'No results for this stop.' })
+      } else {
+        response = ({ errorString: data })
+      }
+
+      if (response) { return response }
+    }
+  } else {
+    return error
+  }
+}
+
 class ViewBus extends PureComponent {
   intervalId = null
 
@@ -183,7 +204,7 @@ class ViewBus extends PureComponent {
           }
         </Loading>
         {
-          hasError && <AppError error={error} callerDescription="bus departure information" contained />
+          hasError && <AppError error={parseError(error)} callerDescription="bus departure information" contained />
         }
         <BusControlForm setStopCode={this.setStopCode} />
       </ViewBusWrapper>
