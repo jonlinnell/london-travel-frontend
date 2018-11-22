@@ -21,8 +21,8 @@ const ContentWrapper = styled.div`
 `
 
 const RouteContainer = posed(ContentWrapper)({
-  enter: { opacity: 1, beforeChildren: true },
-  exit: { opacity: 0 },
+  enter: { opacity: 1, transition: { duration: 350 } },
+  exit: { opacity: 0, transition: { duration: 350 } },
 })
 
 const PosedRouter = ({ children }) => (
