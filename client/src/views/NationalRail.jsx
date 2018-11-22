@@ -114,14 +114,21 @@ class ViewNationalRail extends PureComponent {
     })
   }
 
-  setDestinationCode = (crs) => {
+  setDestinationCode = (newDestinationCode) => {
     clearInterval(this.intervalId)
 
     this.setState({
-      destinationCode: crs,
+      pristine: false,
+      destinationCode: newDestinationCode,
     }, () => {
-      this.fetchData()
-      this.intervalId = setInterval(() => this.fetchData(), INTERVAL * 60000)
+      const { destinationCode } = this.state
+
+      if (validateStationCode(destinationCode)) {
+        this.fetchData()
+        this.intervalId = setInterval(() => this.fetchData(), INTERVAL * 60000)
+      } else {
+        clearInterval(this.intervalId)
+      }
     })
   }
 

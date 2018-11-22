@@ -65,7 +65,7 @@ const parseError = (error) => {
       if (response) { return response }
     }
   }
-  
+
   return error
 }
 
