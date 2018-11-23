@@ -38,7 +38,7 @@ const NavbarItem = styled.li`
   & > a, & > a:visited {
     transition: color 0.3s ease-in-out;
 
-    color: ${({ active, theme: { colours } }) => (active ? colours.mulberry : colours.asphalt)};
+    color: ${({ active, theme: { colours } }) => (active ? colours.mulberry.colour : colours.asphalt.colour)};
   }
 
   & > a:focus, & > a:active {
@@ -49,7 +49,7 @@ const NavbarItem = styled.li`
   }
 
   & > a:active {
-    color: ${({ theme: { colours } }) => colours.mulberryLight};
+    color: ${({ theme: { colours } }) => colours.mulberryLight.colour};
     background-color: transparent;
   }
 `

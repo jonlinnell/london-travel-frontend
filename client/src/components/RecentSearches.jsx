@@ -19,7 +19,7 @@ const RecentSearchesList = styled.ul`
 
 const SearchItem = styled.li`
   text-decoration: underline;
-  color: ${({ theme: { colours } }) => colours.asphalt};
+  color: ${({ theme: { colours } }) => colours.asphalt.colour};
 
   margin-bottom: 6px;
 `

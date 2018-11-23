@@ -11,8 +11,6 @@ const StyledTrainService = styled.li`
   & > :last-child {
     padding-top: 3px;
   }
-
-  background-color: ${({ secondary }) => (secondary ? 'rgba(233, 235, 242, 0.5)' : 'transparent')};
 `
 
 const Row = styled.div`

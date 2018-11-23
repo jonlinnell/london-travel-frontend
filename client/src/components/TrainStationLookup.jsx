@@ -30,11 +30,11 @@ const StationList = styled.ul`
   padding: 0;
 
   &>:nth-child(odd) {
-    background-color: ${({ theme: { colours: { rail: { colour } } } }) => colour};
+    background-color: ${({ theme: { colours } }) => colours.rail.colour};
   }
 
   &>:nth-child(even) {
-    background-color: ${({ theme: { colours: { rail: { colour } } } }) => lighten(colour, 50)};
+    background-color: ${({ theme: { colours } }) => lighten(colours.rail.colour, 50)};
   }
 `
 

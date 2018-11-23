@@ -128,59 +128,59 @@
   },
   "lines": {
     "bakerloo": {
-      "background": "rgb(178,99,0)",
+      "colour": "rgb(178,99,0)",
       "text": "rgb(255, 255, 255)"
     },
     "central": {
-      "background": "rgb(220,36,31)",
+      "colour": "rgb(220,36,31)",
       "text": "rgb(255, 255, 255)"
     },
     "circle": {
-      "background": "rgb(255,211,41)",
+      "colour": "rgb(255,211,41)",
       "text": "rgb(0,25,168)"
     },
     "district": {
-      "background": "rgb(0,125,50)",
+      "colour": "rgb(0,125,50)",
       "text": "rgb(255, 255, 255)"
     },
     "hammersmith-city": {
-      "background": "rgb(244,169,190)",
+      "colour": "rgb(244,169,190)",
       "text": "rgb(0,25,168)"
     },
     "jubilee": {
-      "background": "rgb(161,165,167)",
+      "colour": "rgb(161,165,167)",
       "text": "rgb(255, 255, 255)"
     },
     "metropolitan": {
-      "background": "rgb(155,0,88)",
+      "colour": "rgb(155,0,88)",
       "text": "rgb(255, 255, 255)"
     },
     "northern": {
-      "background": "rgb(0,0,0)",
+      "colour": "rgb(0,0,0)",
       "text": "rgb(255, 255, 255)"
     },
     "piccadilly": {
-      "background": "rgb(0,25,168)",
+      "colour": "rgb(0,25,168)",
       "text": "rgb(255, 255, 255)"
     },
     "victoria": {
-      "background": "rgb(0,152,216)",
+      "colour": "rgb(0,152,216)",
       "text": "rgb(255, 255, 255)"
     },
     "waterloo-city": {
-      "background": "rgb(147,206,186)",
+      "colour": "rgb(147,206,186)",
       "text": "rgb(0,25,168)"
     },
     "dlr": {
-      "background": "rgb(0,175,173)",
+      "colour": "rgb(0,175,173)",
       "text": "rgb(255, 255, 255)"
     },
     "london-overground": {
-      "background": "rgb(239,123,16)",
+      "colour": "rgb(239,123,16)",
       "text": "rgb(255, 255, 255)"
     },
     "tfl-rail": {
-      "background": "rgb(0,25,168)",
+      "colour": "rgb(0,25,168)",
       "text": "rgb(255, 255, 255)"
     }
   }

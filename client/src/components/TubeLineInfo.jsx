@@ -9,7 +9,7 @@ const LineContainer = styled.li`
   padding: 12px;
   font-family: "DIN Light";
 
-  background-color: ${({ id, theme }) => theme.lines[id].background};
+  background-color: ${({ id, theme }) => theme.lines[id].colour};
   color: ${({ id, theme }) => theme.lines[id].text};
 `
 

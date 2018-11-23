@@ -19,7 +19,7 @@ const BusService = styled.span`
   width: 32px;
   margin-right: 12px;
 
-  color: ${({ theme: { colours: { bus } } }) => bus};
+  color: ${({ theme }) => theme.colours.bus.colour};
 `
 
 const BusETA = styled.span`
