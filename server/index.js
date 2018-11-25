@@ -4,6 +4,9 @@
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const express = require('express')
+const fs = require('fs')
+const http = require('http')
+const https = require('https')
 const morgan = require('morgan')
 const rfs = require('rotating-file-stream')
 
@@ -22,6 +25,8 @@ const {
   LOG_DIR,
   NODE_ENV,
   PORT,
+  KEY,
+  CERT,
 } = process.env
 
 const stream = rfs(resolve(LOG_DIR ? `${LOG_DIR}/${APP_NAME}.log` : `${__dirname}/../logs/${APP_NAME}.log`), {
@@ -45,4 +50,11 @@ require('./routes')(app)
 if (USE_TEST_DATA) { console.log('Using test data. Unset USE_TEST_DATA to use live feeds.') }
 if (NODE_ENV === 'development') { console.log('Starting in development mode.') }
 
-app.listen(PORT || DEFAULT_PORT)
+if (NODE_ENV === 'production') {
+  https.createServer(app, {
+    key: fs.readFileSync(KEY),
+    cert: fs.readFileSync(CERT),
+  }).listen(PORT || DEFAULT_PORT)
+} else {
+  http.createServer(app).listen(PORT || DEFAULT_PORT)
+}
