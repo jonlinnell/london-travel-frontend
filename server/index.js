@@ -51,10 +51,10 @@ if (USE_TEST_DATA) { console.log('Using test data. Unset USE_TEST_DATA to use li
 if (NODE_ENV === 'development') { console.log('Starting in development mode.') }
 
 if (NODE_ENV === 'production') {
-  https.createServer(app, {
-    key: fs.readFileSync(KEY),
-    cert: fs.readFileSync(CERT),
-  }).listen(PORT || DEFAULT_PORT)
+  https.createServer({
+    key: fs.readFileSync(KEY, 'utf8'),
+    cert: fs.readFileSync(CERT, 'utf8'),
+  }, app).listen(PORT || DEFAULT_PORT)
 } else {
   http.createServer(app).listen(PORT || DEFAULT_PORT)
 }
