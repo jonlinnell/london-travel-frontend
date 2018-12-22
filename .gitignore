@@ -4,11 +4,7 @@
 /node_modules
 
 # production
-client/dist
-
-# Logs
-logs
-server/logs
+dist
 
 # misc
 .DS_Store
@@ -16,4 +12,4 @@ server/logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-client/config/config.json
+config/config.json
