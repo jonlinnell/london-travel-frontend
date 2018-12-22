@@ -19,7 +19,7 @@ import IconNationalRail from '../icons/NationalRail'
 
 import { addRailStation, getPreviousRailStations } from '../lib/storage'
 
-import { api } from '../../config/config.json'
+const { api } = process.env
 
 const INTERVAL = 1 // in minutes
 

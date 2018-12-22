@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 
-import { supportContact } from '../../config/config.json'
+const { supportContact } = process.env
 
 const AppError = styled.div`
   width: ${({ fill }) => (fill ? '100%' : 'initial')};
@@ -73,9 +73,7 @@ export default ({ error, description, ...rest }) => (
       supportContact
         ? (
           <ErrorMessage small>
-            Please report this to&nbsp;
-            { supportContact }
-            &nbsp;.
+            {`Please report this to ${supportContact}.`}
           </ErrorMessage>
         )
         : null

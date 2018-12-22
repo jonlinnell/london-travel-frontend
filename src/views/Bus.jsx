@@ -16,7 +16,7 @@ import RecentSearches from '../components/RecentSearches'
 
 import { addBusStop, getPreviousBusStops } from '../lib/storage'
 
-import { api } from '../../config/config.json'
+const { api } = process.env
 
 const INTERVAL = 30 // in seconds
 const contentContainerId = 'bus-departures-wrapper'

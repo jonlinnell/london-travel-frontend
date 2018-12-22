@@ -32,6 +32,8 @@
     "babel-preset-react": "^6.24",
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-3": "^6.24",
+    "clean-webpack-plugin": "^1.0.0",
+    "dotenv-webpack": "^1.5.7",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",

@@ -8,7 +8,7 @@ import TubeLineInfo from '../components/TubeLineInfo'
 import AppError from '../components/AppError'
 import Loading from '../components/Loading'
 
-import { api } from '../../config/config.json'
+const { api } = process.env
 
 const INTERVAL = 5 // in minutes
 

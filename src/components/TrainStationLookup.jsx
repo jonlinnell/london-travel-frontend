@@ -9,7 +9,7 @@ import Input from './Input'
 
 import { lighten } from '../lib/colours'
 
-import { api } from '../../config/config.json'
+const { api } = process.env
 
 const autocompleteId = 'autocomplete-stations'
 

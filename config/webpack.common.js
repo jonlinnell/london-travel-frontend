@@ -2,6 +2,7 @@
 const { resolve } = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 const title = 'London Travel'
 
@@ -57,6 +58,7 @@ module.exports = {
       output: resolve(__dirname, '../dist/index.html'),
       title,
     }),
+    new Dotenv()
     // new BundleAnalyzerPlugin(),
   ],
   resolve: {
