@@ -8,7 +8,7 @@ import TubeLineInfo from '../components/TubeLineInfo'
 import AppError from '../components/AppError'
 import Loading from '../components/Loading'
 
-const { api } = process.env
+const { API } = process.env
 
 const INTERVAL = 5 // in minutes
 
@@ -65,7 +65,7 @@ class TubeStatus extends PureComponent {
 
   fetchData = () => {
     this.setState({ loading: true })
-    axios.get(`${api}/tube`)
+    axios.get(`${API}/tube`)
       .then(response => this.setState({
         data: response.data,
         loading: false,

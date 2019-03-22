@@ -16,7 +16,7 @@ import RecentSearches from '../components/RecentSearches'
 
 import { addBusStop, getPreviousBusStops } from '../lib/storage'
 
-const { api } = process.env
+const { API } = process.env
 
 const INTERVAL = 30 // in seconds
 const contentContainerId = 'bus-departures-wrapper'
@@ -127,7 +127,7 @@ class ViewBus extends PureComponent {
     const { stopCode } = this.state
 
     this.setState({ loading: true })
-    axios.get(`${api}/bus/${stopCode}`)
+    axios.get(`${API}/bus/${stopCode}`)
       .then((response) => {
         this.setState({
           data: response.data.buses,

@@ -58,7 +58,7 @@ module.exports = {
       output: resolve(__dirname, '../dist/index.html'),
       title,
     }),
-    new Dotenv()
+    new Dotenv(),
     // new BundleAnalyzerPlugin(),
   ],
   resolve: {

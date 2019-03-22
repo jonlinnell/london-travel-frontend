@@ -19,7 +19,7 @@ import IconNationalRail from '../icons/NationalRail'
 
 import { addRailStation, getPreviousRailStations } from '../lib/storage'
 
-const { api } = process.env
+const { API } = process.env
 
 const INTERVAL = 1 // in minutes
 
@@ -141,7 +141,7 @@ class ViewNationalRail extends PureComponent {
     const { stationCode, destinationCode } = this.state
 
     this.setState({ loading: true })
-    axios.get(`${api}/rail/${stationCode}${destinationCode ? `/${destinationCode}` : ''}`)
+    axios.get(`${API}/rail/${stationCode}${destinationCode ? `/${destinationCode}` : ''}`)
       .then((response) => {
         this.setState({
           data: response.data.trainServices,
